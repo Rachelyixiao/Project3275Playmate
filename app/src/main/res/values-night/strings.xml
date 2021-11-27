@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="addskills">Add Skills</string>
+    <string name="finishEdit">Finish Editing</string>
+    <string name="hintEnterID">Enter your ID as Expert</string>
+    <string name="hintHours">Enter Hours</string>
+    <string name="changeEmail">Enter new Email</string>
+    <string name="ChangePW">Enter new Password</string>
+    <string name="ChangeName">Enter New Name</string>
+</resources>

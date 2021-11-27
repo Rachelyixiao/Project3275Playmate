@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1018005077540",
+    "project_id": "fir-d0268",
+    "storage_bucket": "fir-d0268.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1018005077540:android:a1f3003be610a1b58ce2b1",
+        "android_client_info": {
+          "package_name": "com.example.project3275playmate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1018005077540-fsunl988ereeh4mi7jl7ggmgjng8v6sm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCM2Wijq1zzpt220Mq27Auv6G_zQaFUyRU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1018005077540-fsunl988ereeh4mi7jl7ggmgjng8v6sm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
