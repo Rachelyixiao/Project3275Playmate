@@ -11,6 +11,13 @@
     <color name="textColor">#F6E397</color>
     <color name="hintColor">#878EA8</color>
     <color name="buttonColor">#102E24</color>
-
+    <color name="backgroundcolor">#C0ECE7</color>
+    <color name="backgroundcolor2">#CAC3BB</color>
+    <color name="backgroundcolor3">#F0EBE5</color>
+    <color name="backgroundcolor4">#C1CBD7</color>
+    <color name="backgroundcolor5">#8796A7</color>
+    <color name="backgroundcolor6">#ECECEA</color>
+    <color name="backgroundcolor7">#A27E7E</color>
+    <color name="backgroundcolor8">#EEE5F8</color>
 
 </resources>

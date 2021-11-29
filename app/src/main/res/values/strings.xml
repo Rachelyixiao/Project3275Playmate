@@ -4,8 +4,8 @@
     <string name="finishEdit">Finish Editing</string>
     <string name="title_activity_upload_hours">MainActivity</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_contact">Contact us</string>
+    <string name="title_settings">Settings</string>
     <string name="profileHint">Write your level or skills of this game</string>
     <string name="submit">submit</string>
     <string name="hintEnterID">Enter your ID as Expert</string>
@@ -15,6 +15,45 @@
     <string name="changeEmail">Enter new Email</string>
     <string name="ChangePW">Enter new Password</string>
     <string name="ChangeName">Enter New Name</string>
+    <string name="HomepageTitle">Playmate</string>
+    <string name="HomepageText1_1">Find someone to play</string>
+    <string name="HomepageText1_2">A large number of players, guaranteed quality</string>
+    <string name="HomepageText2_1">Voice contact</string>
+    <string name="HomepageText2_2">24-hour online customer service, place orders quickly</string>
+    <string name="HomepageText3_1">Fate Encounters</string>
+    <string name="HomepageText3_2">Find friends and discover new interests</string>
+    <string name="HomepageText4_1">Academic help</string>
+    <string name="HomepageText4_2">Honest brand, help difficulties</string>
+    <string name="HomepageBtn1">Login</string>
+    <string name="HomepageBtn2">Register</string>
+    <string name="RegisterTitle">Join us now!</string>
+    <string name="RegisterText1">Enter your Email</string>
+    <string name="RegisterText2">Enter your password</string>
+    <string name="RegisterText3">Enter your password again</string>
+    <string name="RegisterRbtn1">Register as a Customer</string>
+    <string name="RegisterRbtn2">Register as a Expert Player</string>
+    <string name="UserMainText1">Welcome</string>
+    <string name="UserMainText2">Balance:</string>
+    <string name="UserMainBtn1">Choose Experts</string>
+    <string name="UserMainBtn2">Top up</string>
+    <string name="UserMainBtn3">View balance usage records</string>
+    <string name="PlayerRegisterText1">Choose your main game</string>
+    <string name="PlayerRegisterText2">Select your gender</string>
+    <string name="PlayerRegisterText3">would you like to add your game profile now?</string>
+    <string name="PlayerRegisterRbtn1">Girl</string>
+    <string name="PlayerRegisterRbtn2">Boy</string>
+    <string name="PlayerRegisterRbtn3">Sure</string>
+    <string name="PlayerRegisterRbtn4">Later</string>
+    <string name="EregisterSubmit">Submit</string>
+    <string name="btnReviewE">Review Expert</string>
+    <string name="welcome">WELCOME</string>
+    <string name="coverText">CSIS 3275 Project</string>
+    <string name="forgetPassword">Forget Password?</string>
+    <string name="Enteremail">Enter your email</string>
+    <string name="Enterpw">Enter Your Password</string>
+    <string name="GO">GO</string>
+    <string name="reset">RESET</string>
+
 
     <string-array name="gamelist">
         <item>PUBG</item>

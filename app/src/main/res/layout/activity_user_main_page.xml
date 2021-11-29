@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Homepage.UserMainPage" android:background="@drawable/gamebackground">
+
+    <ImageView
+            android:layout_width="145dp"
+            android:layout_height="22dp" app:srcCompat="@drawable/logo" android:id="@+id/imgLogo"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="133dp" android:layout_marginStart="133dp" android:layout_marginEnd="133dp"
+            android:layout_marginRight="133dp" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="24dp" android:background="#00FFFFFF"/>
+    <TextView
+            android:text="@string/UserMainText1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/textView22"
+            android:textSize="34sp" android:textColor="@color/white" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="127dp" android:layout_marginStart="127dp" android:layout_marginEnd="143dp"
+            android:layout_marginRight="143dp" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="45dp" android:layout_marginBottom="83dp"
+            app:layout_constraintBottom_toTopOf="@+id/textView24" android:background="#00FFFFFF"
+            android:textStyle="bold"/>
+    <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp" android:id="@+id/textView23"
+            android:textColor="@color/white" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="190dp" android:layout_marginStart="190dp" android:layout_marginEnd="221dp"
+            android:layout_marginRight="221dp" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="140dp"/>
+    <TextView
+            android:text="@string/UserMainText2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/textView24"
+            android:textColor="@color/white" android:textSize="24sp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="148dp" android:layout_marginEnd="173dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            android:background="#00FFFFFF" android:layout_marginBottom="106dp"
+            app:layout_constraintBottom_toTopOf="@+id/btnChooseExpert"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/textView25"
+            android:textColor="@color/white" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="190dp" android:layout_marginStart="190dp" android:layout_marginEnd="221dp"
+            android:layout_marginRight="221dp" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="450dp"/>
+    <Button
+            android:text="@string/UserMainBtn1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/btnChooseExpert"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="127dp" android:layout_marginEnd="133dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:backgroundTint="@color/logoColor"
+            android:textSize="16sp" app:layout_constraintHorizontal_bias="1.0" android:layout_marginBottom="19dp"
+            app:layout_constraintBottom_toTopOf="@+id/button6"/>
+
+    <Button
+            android:text="@string/UserMainBtn2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/button6"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="161dp" android:layout_marginEnd="162dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:backgroundTint="@color/logoColor" android:textSize="16sp"
+            app:layout_constraintHorizontal_bias="0.0" android:layout_marginBottom="15dp"
+            app:layout_constraintBottom_toTopOf="@+id/btnReviewExpert"/>
+    <Button
+            android:text="@string/UserMainBtn3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/button7"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="83dp" android:layout_marginEnd="83dp"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="62dp" app:backgroundTint="@color/logoColor" android:textSize="16sp"/>
+    <Button
+            android:text="@string/btnReviewE"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/btnReviewExpert"
+            app:backgroundTint="@color/logoColor" android:textStyle="bold" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="137dp" android:layout_marginEnd="136dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginBottom="15dp"
+            app:layout_constraintBottom_toTopOf="@+id/button7" android:textSize="16sp"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

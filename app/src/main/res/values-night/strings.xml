@@ -7,4 +7,10 @@
     <string name="changeEmail">Enter new Email</string>
     <string name="ChangePW">Enter new Password</string>
     <string name="ChangeName">Enter New Name</string>
+    <string name="btnReviewE">Review Expert</string>
+    <string name="welcome">WELCOME</string>
+    <string name="forgetPassword">Forget Password?</string>
+    <string name="Enteremail">Enter your email</string>
+    <string name="Enterpw">Enter Your Password</string>
+    <string name="GO">GO</string>
 </resources>
