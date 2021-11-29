@@ -19,7 +19,8 @@
             android:background="#00FFFFFF"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="173dp"
             android:layout_marginEnd="155dp" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginBottom="72dp" app:layout_constraintBottom_toTopOf="@+id/textView10"/>
+            android:layout_marginBottom="48dp" app:layout_constraintBottom_toTopOf="@+id/textView10"
+            app:layout_constraintHorizontal_bias="1.0"/>
     <ImageView
             android:layout_width="88dp"
             android:layout_height="101dp" app:srcCompat="@drawable/game" android:id="@+id/imageView8"

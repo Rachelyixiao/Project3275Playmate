@@ -2,10 +2,12 @@ package com.example.project3275playmate;
 
 import android.content.Intent;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import com.example.project3275playmate.RegisterLogin.LoginPage;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import org.jetbrains.annotations.NotNull;
 
@@ -27,12 +29,15 @@ public class BottomNavActivity extends AppCompatActivity {
         btmNavView = findViewById(R.id.bottom_navigation_bar);
         btnNavTextView = findViewById(R.id.text_message);
 
+
+
+
+
         btmNavView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.navigation_home:
-
                         btnNavTextView.setText(R.string.title_home);
                         return true;
                     case R.id.navigation_contact:
@@ -45,5 +50,7 @@ public class BottomNavActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+
     }
 }

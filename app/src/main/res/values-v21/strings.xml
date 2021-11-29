@@ -13,4 +13,16 @@
     <string name="Enteremail">Enter your email</string>
     <string name="Enterpw">Enter Your Password</string>
     <string name="GO">GO</string>
+    <string name="ENTERID">Enter Playmate ID</string>
+    <string name="RATING5">5</string>
+    <string name="RATING4">4</string>
+    <string name="RATING3">3</string>
+    <string name="RATING2">2</string>
+    <string name="RATING1">1</string>
+    <string name="ratingExplain">From 5 to 1, please rate your playmate(5 is highest, 1 is lowest)</string>
+    <string name="leaveMessage">Leave some comments if you want</string>
+    <string name="hintsTopup">Click the icons to get topup information</string>
+    <string name="hintTopupAmount">Enter Amount</string>
+    <string name="topupAlert">Please contact our admin after top up</string>
+    <string name="wagepage1">Your balance is</string>
 </resources>

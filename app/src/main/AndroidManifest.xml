@@ -9,6 +9,12 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/myTheme">
+        <activity android:name=".MoneyRelated.GetWage">
+        </activity>
+        <activity android:name=".MoneyRelated.TopupOptions">
+        </activity>
+        <activity android:name=".AfterPlayPages.ReviewExpert">
+        </activity>
         <activity android:name=".BottomNavActivity">
         </activity>
         <activity android:name=".RegisterLogin.LoginPage">
@@ -18,7 +24,7 @@
         <activity android:name=".UploadPages.AddProfiles">
         </activity>
         <activity
-                android:name=".UploadPages.UploadHours"
+                android:name=".AfterPlayPages.UploadHours"
                 android:label="@string/title_activity_upload_hours">
         </activity>
         <activity android:name=".UploadPages.UploadFiles">
@@ -27,7 +33,7 @@
         </activity>
         <activity android:name=".Homepage.UserMainPage">
         </activity>
-        <activity android:name=".RegisterLogin.PlayerRegisterPage">
+        <activity android:name=".RegisterLogin.ExpertRegisterPage">
         </activity>
         <activity android:name=".RegisterLogin.RegisterPage">
         </activity>

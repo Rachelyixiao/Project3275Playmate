@@ -4,11 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.example.project3275playmate.R;
 
-public class PlayerRegisterPage extends AppCompatActivity {
+public class ExpertRegisterPage extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_player_register_page);
+        setContentView(R.layout.activity_expert_register_page);
     }
 }

@@ -1,4 +1,4 @@
-package com.example.project3275playmate.UploadPages;
+package com.example.project3275playmate.AfterPlayPages;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
@@ -6,13 +6,8 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 import com.example.project3275playmate.R;
 import com.example.project3275playmate.databinding.ActivityUploadHoursBinding;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.Calendar;
 
