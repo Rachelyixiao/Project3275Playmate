@@ -18,13 +18,6 @@ public class RegisterPage extends AppCompatActivity {
     TextView getName, getEmail, getPassword;
     String name, email, password, toast;
 
-    private DAO_Implementation obj;
-    Connection con;
-    RegisterPage() throws SQLException {
-        this.con = new Connection();
-        this.obj = new DAO_Implementation(con);
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,12 +34,12 @@ public class RegisterPage extends AppCompatActivity {
             case R.id.customer:
                 if (checked){
                     choice = 0;
-                    Toast.makeText(this, "You selected to be a customer",Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "You have selected to be a customer",Toast.LENGTH_LONG).show();
                 }
             case R.id.expert:
                 if (checked){
                     choice = 1;
-                    Toast.makeText(this, "You selected to be an expert",Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "You have selected to be an expert",Toast.LENGTH_LONG).show();
                 }
         }
     }
