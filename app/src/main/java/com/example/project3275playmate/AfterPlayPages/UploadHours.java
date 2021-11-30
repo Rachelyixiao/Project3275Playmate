@@ -3,6 +3,7 @@ package com.example.project3275playmate.AfterPlayPages;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,16 +14,22 @@ import java.util.Calendar;
 
 public class UploadHours extends AppCompatActivity {
     DatePickerDialog datePickerDialog;
-    private ActivityUploadHoursBinding binding;
+
+    EditText expertEmailVerify,playdate,playHours;
+    Button submitHours;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = ActivityUploadHoursBinding.inflate(getLayoutInflater());
+        com.example.project3275playmate.databinding.ActivityUploadHoursBinding binding = ActivityUploadHoursBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        EditText playdate = findViewById(R.id.txtplaydate);
+        expertEmailVerify = findViewById(R.id.expertEmailVerify);
+        playdate = findViewById(R.id.playdate);
+        playHours = findViewById(R.id.playHours);
+        submitHours = findViewById(R.id.submitHours);
 
         //Choose the date of play
         playdate.setOnClickListener(new View.OnClickListener() {

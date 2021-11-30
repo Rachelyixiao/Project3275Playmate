@@ -23,38 +23,38 @@
             android:background="#00FFFFFF" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="60dp" android:layout_marginEnd="79dp"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="1.0"
-            android:layout_marginTop="32dp" app:layout_constraintTop_toBottomOf="@+id/editTextNumber"/>
+            android:layout_marginTop="32dp" app:layout_constraintTop_toBottomOf="@+id/topupAmount"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="number"
             android:ems="10"
-            android:id="@+id/editTextNumber"
+            android:id="@+id/topupAmount"
             android:hint="@string/hintTopupAmount" android:textSize="20sp"
             android:layout_marginTop="93dp" app:layout_constraintTop_toBottomOf="@+id/imgLogo"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="87dp"
             android:layout_marginEnd="84dp" app:layout_constraintEnd_toEndOf="parent"/>
     <ImageView
             android:layout_width="79dp"
-            android:layout_height="75dp" app:srcCompat="@drawable/alipay" android:id="@+id/imageView2"
+            android:layout_height="75dp" app:srcCompat="@drawable/alipay" android:id="@+id/topupAlipay"
             android:background="#00FFFFFF" android:layout_marginEnd="111dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="47dp"
             app:layout_constraintTop_toBottomOf="@+id/textView27"/>
     <ImageView
             android:layout_width="96dp"
-            android:layout_height="94dp" app:srcCompat="@drawable/bank_card" android:id="@+id/imageView10"
+            android:layout_height="94dp" app:srcCompat="@drawable/bank_card" android:id="@+id/topupBank"
             android:background="#00FFFFFF" android:layout_marginEnd="103dp"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="231dp"/>
     <ImageView
             android:layout_width="87dp"
-            android:layout_height="80dp" app:srcCompat="@drawable/wechatnew" android:id="@+id/imageView12"
+            android:layout_height="80dp" app:srcCompat="@drawable/wechatnew" android:id="@+id/topupWechat"
             android:background="#00FFFFFF"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="99dp"
             app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="238dp"/>
     <ImageView
             android:layout_width="92dp"
-            android:layout_height="73dp" app:srcCompat="@drawable/paypal" android:id="@+id/imageView13"
+            android:layout_height="73dp" app:srcCompat="@drawable/paypal" android:id="@+id/topupPayPal"
             android:background="#00FFFFFF"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="99dp"
             android:layout_marginTop="47dp" app:layout_constraintTop_toBottomOf="@+id/textView27"/>
@@ -71,8 +71,8 @@
             android:layout_height="wrap_content" android:id="@+id/textView30"
             android:background="#00FFFFFF" android:textColor="@color/logoColor"
             android:textSize="16sp" app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="70dp"
-            android:layout_marginEnd="70dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="130dp"
-            app:layout_constraintTop_toBottomOf="@+id/imageView10"/>
+            android:layout_marginEnd="70dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="68dp"
+            app:layout_constraintTop_toBottomOf="@+id/topupBank" app:layout_constraintHorizontal_bias="0.0"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

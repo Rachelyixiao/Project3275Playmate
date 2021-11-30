@@ -17,21 +17,20 @@
             android:layout_marginTop="4dp" android:background="#00FFFFFF"/>
 
 
-
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:ems="10"
-            android:id="@+id/txtUploadID"
-            android:hint="@string/hintEnterID" android:textColor="@color/white"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="99dp"
-            android:layout_marginStart="99dp" android:layout_marginEnd="99dp" android:layout_marginRight="99dp"
+            android:id="@+id/expertEmailVerify"
+            android:hint="@string/hintEnterExpertEmail" android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="99dp" android:layout_marginEnd="99dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="56dp"
             app:layout_constraintTop_toBottomOf="@+id/imgLogo" android:textSize="20sp"/>
 
     <EditText
-            android:id="@+id/txtplaydate"
+            android:id="@+id/playdate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="date"
@@ -39,25 +38,25 @@
             android:hint="@string/uploadHoursDate" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginLeft="99dp" android:layout_marginStart="99dp" android:layout_marginEnd="99dp"
             android:layout_marginRight="99dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="48dp"
-            app:layout_constraintTop_toBottomOf="@+id/txtUploadID" android:textSize="20sp"/>
+            app:layout_constraintTop_toBottomOf="@+id/expertEmailVerify" android:textSize="20sp"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
             android:ems="10"
-            android:id="@+id/txtPlayHours"
+            android:id="@+id/playHours"
             android:hint="@string/hintHours" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginLeft="99dp" android:layout_marginStart="99dp" android:layout_marginEnd="99dp"
             android:layout_marginRight="99dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="42dp"
-            app:layout_constraintTop_toBottomOf="@+id/txtplaydate" android:textSize="20sp"/>
+            app:layout_constraintTop_toBottomOf="@+id/playdate" android:textSize="20sp"/>
     <Button
             android:text="@string/submit"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/btnSubmitHours"
+            android:layout_height="wrap_content" android:id="@+id/submitHours"
             android:hint="@string/btnSubmitHours" android:textSize="20sp" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginLeft="150dp" android:layout_marginStart="150dp" android:layout_marginEnd="155dp"
             android:layout_marginRight="155dp" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="156dp" app:layout_constraintTop_toBottomOf="@+id/txtPlayHours"
+            android:layout_marginTop="156dp" app:layout_constraintTop_toBottomOf="@+id/playHours"
             app:backgroundTint="@color/buttonColor"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

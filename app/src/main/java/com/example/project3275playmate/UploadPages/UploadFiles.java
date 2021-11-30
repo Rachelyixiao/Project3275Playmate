@@ -15,9 +15,9 @@ public class UploadFiles extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload_files);
 
-        Button btnaddskill = findViewById(R.id.btnaddSkills);
+        Button btnaddskill = findViewById(R.id.addSkills);
 
-        Button btnfinishEdit = findViewById(R.id.btnfinishEdit);
+        Button btnfinishEdit = findViewById(R.id.finishEdit);
 
         btnaddskill.setOnClickListener(new View.OnClickListener() {
             @Override
