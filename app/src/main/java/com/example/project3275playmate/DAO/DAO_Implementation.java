@@ -18,6 +18,20 @@ public class DAO_Implementation implements DAOInterface {
     }
 
     @Override
+    public void addUser(User user) throws ClassNotFoundException, SQLException {
+        PreparedStatement query1 = con1.connect().prepareStatement("insert into User values(?,?,?)");
+
+        query1.setString(1, user.getName());
+        query1.setString(2, user.getEmail());
+        query1.setString(3, user.getPassword());
+        query1.executeUpdate();
+
+        PreparedStatement query2 = con1.connect().prepareStatement("insert into Customer values(?,?)");
+        query2.setString(1, user.getName());
+        query2.setDouble(2, 0);
+    }
+
+    @Override
     public void addCustomer(User user) throws ClassNotFoundException, SQLException {
         PreparedStatement query1 = con1.connect().prepareStatement("insert into User values(?,?,?)");
 

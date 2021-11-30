@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 
 public interface DAOInterface {
+    public void addUser(User user) throws ClassNotFoundException, SQLException;
     public void addCustomer(User user) throws ClassNotFoundException, SQLException;
     public void addExpert(User user) throws ClassNotFoundException, SQLException;
     public void addExpertAdditionalInfo(User user, String gender, double rating) throws ClassNotFoundException, SQLException;

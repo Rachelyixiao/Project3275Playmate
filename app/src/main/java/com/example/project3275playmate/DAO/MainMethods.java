@@ -52,7 +52,7 @@ public class MainMethods {
         user = new User(name, email, password);
 
         if(obj.searchUser(name)==null){
-            obj.addCustomer(user);
+            obj.addUser(user);
         }
         return display;
     }
