@@ -1,15 +1,23 @@
 package com.example.project3275playmate;
 
 import android.content.Intent;
+import android.os.Build;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import com.example.project3275playmate.Classes.*;
+import com.example.project3275playmate.DAO.Connection;
+import com.example.project3275playmate.DAO.DAO_Implementation;
 import com.example.project3275playmate.RegisterLogin.LoginPage;
 import com.example.project3275playmate.RegisterLogin.RegisterPage;
 
-public class MainActivity extends AppCompatActivity {
+import java.sql.SQLException;
+import java.time.LocalDate;
 
+public class MainActivity extends AppCompatActivity {
 
     @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -43,4 +51,11 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
     }
+
+
+
+
+
+
+
 }

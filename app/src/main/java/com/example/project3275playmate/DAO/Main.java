@@ -25,13 +25,8 @@ public class Main {
 
     }
 
-    public void searchingUser() throws SQLException, ClassNotFoundException{
-        String name; // 通过界面让用户输入用户名查找指定用户
+    public void searchingUser(String name) throws SQLException, ClassNotFoundException{
         User user1;
-
-
-        name = " ";// 通过界面让用户输入用户名查找指定用户
-
         user1 = obj.searchUser(name);
         if(!(user1==null)){
             System.out.println(user1.getName() + ", " + user1.getEmail());
@@ -41,11 +36,8 @@ public class Main {
         }
     }
 
-    public void customerSignUp() throws SQLException, ClassNotFoundException{
-        String name="", email="", password=""; //注册界面，获取用户名邮箱及密码
-        User user;
-
-        user = obj.searchUser(name); //检查是否重名
+    public void customerSignUp(String name, String email, String password) throws SQLException, ClassNotFoundException{
+        User user = obj.searchUser(name); //检查是否重名
         if(!(user==null)){
             System.out.println("The name is already occupied, please choose another one.");
             return;
@@ -69,12 +61,9 @@ public class Main {
         }
     }
 
-    public void expertSignUp() throws SQLException, ClassNotFoundException{
-        String name="", email="", password=""; //注册界面，获取用户名邮箱及密码
-        User expert;
-
-        expert = obj.searchUser(name); //检查是否重名
-        if(!(expert==null)){
+    public void expertSignUp(String name, String email, String password) throws SQLException, ClassNotFoundException{
+        User user = obj.searchUser(name); //检查是否重名
+        if(!(user==null)){
             System.out.println("The name is already occupied, please choose another one.");
             return;
         }
@@ -90,15 +79,14 @@ public class Main {
             System.out.print("SignUp Successful!");
         }
 
-        expert = new User(name, email, password);
+        user = new User(name, email, password);
 
         if(obj.searchUser(name)==null){
-            obj.addExpert(expert);
+            obj.addExpert(user);
         }
     }
 
-    public void login() throws SQLException, ClassNotFoundException{
-        String name="", email="", password=""; //获取用户名密码
+    public void login(String name, String password) throws SQLException, ClassNotFoundException{
         User user = obj.searchUser(name);
         if (user==null){
             System.out.println("The user doesn't exist");
@@ -109,9 +97,7 @@ public class Main {
 
     }
 
-    public void expertAddingInfo() throws SQLException, ClassNotFoundException{
-        String name = "", gender = ""; //获取用户name, gender
-        double rating = 0; //确定rating
+    public void expertAddingInfo(String name, String gender, double rating) throws SQLException, ClassNotFoundException{
         Expert expert;
         expert = (Expert) obj.searchUser(name);
 
@@ -124,11 +110,9 @@ public class Main {
         System.out.println("Transaction successful!");
     }
 
-    public void editInfo() throws SQLException, ClassNotFoundException{
-        String name = "", password = ""; // 修改密码，首先让用户输入用户名密码验证
-        User user;
-
-        user = obj.searchUser(name);
+    public void editInfo(String name, String password, String newPassword, String newEmail)
+            throws SQLException, ClassNotFoundException{
+        User user = obj.searchUser(name);
 
         if((user==null)){
             System.out.println("The user does not exist");
@@ -138,7 +122,6 @@ public class Main {
             System.out.println("Password incorrect");
             return;
         }
-        String newPassword = "", newEmail = "";//让用户输入新的密码与邮箱
 
         user = new User(name, newEmail, newPassword);
         obj.edit(user, name);
@@ -147,11 +130,9 @@ public class Main {
 
     public void displaying() throws SQLException, ClassNotFoundException{
         obj.display();
-
     }
 
-    public void deletingUser() throws SQLException, ClassNotFoundException{
-        String name = "", password = "";//首先让用户输入用户名密码验证
+    public void deletingUser(String name, String password) throws SQLException, ClassNotFoundException{
         User user;
 
         user = obj.searchUser(name);
@@ -168,9 +149,10 @@ public class Main {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public void customerTopUp() throws SQLException, ClassNotFoundException{
-        String cusName = "", adminName = "", password = ""; //再次输入用户名密码以验证身份并要求Admin账号
-        Customer customer; Admin admin;
+    public void customerTopUp(String cusName, String adminName, String password, String transactionType, double topUpAmount)
+            throws SQLException, ClassNotFoundException{
+        Customer customer;
+        Admin admin;
         TopUp topUp = new TopUp();
         LocalDate date = LocalDate.now();
 
@@ -185,17 +167,14 @@ public class Main {
             System.out.println("Password incorrect");
             return;
         }
-        String transactionType = "";//获取充值方式
 
-        double topUpAmount = 0; //获取充值金额
         obj.topUp(customer, admin, topUp, date, transactionType, topUpAmount);
         System.out.println("TopUp successful!");
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public void transaction() throws SQLException, ClassNotFoundException{
-        String CusName = "", expertName = "", adminName = "";
-        double hours = 0, amount = 0;//获取小时和金额
+    public void transaction(String CusName, String expertName, String adminName, double hours, double amount)
+            throws SQLException, ClassNotFoundException{
         LocalDate date = LocalDate.now();
         Transaction tran = new Transaction(date, hours, amount);
 
@@ -214,8 +193,8 @@ public class Main {
         System.out.println("Transaction successful!");
     }
 
-    public void creatingGameProfile() throws SQLException, ClassNotFoundException{
-        String expertName = "", gameName = "", password = "", gameLevel = "", description = ""; //获取用户名，密码与游戏相关信息
+    public void creatingGameProfile(String expertName, String gameName, String password, String gameLevel, String description)
+            throws SQLException, ClassNotFoundException{
         Expert expert; Game game;
         expert = (Expert) obj.searchUser(expertName);
         game = obj.searchGame(gameName);
@@ -231,4 +210,5 @@ public class Main {
         System.out.println("Game Profile uploaded successful!");
     }
 }
+
 
