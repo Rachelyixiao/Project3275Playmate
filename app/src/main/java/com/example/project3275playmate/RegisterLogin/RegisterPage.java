@@ -1,6 +1,7 @@
 package com.example.project3275playmate.RegisterLogin;
 
 import android.view.View;
+import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,6 +18,7 @@ import java.sql.SQLException;
 public class RegisterPage extends AppCompatActivity {
     TextView getName, getEmail, getPassword;
     String name, email, password, toast;
+    Button registernow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,7 @@ public class RegisterPage extends AppCompatActivity {
         getName = findViewById(R.id.getUserName);
         getEmail = findViewById(R.id.getEmail);
         getPassword = findViewById(R.id.getPassword);
+        registernow = findViewById(R.id.registernow);
     }
 
     public void selection(View view) {

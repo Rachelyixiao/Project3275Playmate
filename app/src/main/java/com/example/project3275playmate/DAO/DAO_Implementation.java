@@ -100,7 +100,7 @@ public class DAO_Implementation implements DAOInterface {
 
     @Override
     public User searchUser(String name) throws SQLException, ClassNotFoundException {
-        String query1 = "Select * from User where UName = ?";
+        String query1 = "Select * from User where name = ?";
         PreparedStatement query = con1.connect().prepareStatement(query1, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         query.setString(1, name);
 
