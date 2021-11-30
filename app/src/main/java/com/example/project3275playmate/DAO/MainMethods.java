@@ -1,29 +1,23 @@
 package com.example.project3275playmate.DAO;
 
 import android.os.Build;
+import android.widget.Toast;
 import androidx.annotation.RequiresApi;
 import com.example.project3275playmate.Classes.*;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.Scanner;
 
-public class Main {
+public class MainMethods {
     private DAO_Implementation obj;
     Connection con;
 
-    Main() throws SQLException{
+    public MainMethods() throws SQLException{
         this.con = new Connection();
         this.obj = new DAO_Implementation(con);
     }
 
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        Scanner scanner = new Scanner(System.in);
-        Main obj1 = new Main();
-        String ans;
-
-    }
 
     public void searchingUser(String name) throws SQLException, ClassNotFoundException{
         User user1;
@@ -36,54 +30,31 @@ public class Main {
         }
     }
 
-    public void customerSignUp(String name, String email, String password) throws SQLException, ClassNotFoundException{
+    public String register(String name, String email, String password) throws SQLException, ClassNotFoundException{
+
+        String display;
         User user = obj.searchUser(name); //检查是否重名
         if(!(user==null)){
-            System.out.println("The name is already occupied, please choose another one.");
-            return;
+            display =  "The name is already occupied, please choose another one.";
+            return display;
         }
         if(password.length()<8){
-            System.out.println("The password is too short.");
-            return;
+            display = "The password is too short, please retry";
+            return display;
         }
-        if (email.length()<6){
-            System.out.println("The format of email is incorrect.");
-            return;
+        if (!email.contains("@") || !email.contains(".com")){
+            display = "The format of email is incorrect.";
+            return display;
         }
         else{
-            System.out.print("SignUp Successful!");
+            display = "Register Successful!";
         }
-
         user = new User(name, email, password);
 
         if(obj.searchUser(name)==null){
             obj.addCustomer(user);
         }
-    }
-
-    public void expertSignUp(String name, String email, String password) throws SQLException, ClassNotFoundException{
-        User user = obj.searchUser(name); //检查是否重名
-        if(!(user==null)){
-            System.out.println("The name is already occupied, please choose another one.");
-            return;
-        }
-        if(password.length()<8){
-            System.out.println("The password is too short.");
-            return;
-        }
-        if (email.length()<6){
-            System.out.println("The format of email is incorrect.");
-            return;
-        }
-        else{
-            System.out.print("SignUp Successful!");
-        }
-
-        user = new User(name, email, password);
-
-        if(obj.searchUser(name)==null){
-            obj.addExpert(user);
-        }
+        return display;
     }
 
     public void login(String name, String password) throws SQLException, ClassNotFoundException{
