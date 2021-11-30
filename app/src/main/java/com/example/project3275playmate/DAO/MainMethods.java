@@ -33,7 +33,7 @@ public class MainMethods {
     public String register(String name, String email, String password) throws SQLException, ClassNotFoundException{
 
         String display;
-        User user = obj.searchUser(name); //检查是否重名
+        User user = obj.searchUser(name);
         if(!(user==null)){
             display =  "The name is already occupied, please choose another one.";
             return display;

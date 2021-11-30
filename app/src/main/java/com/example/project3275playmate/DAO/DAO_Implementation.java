@@ -25,20 +25,10 @@ public class DAO_Implementation implements DAOInterface {
         query1.setString(2, user.getEmail());
         query1.setString(3, user.getPassword());
         query1.executeUpdate();
-
-        PreparedStatement query2 = con1.connect().prepareStatement("insert into Customer values(?,?)");
-        query2.setString(1, user.getName());
-        query2.setDouble(2, 0);
     }
 
     @Override
     public void addCustomer(User user) throws ClassNotFoundException, SQLException {
-        PreparedStatement query1 = con1.connect().prepareStatement("insert into User values(?,?,?)");
-
-        query1.setString(1, user.getName());
-        query1.setString(2, user.getEmail());
-        query1.setString(3, user.getPassword());
-        query1.executeUpdate();
 
         PreparedStatement query2 = con1.connect().prepareStatement("insert into Customer values(?,?)");
         query2.setString(1, user.getName());
@@ -67,7 +57,7 @@ public class DAO_Implementation implements DAOInterface {
     @Override
     public void edit(User user, String name) throws SQLException, ClassNotFoundException {
         PreparedStatement query;
-        query = con1.connect().prepareStatement("Update user set email=?, password=? where name = ?");
+        query = con1.connect().prepareStatement("Update user set email=?, password=? where UName = ?");
         query.setString(1, user.getEmail());
         query.setString(2, user.getPassword());
 
@@ -76,7 +66,7 @@ public class DAO_Implementation implements DAOInterface {
 
     @Override
     public void delete(String name) throws SQLException, ClassNotFoundException {
-        String query1 = "delete from category where name = ?";
+        String query1 = "delete from user where UName = ?";
         PreparedStatement query = con1.connect().prepareStatement(query1);
         query.setString(1, name);
         query.executeUpdate();
