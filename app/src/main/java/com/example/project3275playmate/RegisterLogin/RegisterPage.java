@@ -51,8 +51,13 @@ public class RegisterPage extends AppCompatActivity {
         password = getPassword.getText().toString();
 
         MainMethods mm = new MainMethods();
-        toast = mm.register(name, email, password);
-        Toast.makeText(this, toast, Toast.LENGTH_LONG).show();
+        try {
+            toast = mm.register(name, email, password);
+            Toast.makeText(this, toast, Toast.LENGTH_LONG).show();
+        }catch (Exception e){
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
+        }
+
 
     }
 }
