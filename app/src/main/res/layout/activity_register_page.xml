@@ -49,17 +49,17 @@
             android:text="Enter your password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/textView17"
-            app:layout_constraintTop_toBottomOf="@+id/getEmail"
-            android:layout_marginTop="28dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="71dp" android:layout_marginStart="71dp" android:layout_marginEnd="281dp"
-            android:layout_marginRight="281dp" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.073" android:background="#00FFFFFF" android:textSize="16sp"/>
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="71dp" android:layout_marginEnd="281dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.073" android:background="#00FFFFFF" android:textSize="16sp"
+            android:layout_marginTop="27dp" app:layout_constraintTop_toBottomOf="@+id/getEmail11"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
             android:ems="10"
-            android:id="@+id/getEmail"
+            android:id="@+id/getEmail11"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toBottomOf="@+id/textView18"
             android:layout_marginTop="16dp"/>
@@ -113,4 +113,12 @@
             app:layout_constraintBottom_toTopOf="@+id/getUserName" android:textSize="34sp"
             android:background="#00FFFFFF" android:textStyle="bold" android:textColor="@color/logoColor"
     />
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:ems="10"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="99dp"
+            android:layout_marginEnd="99dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="17dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView18" android:id="@+id/getEmail"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

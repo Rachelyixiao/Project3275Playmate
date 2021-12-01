@@ -1,13 +1,9 @@
 package com.example.project3275playmate.RegisterLogin;
 
-import android.annotation.SuppressLint;
 import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import com.example.project3275playmate.Classes.User;
-import com.example.project3275playmate.DAO.Connection;
-import com.example.project3275playmate.DAO.DAO_Implementation;
 import com.example.project3275playmate.DAO.MainMethods;
 import com.example.project3275playmate.R;
 
