@@ -66,6 +66,10 @@
     <string name="topupAlert">Please contact our admin after top up</string>
     <string name="wagepage1">Your balance is</string>
     <string name="wageAmount">Enter the amount your want to withdraw</string>
+    <string name="ratingString">Rating</string>
+    <string name="uploadProfilebtn">Upload Profiles</string>
+    <string name="uploadHoursLink">Upload Hours</string>
+    <string name="getWagelink">Withdraw Wage</string>
 
 
     <string-array name="gamelist">

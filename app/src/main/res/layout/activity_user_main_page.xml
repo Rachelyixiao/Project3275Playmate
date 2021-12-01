@@ -5,7 +5,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".Homepage.UserMainPage" android:background="@drawable/gamebackground">
+        tools:context=".Homepage.UserMainPage" android:background="@drawable/backkkk">
 
     <ImageView
             android:layout_width="145dp"

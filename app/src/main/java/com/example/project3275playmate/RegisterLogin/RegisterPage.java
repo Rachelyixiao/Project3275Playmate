@@ -33,11 +33,13 @@ public class RegisterPage extends AppCompatActivity {
                     choice = 0;
                     Toast.makeText(this, "You have selected to be a customer",Toast.LENGTH_LONG).show();
                 }
+                break;
             case R.id.expert:
                 if (checked){
                     choice = 1;
                     Toast.makeText(this, "You have selected to be an expert",Toast.LENGTH_LONG).show();
                 }
+                break;
         }
     }
 
@@ -46,9 +48,14 @@ public class RegisterPage extends AppCompatActivity {
         email = getEmail.getText().toString();
         password = getPassword.getText().toString();
 
+
         MainMethods mm = new MainMethods();
-        toast = mm.register(name, email, password);
-        Toast.makeText(this, toast, Toast.LENGTH_LONG).show();
+        try {
+            toast=mm.register(name, email, password);
+            Toast.makeText(this, toast, Toast.LENGTH_LONG).show();
+        } catch (Exception e){
+            Toast.makeText(this,e.getMessage(),Toast.LENGTH_LONG).show();
+        }
 
     }
 }
