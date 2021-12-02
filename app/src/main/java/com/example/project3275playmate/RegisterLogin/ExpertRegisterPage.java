@@ -45,10 +45,12 @@ public class ExpertRegisterPage extends AppCompatActivity {
             case R.id.genderBoy:
                 if (checked){
                     gender = "Boy";
+                    break;
                 }
             case R.id.genderGirl:
                 if (checked){
                     gender = "Girl";
+                    break;
                 }
         }
     }

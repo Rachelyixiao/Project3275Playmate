@@ -15,7 +15,7 @@
         </activity>
         <activity android:name=".MoneyRelated.GetWage">
         </activity>
-        <activity android:name=".MoneyRelated.TopupOptions">
+        <activity android:name=".MoneyRelated.TopUpOptions">
         </activity>
         <activity android:name=".AfterPlayPages.ReviewExpert">
         </activity>
@@ -33,7 +33,7 @@
         </activity>
         <activity android:name=".MainActivity">
         </activity>
-        <activity android:name=".Homepage.UserMainPage">
+        <activity android:name=".Homepage.CustomerMainPage">
         </activity>
         <activity android:name=".RegisterLogin.ExpertRegisterPage">
         </activity>

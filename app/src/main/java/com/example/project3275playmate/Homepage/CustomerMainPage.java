@@ -10,12 +10,12 @@ import com.example.project3275playmate.ChooseExpert;
 import com.example.project3275playmate.Classes.TopUp;
 import com.example.project3275playmate.R;
 
-public class UserMainPage extends AppCompatActivity {
+public class CustomerMainPage extends AppCompatActivity {
     Button btnChooseExpert,btnTopUp,btnReviewExpert,btnViewBalanceUse;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_main_page);
+        setContentView(R.layout.activity_customer_main_page);
 
         btnChooseExpert = findViewById(R.id.btnChooseExpert);
         btnTopUp = findViewById(R.id.btnTopup);
@@ -25,21 +25,21 @@ public class UserMainPage extends AppCompatActivity {
         btnChooseExpert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(UserMainPage.this, ChooseExpert.class));
+                startActivity(new Intent(CustomerMainPage.this, ChooseExpert.class));
             }
         });
 
         btnTopUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(UserMainPage.this, TopUp.class));
+                startActivity(new Intent(CustomerMainPage.this, TopUp.class));
             }
         });
 
         btnReviewExpert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(UserMainPage.this, ReviewExpert.class));
+                startActivity(new Intent(CustomerMainPage.this, ReviewExpert.class));
             }
         });
 
