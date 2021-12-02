@@ -6,8 +6,7 @@ import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.example.project3275playmate.Classes.User;
-import com.example.project3275playmate.DAO.Connection;
-import com.example.project3275playmate.DAO.DAO_Implementation;
+import com.example.project3275playmate.DAO.DAO;
 import com.example.project3275playmate.DAO.MainMethods;
 import com.example.project3275playmate.R;
 
@@ -46,13 +45,18 @@ public class RegisterPage extends AppCompatActivity {
     }
 
     public void register(View view) throws SQLException, ClassNotFoundException {
-        name = getName.getText().toString();
-        email = getEmail.getText().toString();
-        password = getPassword.getText().toString();
+        name = getName.getText().toString().trim();
+        email = getEmail.getText().toString().trim();
+        password = getPassword.getText().toString().trim();
 
-        MainMethods mm = new MainMethods();
-        toast = mm.register(name, email, password);
-        Toast.makeText(this, toast, Toast.LENGTH_LONG).show();
+        DAO dao = new DAO(this);
+        try {
+            toast = dao.register(name, email, password);
+            Toast.makeText(this, toast, Toast.LENGTH_LONG).show();
+        }catch (Exception e){
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
+        }
+
 
     }
 }
