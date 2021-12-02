@@ -7,7 +7,7 @@ import androidx.annotation.Nullable;
 
 public class DataBase extends SQLiteOpenHelper {
     final static String DATABASE_NAME = "playmate.db"; //database name
-    final static int DATABASE_VERSION = 3;
+    final static int DATABASE_VERSION = 4;
 
     final static String TABLE1_NAME = "User";
     final static String T1COL_0 = "UName";
@@ -16,11 +16,14 @@ public class DataBase extends SQLiteOpenHelper {
 
 
     final static String TABLE2_NAME = "Expert";
-    final static String T2COL_0 = "UName";
+    final static String T2COL_0 = "EName";
     final static String T2COL_1 = "gender";
     final static String T2COL_2 = "rate";
     final static String T2COL_3 = "wage";
 
+    final static String TABLE3_NAME = "Customer";
+    final static String T3COL_0 ="CName";
+    final static String T3COL_1 ="balance";
 
 
 
@@ -30,6 +33,8 @@ public class DataBase extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null ,DATABASE_VERSION);
         SQLiteDatabase db = this.getWritableDatabase();
     }
+
+    //create tables
     @Override
     public void onCreate(SQLiteDatabase db) {
         String query1 = "CREATE TABLE "+ TABLE1_NAME + "("+
@@ -40,15 +45,23 @@ public class DataBase extends SQLiteOpenHelper {
 
         String query2 = "CREATE TABLE "+ TABLE2_NAME + "("+
                 T2COL_0 + " varchar(20) PRIMARY KEY,"+
-                T2COL_1 + " double,"+
-                T2COL_2 + " double,"+
-                T2COL_3 + " double," +
-                "FOREIGN KEY (UName) REFERENCES User(UName))";
+                T2COL_1 + " REAL,"+
+                T2COL_2 + " REAL,"+
+                T2COL_3 + " REAL," +
+                "FOREIGN KEY (EName) REFERENCES User(UName))";
         db.execSQL(query2);
+
+        String query3 =" CREATE TABLE "+ TABLE3_NAME + "("+
+                T3COL_0 + " varchar(20) PRIMARY KEY,"+
+                T3COL_1 + " REAL," +
+                "FOREIGN KEY (CName) REFERENCES User(UName))";
+        db.execSQL(query3);
+
+
+
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
     }
 }

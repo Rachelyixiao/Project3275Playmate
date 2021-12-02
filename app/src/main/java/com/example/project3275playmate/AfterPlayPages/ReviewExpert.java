@@ -1,6 +1,5 @@
 package com.example.project3275playmate.AfterPlayPages;
 
-import android.text.Editable;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;

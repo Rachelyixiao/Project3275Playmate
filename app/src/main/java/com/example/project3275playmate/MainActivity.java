@@ -1,11 +1,11 @@
 package com.example.project3275playmate;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
 import com.example.project3275playmate.RegisterLogin.LoginPage;
 import com.example.project3275playmate.RegisterLogin.RegisterPage;
 
@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
             Button btnMainPageLogin = findViewById(R.id.login);
             Button btnMainPageRegister = findViewById(R.id.register);
-            Button btntest = findViewById(R.id.btnTest);
+
 
 
             btnMainPageLogin.setOnClickListener(new View.OnClickListener() {
@@ -44,13 +44,7 @@ public class MainActivity extends AppCompatActivity {
             });
 
 
-            //choose expert btn for test
-            btntest.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    startActivity(new Intent(MainActivity.this,ChooseExpert.class));
-                }
-            });
+
     }
 
 

@@ -5,7 +5,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MoneyRelated.TopupOptions" android:background="@color/backgroundcolor4">
+        tools:context="com.example.project3275playmate.MoneyRelated.TopUpOptions" android:background="@color/backgroundcolor4">
 
     <ImageView
             android:layout_width="145dp"
@@ -71,8 +71,14 @@
             android:layout_height="wrap_content" android:id="@+id/textView30"
             android:background="#00FFFFFF" android:textColor="@color/logoColor"
             android:textSize="16sp" app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="70dp"
-            android:layout_marginEnd="70dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="68dp"
-            app:layout_constraintTop_toBottomOf="@+id/topupBank" app:layout_constraintHorizontal_bias="0.0"/>
+            android:layout_marginEnd="70dp" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0" android:layout_marginTop="137dp"
+            app:layout_constraintTop_toBottomOf="@+id/topupBank"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/topupInfo"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="149dp"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

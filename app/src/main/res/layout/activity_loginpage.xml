@@ -5,7 +5,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".RegisterLogin.LoginPage" android:background="@drawable/gamebackground">
+        tools:context=".LoginPage" android:background="@drawable/gamebackground">
     <ImageView
             android:layout_width="145dp"
             android:layout_height="22dp" app:srcCompat="@drawable/logo" android:id="@+id/imgLogo"
@@ -92,6 +92,6 @@
             android:layout_height="29dp" android:id="@+id/resetPw"
             android:background="#00FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.634"
-            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="128dp"/>
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.684"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="124dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

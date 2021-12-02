@@ -3,6 +3,7 @@ package com.example.project3275playmate.UploadPages;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.example.project3275playmate.MainActivity;
@@ -18,6 +19,7 @@ public class UploadFiles extends AppCompatActivity {
         Button btnaddskill = findViewById(R.id.addSkills);
 
         Button btnfinishEdit = findViewById(R.id.finishEdit);
+        TextView showProfile = findViewById(R.id.showProfile);
 
         btnaddskill.setOnClickListener(new View.OnClickListener() {
             @Override

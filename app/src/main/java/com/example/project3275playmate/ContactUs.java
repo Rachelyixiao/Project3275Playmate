@@ -22,7 +22,7 @@ public class ContactUs extends AppCompatActivity {
         homeIconContact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ContactUs.this,LoginPage.class));
+                startActivity(new Intent(ContactUs.this, LoginPage.class));
             }
         });
 
@@ -36,7 +36,7 @@ public class ContactUs extends AppCompatActivity {
         settingIconContact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ContactUs.this,Settings.class));
+                startActivity(new Intent(ContactUs.this, Settings.class));
             }
         });
 
