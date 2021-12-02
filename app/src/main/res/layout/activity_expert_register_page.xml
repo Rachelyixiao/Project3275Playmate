@@ -5,7 +5,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.example.project3275playmate.Expert.ExpertRegisterPage" android:background="@color/backgroundcolor4">
+        tools:context="com.example.project3275playmate.RegisterLogin.ExpertRegisterPage" android:background="@color/backgroundcolor4">
     <ImageView
             android:layout_width="145dp"
             android:layout_height="22dp" app:srcCompat="@drawable/logo" android:id="@+id/imgLogo"
@@ -79,14 +79,12 @@
                 android:text="@string/PlayerRegisterRbtn3"
                 android:layout_width="101dp"
                 android:layout_height="wrap_content" android:id="@+id/addProfileYes"
-
-        />
+                android:onClick="selectionUpload"/>
         <RadioButton
                 android:text="@string/PlayerRegisterRbtn4"
                 android:layout_width="116dp"
                 android:layout_height="wrap_content" android:id="@+id/addProfileNo"
-
-        />
+                android:onClick="selectionUpload"/>
     </RadioGroup>
     <Button
             android:text="@string/EregisterSubmit"

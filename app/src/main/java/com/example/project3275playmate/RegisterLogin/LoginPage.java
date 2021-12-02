@@ -16,10 +16,9 @@ public class LoginPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loginpage);
-        emailLogin = findViewById(R.id.emailLogin);
+        emailLogin = findViewById(R.id.nameLogin);
         pwLogin = findViewById(R.id.pwLogin);
         resetPw = findViewById(R.id.resetPw);
         btnLoginSubmit = findViewById(R.id.btnLoginSubmit);
-
     }
 }

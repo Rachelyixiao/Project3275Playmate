@@ -13,7 +13,9 @@ import android.os.Bundle;
 import com.example.project3275playmate.Classes.Expert;
 import com.example.project3275playmate.Classes.User;
 import com.example.project3275playmate.DAO.DAO;
+import com.example.project3275playmate.Homepage.ExpertMainPage;
 import com.example.project3275playmate.R;
+import com.example.project3275playmate.UploadPages.AddProfiles;
 
 import java.sql.SQLException;
 
@@ -56,12 +58,11 @@ public class ExpertRegisterPage extends AppCompatActivity {
         switch(view.getId()) {
             case R.id.addProfileYes:
                 if (checked){
-                    startActivity(new Intent(ExpertRegisterPage.this, LoginPage.class));
+                    choice = 1;
                 }
             case R.id.addProfileNo:
                 if (checked){
-                    gender = "Girl";
-                    startActivity(new Intent(ExpertRegisterPage.this, LoginPage.class));
+                    choice = 2;
                 }
         }
     }
@@ -70,13 +71,6 @@ public class ExpertRegisterPage extends AppCompatActivity {
         DAO dao = new DAO(this);
         //Get User expert
         name = sp.getString("name", "defaultName");
-        try {
-            User user = dao.searchUser(name);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
 
         if (gender.equals("")){
             Toast.makeText(this, "Please select your gender.", Toast.LENGTH_SHORT).show();
@@ -88,6 +82,14 @@ public class ExpertRegisterPage extends AppCompatActivity {
             Toast.makeText(this, toast, Toast.LENGTH_LONG).show();
         }catch (Exception e){
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        if (choice == 1){
+            startActivity(new Intent(ExpertRegisterPage.this, AddProfiles.class));
+        }
+        else if (choice == 2){
+            startActivity(new Intent(ExpertRegisterPage.this, ExpertMainPage.class));
         }
 
     }
