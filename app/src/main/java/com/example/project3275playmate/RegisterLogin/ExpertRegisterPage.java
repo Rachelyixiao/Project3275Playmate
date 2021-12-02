@@ -19,8 +19,8 @@ import java.sql.SQLException;
 
 public class ExpertRegisterPage extends AppCompatActivity {
     Spinner getGameListProfile;
-    RadioGroup chooseGender,addProfileNowOption;
-    RadioButton genderGirl,genderBoy,addProfileYes,addProfileNo;
+    RadioGroup chooseGender, addProfileNowOption;
+    RadioButton genderGirl, genderBoy, addProfileYes, addProfileNo;
     String gender = "", name, toast;
     int choice;
     SharedPreferences sp;
@@ -30,15 +30,14 @@ public class ExpertRegisterPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expert_register_page);
         getGameListProfile = findViewById(R.id.getGamelistProfile);
-        genderBoy = findViewById(R.id.genderBoy);
-        genderGirl = findViewById(R.id.genderGirl);
         addProfileNo = findViewById(R.id.addProfileNo);
         addProfileYes = findViewById(R.id.addProfileYes);
+
         sp = getSharedPreferences("user", Context.MODE_PRIVATE);
 
     }
 
-    public void selection(View view) {
+    public void selectionGender(View view) {
         boolean checked = ((RadioButton) view).isChecked();
         switch(view.getId()) {
             case R.id.genderBoy:
@@ -47,7 +46,6 @@ public class ExpertRegisterPage extends AppCompatActivity {
                 }
             case R.id.genderGirl:
                 if (checked){
-                    choice = 2;
                     gender = "Girl";
                 }
         }
