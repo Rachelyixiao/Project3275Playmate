@@ -12,7 +12,7 @@ import com.example.project3275playmate.UploadPages.UploadFiles;
 
 public class ExpertMainPage extends AppCompatActivity {
     TextView ExpertName,ExpertBalance,ExpertRating;
-    Button uploadProfilesLink,uploadHoursLink,getWagelink;
+    Button uploadProfilesLink,uploadHoursLink,getWageLink;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,7 +24,7 @@ public class ExpertMainPage extends AppCompatActivity {
 
         uploadProfilesLink = findViewById(R.id.uploadProfilesLink);
         uploadHoursLink = findViewById(R.id.uploadHoursLink);
-        getWagelink = findViewById(R.id.getWagelink);
+        getWageLink = findViewById(R.id.getWagelink);
 
 
     }

@@ -10,14 +10,14 @@ import com.example.project3275playmate.R;
 public class GetWage extends AppCompatActivity {
     TextView expertBalance;
     EditText withdrawAmount;
-    Button btnGetwage;
+    Button btnGetWage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_get_wage);
         expertBalance = findViewById(R.id.expertBalance);
         withdrawAmount = findViewById(R.id.withdrawAmount);
-        btnGetwage = findViewById(R.id.btnGetwage);
+        btnGetWage = findViewById(R.id.btnGetwage);
 
     }
 }
