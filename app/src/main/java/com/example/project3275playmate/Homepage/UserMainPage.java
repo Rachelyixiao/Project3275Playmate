@@ -11,14 +11,14 @@ import com.example.project3275playmate.Classes.TopUp;
 import com.example.project3275playmate.R;
 
 public class UserMainPage extends AppCompatActivity {
-    Button btnChooseExpert,btnTopup,btnReviewExpert,btnViewBalanceUse;
+    Button btnChooseExpert,btnTopUp,btnReviewExpert,btnViewBalanceUse;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_main_page);
 
         btnChooseExpert = findViewById(R.id.btnChooseExpert);
-        btnTopup = findViewById(R.id.btnTopup);
+        btnTopUp = findViewById(R.id.btnTopup);
         btnReviewExpert = findViewById(R.id.btnReviewExpert);
         btnViewBalanceUse = findViewById(R.id.btnViewBalanceUse);
 
@@ -29,7 +29,7 @@ public class UserMainPage extends AppCompatActivity {
             }
         });
 
-        btnTopup.setOnClickListener(new View.OnClickListener() {
+        btnTopUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(UserMainPage.this, TopUp.class));

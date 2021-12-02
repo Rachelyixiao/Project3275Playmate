@@ -15,7 +15,9 @@ import java.sql.SQLException;
 public class RegisterPage extends AppCompatActivity {
     TextView getName, getEmail, getPassword;
     String name, email, password, toast;
+    Button butCus, butExpert;
     ImageView registerNow;
+    int choice = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,29 +27,36 @@ public class RegisterPage extends AppCompatActivity {
         getEmail = findViewById(R.id.getEmail);
         getPassword = findViewById(R.id.getPassword);
         registerNow = findViewById(R.id.registerNow);
+        butCus = findViewById(R.id.customer);
+        butExpert = findViewById(R.id.expert);
     }
 
     public void selection(View view) {
-        int choice = 0;
+
         boolean checked = ((RadioButton) view).isChecked();
         switch(view.getId()) {
             case R.id.customer:
                 if (checked){
-                    choice = 0;
-                    Toast.makeText(this, "You have selected to be a customer",Toast.LENGTH_LONG).show();
+                    choice = 1;
+                    Toast.makeText(this, "You have selected to be a customer",Toast.LENGTH_SHORT).show();
                 }
             case R.id.expert:
                 if (checked){
-                    choice = 1;
-                    Toast.makeText(this, "You have selected to be an expert",Toast.LENGTH_LONG).show();
+                    choice = 2;
+                    Toast.makeText(this, "You have selected to be an expert",Toast.LENGTH_SHORT).show();
                 }
         }
     }
 
-    public void register(View view) throws SQLException, ClassNotFoundException {
+    public void register(View view){
         name = getName.getText().toString().trim();
         email = getEmail.getText().toString().trim();
         password = getPassword.getText().toString().trim();
+
+        if (choice == 0){
+            Toast.makeText(this, "Please select to be Customer or Expert.", Toast.LENGTH_LONG).show();
+            return;
+        };
 
         DAO dao = new DAO(this);
         try {
@@ -56,7 +65,5 @@ public class RegisterPage extends AppCompatActivity {
         }catch (Exception e){
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
-
-
     }
 }

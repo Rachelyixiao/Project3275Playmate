@@ -75,16 +75,13 @@ public class DAO{
         }
     }
 
-    public User searchUser(String name) throws SQLException, ClassNotFoundException {
+    public User searchUser(String name) throws SQLException {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         String query = "Select * from User where UName = " + name;
 
-        try {
-            Cursor c = db.rawQuery(query,null);
-            return new User(c.getString(0), c.getString(1), c.getString(2));
-        } catch (Exception e) {
-            return null;
-        }
+        Cursor c = db.rawQuery(query,null);
+        return new User(c.getString(0), c.getString(1), c.getString(2));
+
     }
 
     public Game searchGame(String name) throws SQLException, ClassNotFoundException {
@@ -144,6 +141,9 @@ public class DAO{
     }
 
 
+
+// Main Methods
+
     public void searchingUser(String name) throws SQLException, ClassNotFoundException{
         User user1;
         user1 = searchUser(name);
@@ -159,8 +159,8 @@ public class DAO{
 
         String display;
         User user;
-        if(!(searchUser(name)==null)){
-            display =  "The name is already occupied, please choose another one.";
+        if(name.equals("")){
+            display = "Please enter your name.";
             return display;
         }
         if(password.length()<8){
@@ -168,14 +168,17 @@ public class DAO{
             return display;
         }
         if (!email.contains("@") || !email.contains(".com")){
-            display = "The format of email is incorrect.";
+            display = "The format of email is incorrect, please retry";
             return display;
         }
-        else{
+        try{
+            searchUser(name);
+            display =  "The name is already occupied, please choose another one.";
+            return display;
+        }catch (Exception e){
             user = new User(name, email, password);
             display = "Register Successful!";
         }
-
         addUser(user);
         return display;
     }
