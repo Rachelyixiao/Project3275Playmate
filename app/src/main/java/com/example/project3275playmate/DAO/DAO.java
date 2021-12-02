@@ -29,14 +29,13 @@ public class DAO{
     public void addUser(User user) throws ClassNotFoundException, SQLException {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         String query = "insert into User(UName, email, password) values(?,?,?)";
-
         db.execSQL(query, new Object[]{user.getName(), user.getEmail(), user.getPassword()});
         db.close();
     }
 
     public void addCustomer(User user) throws ClassNotFoundException, SQLException {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        String query = "insert into Customer(UName, balance) values(?,?)";
+        String query = "insert into Customer(CName, balance) values(?,?)";
 
         db.execSQL(query, new Object[]{user.getName(), 0});
         db.close();
@@ -52,14 +51,13 @@ public class DAO{
     public void edit(User user, String name) throws SQLException, ClassNotFoundException {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         String query = "Update user set email=?, password=? where UName = ?";
-
         db.execSQL(query, new Object[]{user.getEmail(), user.getPassword(), user.getName()});
         db.close();
     }
 
     public void updateRate(String name, double rate) throws SQLException, ClassNotFoundException {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        String query = "Update expert set rate=? where UName = ?";
+        String query = "Update expert set rate=? where EName = ?";
 
         db.execSQL(query, new Object[]{rate, name});
         db.close();
@@ -103,8 +101,7 @@ public class DAO{
         String query = "Select * from User where UName = ?";
         Cursor c = db.rawQuery(query,new String[] {name});
         User user = null;
-        if(c.moveToFirst()){
-            @SuppressLint("Range")String UName = c.getString(c.getColumnIndex("UName"));
+        if(c.moveToFirst()){;
             @SuppressLint("Range")String email = c.getString(c.getColumnIndex("email"));
             @SuppressLint("Range")String password = c.getString(c.getColumnIndex("password"));
             user = new User(name, email, password);
@@ -156,7 +153,6 @@ public class DAO{
     public void setCusBalance(Customer customer, double amount) throws SQLException, ClassNotFoundException{
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         String query = "Update customer set balance=? where CName=?";
-
         db.execSQL(query, new Object[]{customer.getBalance() + amount, customer.getName()});
         db.close();
     }
@@ -164,19 +160,16 @@ public class DAO{
     public void setExpertBalance (Expert expert, double amount) throws SQLException, ClassNotFoundException{
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         String query = "Update expert set balance=? where EName=?";
-
         db.execSQL(query, new Object[]{expert.getBalance() + amount, expert.getName()});
         db.close();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-
     public void topUp(User customer, User admin, TopUp topUp, LocalDate date, String transactionType, double amount)
             throws SQLException, ClassNotFoundException {
 
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         String query = "insert into TopUp values(?,?,?,?,?,?)";
-
         db.execSQL(query, new Object[]{topUp.getTTID(), customer.getName(), admin.getName(),
                     Date.valueOf(String.valueOf(date)), amount, transactionType});
         db.close();
@@ -278,7 +271,7 @@ public class DAO{
         return "Information added successful!";
     }
 
-    public String expertEditRating(Expert expert, int rate) throws SQLException, ClassNotFoundException{
+    public String expertRating(Expert expert, int rate) throws SQLException, ClassNotFoundException{
         RatingTimes += 1;
         double currentRate = expert.getRate();
         double RateAfter = (currentRate + rate)/RatingTimes;

@@ -51,6 +51,21 @@ public class ExpertRegisterPage extends AppCompatActivity {
         }
     }
 
+    public void selectionUpload(View view) {
+        boolean checked = ((RadioButton) view).isChecked();
+        switch(view.getId()) {
+            case R.id.addProfileYes:
+                if (checked){
+                    startActivity(new Intent(ExpertRegisterPage.this, LoginPage.class));
+                }
+            case R.id.addProfileNo:
+                if (checked){
+                    gender = "Girl";
+                    startActivity(new Intent(ExpertRegisterPage.this, LoginPage.class));
+                }
+        }
+    }
+
     public void submit(View view) {
         DAO dao = new DAO(this);
         //Get User expert

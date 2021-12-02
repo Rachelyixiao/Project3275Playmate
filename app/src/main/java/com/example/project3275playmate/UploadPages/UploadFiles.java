@@ -16,19 +16,19 @@ public class UploadFiles extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload_files);
 
-        Button btnaddskill = findViewById(R.id.addSkills);
+        Button btnAddSkill = findViewById(R.id.addSkills);
 
-        Button btnfinishEdit = findViewById(R.id.finishEdit);
+        Button btnFinishEdit = findViewById(R.id.finishEdit);
         TextView showProfile = findViewById(R.id.showProfile);
 
-        btnaddskill.setOnClickListener(new View.OnClickListener() {
+        btnAddSkill.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(UploadFiles.this, AddProfiles.class));
             }
         });
 
-        btnfinishEdit.setOnClickListener(new View.OnClickListener() {
+        btnFinishEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(UploadFiles.this, MainActivity.class));

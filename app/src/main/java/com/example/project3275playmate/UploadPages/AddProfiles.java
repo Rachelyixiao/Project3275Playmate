@@ -8,7 +8,7 @@ import android.os.Bundle;
 import com.example.project3275playmate.R;
 
 public class AddProfiles extends AppCompatActivity {
-    Spinner addGamelistProfile;
+    Spinner addGameListProfile;
     TextView getSkills;
     Button submitGameProfile;
 
@@ -18,12 +18,8 @@ public class AddProfiles extends AppCompatActivity {
         setContentView(R.layout.activity_add_profiles);
 
 
-        addGamelistProfile = findViewById(R.id.addGamelistProfile);
+        addGameListProfile = findViewById(R.id.addGamelistProfile);
         getSkills = findViewById(R.id.getSkills);
         submitGameProfile = findViewById(R.id.btnSubmitProfile);
-
-
-
-
     }
 }
