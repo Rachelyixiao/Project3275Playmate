@@ -7,7 +7,8 @@ import androidx.annotation.Nullable;
 
 public class DataBase extends SQLiteOpenHelper {
     final static String DATABASE_NAME = "playmate.db"; //database name
-    final static int DATABASE_VERSION = 4;
+    private static int n = 7;
+    final static int DATABASE_VERSION = n++;
 
     final static String TABLE1_NAME = "User";
     final static String T1COL_0 = "UName";
@@ -20,6 +21,7 @@ public class DataBase extends SQLiteOpenHelper {
     final static String T2COL_1 = "gender";
     final static String T2COL_2 = "rate";
     final static String T2COL_3 = "wage";
+    final static String T2COL_4 = "balance";
 
     final static String TABLE3_NAME = "Customer";
     final static String T3COL_0 ="CName";
@@ -29,12 +31,11 @@ public class DataBase extends SQLiteOpenHelper {
 
 
 
+
     public DataBase(@Nullable Context context){
         super(context, DATABASE_NAME, null ,DATABASE_VERSION);
         SQLiteDatabase db = this.getWritableDatabase();
     }
-
-    //create tables
     @Override
     public void onCreate(SQLiteDatabase db) {
         String query1 = "CREATE TABLE "+ TABLE1_NAME + "("+
@@ -48,6 +49,7 @@ public class DataBase extends SQLiteOpenHelper {
                 T2COL_1 + " REAL,"+
                 T2COL_2 + " REAL,"+
                 T2COL_3 + " REAL," +
+                T2COL_4 + " REAL," +
                 "FOREIGN KEY (EName) REFERENCES User(UName))";
         db.execSQL(query2);
 
@@ -56,12 +58,12 @@ public class DataBase extends SQLiteOpenHelper {
                 T3COL_1 + " REAL," +
                 "FOREIGN KEY (CName) REFERENCES User(UName))";
         db.execSQL(query3);
-
-
-
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        //db.execSQL("DROP TABLE IF EXISTS "+TABLE1_NAME);
+        //db.execSQL("DROP TABLE IF EXISTS "+TABLE2_NAME);
+
     }
 }

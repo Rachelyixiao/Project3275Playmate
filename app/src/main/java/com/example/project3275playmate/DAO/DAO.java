@@ -1,11 +1,13 @@
 package com.example.project3275playmate.DAO;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.nfc.Tag;
 import android.os.Build;
 import android.util.Log;
+import android.widget.Toast;
 import androidx.annotation.RequiresApi;
 import com.example.project3275playmate.Classes.*;
 import com.example.project3275playmate.DataBase;
@@ -42,8 +44,8 @@ public class DAO{
 
     public void addExpertAdditionalInfo(User user, String gender) throws ClassNotFoundException, SQLException {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        String query = "insert into Expert(UName, gender, balance, rating) values(?,?,?,?,?)";
-        db.execSQL(query, new Object[]{user.getName(), gender, 0, 0});
+        String query = "insert into Expert(EName, gender, rate, wage, balance) values(?,?,?,?,?)";
+        db.execSQL(query, new Object[]{user.getName(), gender, 0, 0, 0});
         db.close();
     }
 
@@ -86,70 +88,74 @@ public class DAO{
 
     public boolean checkAdmin(String name)throws SQLException, ClassNotFoundException {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        String query = "Select * from Admin where UName = " + name;
-
-        try {
-            db.rawQuery(query, null);
-            return true;
-        }catch (Exception e){
-            return false;
+        String query = "Select * from Admin where AName = ?";
+        Cursor c = db.rawQuery(query,new String[] {name});
+        boolean check = false;
+        if(c.moveToFirst()){
+            @SuppressLint("Range")String AName = c.getString(c.getColumnIndex("AName"));
+            check = true;
         }
+        return check;
     }
 
     public User searchUser(String name) throws SQLException, ClassNotFoundException {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        String query = "Select * from User where UName = " + name;
-        try {
-            Cursor c = db.rawQuery(query,null);
-            c.close();
-            return new User(c.getString(0), c.getString(1), c.getString(2));
-        }catch (Exception e){
-            return null;
+        String query = "Select * from User where UName = ?";
+        Cursor c = db.rawQuery(query,new String[] {name});
+        User user = null;
+        if(c.moveToFirst()){
+            @SuppressLint("Range")String UName = c.getString(c.getColumnIndex("UName"));
+            @SuppressLint("Range")String email = c.getString(c.getColumnIndex("email"));
+            @SuppressLint("Range")String password = c.getString(c.getColumnIndex("password"));
+            user = new User(name, email, password);
         }
+        return user;
     }
 
     public Expert searchExpert(String name) throws SQLException, ClassNotFoundException{
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        String query = "Select * from Expert where UName = " + name;
+        String query = "Select * from Expert where EName = ?";
+        Cursor c = db.rawQuery(query, new String[] {name});
         User expert = searchUser(name);
-        try {
-            Cursor c = db.rawQuery(query,null);
-            c.close();
-            return new Expert(expert.getName(), expert.getEmail(), expert.getPassword(), c.getString(2),
-                    c.getDouble(3), c.getDouble(4), c.getDouble(5));
-        }catch (Exception e){
-            return null;
+        Expert e = null;
+        if(c.moveToFirst()){
+            @SuppressLint("Range")String gender = c.getString(c.getColumnIndex("gender"));
+            @SuppressLint("Range")Double rate = Double.valueOf(c.getString(c.getColumnIndex("rate")));
+            @SuppressLint("Range")Double wage = Double.valueOf(c.getString(c.getColumnIndex("wage")));
+            @SuppressLint("Range")Double balance = Double.valueOf(c.getString(c.getColumnIndex("balance")));
+            e = new Expert(name, expert.getEmail(), expert.getPassword(), gender, rate, wage, balance);
         }
+        return e;
     }
 
     public Customer searchCus(String name) throws SQLException, ClassNotFoundException{
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        String query = "Select * from Expert where UName = " + name;
-        User cus = searchUser(name);
-        try {
-            Cursor c = db.rawQuery(query,null);
-            c.close();
-            return new Customer(cus.getName(), cus.getEmail(), cus.getPassword(), c.getDouble(3));
-        }catch (Exception e){
-            return null;
+        String query = "Select * from Customer where CName = ?";
+        Cursor c = db.rawQuery(query, new String[] {name});
+        User customer = searchUser(name);
+        Customer cus = null;
+        if(c.moveToFirst()){
+            @SuppressLint("Range")Double balance = Double.valueOf(c.getString(c.getColumnIndex("balance")));;
+            cus = new Customer(name, customer.getEmail(), customer.getPassword(), balance);
         }
+        return cus;
     }
 
     public Game searchGame(String name) throws SQLException, ClassNotFoundException {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        String query = "Select * from Game where GName = " + name;
-        try {
-            Cursor c = db.rawQuery(query,null);
-            c.close();
-            return new Game(c.getString(0), c.getString(1));
-        }catch (Exception e){
-            return null;
+        String query = "Select * from Game where GName = ?";
+        Cursor c = db.rawQuery(query, new String[] {name});
+        Game g = null;
+        if(c.moveToFirst()){
+            @SuppressLint("Range")String type = c.getString(c.getColumnIndex("GType"));;
+            g = new Game(name, type);
         }
+        return g;
     }
 
     public void setCusBalance(Customer customer, double amount) throws SQLException, ClassNotFoundException{
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        String query = "Update customer set balance=? where UName=?";
+        String query = "Update customer set balance=? where CName=?";
 
         db.execSQL(query, new Object[]{customer.getBalance() + amount, customer.getName()});
         db.close();
@@ -157,7 +163,7 @@ public class DAO{
 
     public void setExpertBalance (Expert expert, double amount) throws SQLException, ClassNotFoundException{
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        String query = "Update expert set balance=? where UName=?";
+        String query = "Update expert set balance=? where EName=?";
 
         db.execSQL(query, new Object[]{expert.getBalance() + amount, expert.getName()});
         db.close();
@@ -267,13 +273,12 @@ public class DAO{
     }
 
     public String expertAddingInfo(String name, String gender) throws SQLException, ClassNotFoundException{
-        User user;
-        user = searchUser(name);
+        User user = searchUser(name);
         addExpertAdditionalInfo(user, gender);
         return "Information added successful!";
     }
 
-    public String editRating(Expert expert, int rate) throws SQLException, ClassNotFoundException{
+    public String expertEditRating(Expert expert, int rate) throws SQLException, ClassNotFoundException{
         RatingTimes += 1;
         double currentRate = expert.getRate();
         double RateAfter = (currentRate + rate)/RatingTimes;

@@ -51,12 +51,12 @@ public class ExpertRegisterPage extends AppCompatActivity {
         }
     }
 
-    public void submit(View view){
+    public void submit(View view) {
         DAO dao = new DAO(this);
         //Get User expert
         name = sp.getString("name", "defaultName");
         try {
-            User expert = dao.searchUser(name);
+            User user = dao.searchUser(name);
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {

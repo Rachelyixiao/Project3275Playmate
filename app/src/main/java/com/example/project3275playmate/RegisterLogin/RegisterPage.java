@@ -71,8 +71,12 @@ public class RegisterPage extends AppCompatActivity {
             editor.putString("name", name);
             editor.commit();
             Toast.makeText(this, toast, Toast.LENGTH_LONG).show();
+            if (!toast.contains("Register Successful!")){
+                return;
+            }
         }catch (Exception e){
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
+            return;
         }
         if (choice==1){
             startActivity(new Intent(RegisterPage.this, LoginPage.class));
