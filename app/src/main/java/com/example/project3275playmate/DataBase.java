@@ -42,9 +42,9 @@ public class DataBase extends SQLiteOpenHelper {
                 T2COL_0 + " varchar(20) PRIMARY KEY,"+
                 T2COL_1 + " double,"+
                 T2COL_2 + " double,"+
-                T2COL_3 + " double)," +
-                "FOREIGN KEY (UName) REFERENCES User(UName)";
-        db.execSQL(query1);
+                T2COL_3 + " double," +
+                "FOREIGN KEY (UName) REFERENCES User(UName))";
+        db.execSQL(query2);
     }
 
     @Override

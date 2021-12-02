@@ -230,11 +230,11 @@ public class DAO{
             return display;
         }
         if (name.equals("")){
-            display =  "The name cannot be empty.";
+            display = "The name cannot be empty.";
             return display;
         }
         if(!(searchUser(name)==null)){
-            display =  "The name is already occupied, please choose another one.";
+            display = "The name is already occupied, please choose another one.";
             return display;
         }
 

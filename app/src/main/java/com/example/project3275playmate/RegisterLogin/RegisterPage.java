@@ -1,6 +1,9 @@
 package com.example.project3275playmate.RegisterLogin;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,6 +11,7 @@ import android.os.Bundle;
 import com.example.project3275playmate.Classes.User;
 import com.example.project3275playmate.DAO.DAO;
 import com.example.project3275playmate.DAO.MainMethods;
+import com.example.project3275playmate.MainActivity;
 import com.example.project3275playmate.R;
 
 import java.sql.SQLException;
@@ -18,6 +22,9 @@ public class RegisterPage extends AppCompatActivity {
     Button butCus, butExpert;
     ImageView registerNow;
     int choice = 0;
+    SharedPreferences sp;
+    SharedPreferences.Editor editor;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,10 +36,12 @@ public class RegisterPage extends AppCompatActivity {
         registerNow = findViewById(R.id.registerNow);
         butCus = findViewById(R.id.customer);
         butExpert = findViewById(R.id.expert);
+
+        sp = getSharedPreferences("user", Context.MODE_PRIVATE);
+        editor = sp.edit();
     }
 
     public void selection(View view) {
-
         boolean checked = ((RadioButton) view).isChecked();
         switch(view.getId()) {
             case R.id.customer:
@@ -49,6 +58,7 @@ public class RegisterPage extends AppCompatActivity {
     }
 
     public void register(View view){
+        DAO dao = new DAO(this);
         name = getName.getText().toString().trim();
         email = getEmail.getText().toString().trim();
         password = getPassword.getText().toString().trim();
@@ -58,12 +68,20 @@ public class RegisterPage extends AppCompatActivity {
             return;
         };
 
-        DAO dao = new DAO(this);
+
         try {
             toast = dao.register(name, email, password, choice);
+            editor.putString("name", name);
             Toast.makeText(this, toast, Toast.LENGTH_LONG).show();
         }catch (Exception e){
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
+        if (choice==1){
+            startActivity(new Intent(RegisterPage.this, LoginPage.class));
+        }
+        else if (choice==2){
+            startActivity(new Intent(RegisterPage.this, LoginPage.class));
+        }
+
     }
 }
