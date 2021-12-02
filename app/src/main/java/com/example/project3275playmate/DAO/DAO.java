@@ -62,44 +62,59 @@ public class DAO{
         db.close();
     }
 
-    public void display() throws ClassNotFoundException, SQLException {
+    public String display() throws ClassNotFoundException, SQLException {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         String query = "Select * from User";
         Cursor cursor = db.rawQuery(query, null);
-        User obj1;
+        String display = "";
 
         while(cursor.moveToNext()){
             int index = cursor.getColumnIndex("UName");
             String name = cursor.getString(index);
-            Log.d(TAG, name);
+            display += name + "\n";
+        }
+        return display;
+    }
+
+    public boolean checkAdmin(String name)throws SQLException, ClassNotFoundException {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String query = "Select * from Admin where name = " + name;
+
+        try {
+            db.rawQuery(query, null);
+            return true;
+        }catch (Exception e){
+            return false;
         }
     }
 
-    public User searchUser(String name) throws SQLException {
+    public User searchUser(String name) throws SQLException, ClassNotFoundException {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        String query = "Select * from User where UName = " + name;
-
-        Cursor c = db.rawQuery(query,null);
-        return new User(c.getString(0), c.getString(1), c.getString(2));
-
+        String query = "Select * from User where name = " + name;
+        try {
+            Cursor c = db.rawQuery(query,null);
+            c.close();
+            return new User(c.getString(0), c.getString(1), c.getString(2));
+        }catch (Exception e){
+            return null;
+        }
     }
 
     public Game searchGame(String name) throws SQLException, ClassNotFoundException {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         String query = "Select * from Game where GName = " + name;
-        Cursor c = db.rawQuery(query,null);
-
-        if (c.getCount()==0){
-            System.out.print("Record not existing");
+        try {
+            Cursor c = db.rawQuery(query,null);
             c.close();
+            return new Game(c.getString(0), c.getString(1));
+        }catch (Exception e){
             return null;
         }
-        return new Game(c.getString(0), c.getString(1));
     }
 
     public void setBalance(Customer customer, double amount) throws SQLException, ClassNotFoundException{
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        String query = "Update customer set balance=? where UName=?";
+        String query = "Update customer set balance=? where name=?";
 
         db.execSQL(query, new Object[]{customer.getBalance() + amount, customer.getName()});
         db.close();
@@ -107,7 +122,7 @@ public class DAO{
 
     @RequiresApi(api = Build.VERSION_CODES.O)
 
-    public void topUp(Customer customer, Admin admin, TopUp topUp, LocalDate date, String transactionType, double amount)
+    public void topUp(User customer, User admin, TopUp topUp, LocalDate date, String transactionType, double amount)
             throws SQLException, ClassNotFoundException {
 
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -116,7 +131,7 @@ public class DAO{
         db.execSQL(query, new Object[]{topUp.getTTID(), customer.getName(), admin.getName(),
                     Date.valueOf(String.valueOf(date)), amount, transactionType});
         db.close();
-        setBalance(customer, amount);
+        setBalance((Customer) customer, amount);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -142,168 +157,203 @@ public class DAO{
 
 
 
-// Main Methods
 
-    public void searchingUser(String name) throws SQLException, ClassNotFoundException{
-        User user1;
-        user1 = searchUser(name);
-        if(!(user1==null)){
-            System.out.println(user1.getName() + ", " + user1.getEmail());
+
+    // Main methods
+    public String searchingUser(String name) throws SQLException, ClassNotFoundException{
+        User user = searchUser(name);
+        String display;
+        if(!(user==null)){
+            display = user.getName() + ", " + user.getEmail();
         }
         else{
-            System.out.print("There is no such names" + name);
+            display = "There is no such name " + name;
         }
+        return display;
     }
 
     public String register(String name, String email, String password) throws SQLException, ClassNotFoundException{
 
         String display;
         User user;
-        if(name.equals("")){
-            display = "Please enter your name.";
-            return display;
-        }
         if(password.length()<8){
             display = "The password is too short, please retry";
             return display;
         }
         if (!email.contains("@") || !email.contains(".com")){
-            display = "The format of email is incorrect, please retry";
+            display = "The format of email is incorrect.";
             return display;
         }
-        try{
-            searchUser(name);
+        if (name.equals("")){
+            display =  "The name cannot be empty.";
+            return display;
+        }
+        if(!(searchUser(name)==null)){
             display =  "The name is already occupied, please choose another one.";
             return display;
-        }catch (Exception e){
+        }
+
+        else{
             user = new User(name, email, password);
             display = "Register Successful!";
         }
+
         addUser(user);
         return display;
     }
 
-    public void login(String name, String password) throws SQLException, ClassNotFoundException{
+    public String login(String name, String password) throws SQLException, ClassNotFoundException{
         User user = searchUser(name);
+        String display = "Login successful!";
+        if (name.equals("")){
+            return "The name cannot be empty";
+        }
         if (user==null){
-            System.out.println("The user doesn't exist");
+            return "The user doesn't exist";
         }
         else if (!password.equals(user.getPassword())){
-            System.out.println("Password incorrect");
+            return "Password incorrect";
         }
-
+        else {
+            return display;
+        }
     }
 
-    public void expertAddingInfo(String name, String gender, double rating) throws SQLException, ClassNotFoundException{
-        Expert expert;
-        expert = (Expert) searchUser(name);
+    public String expertAddingInfo(String name, String gender, double rating) throws SQLException, ClassNotFoundException{
+        User user;
+        user = searchUser(name);
 
-        if(expert==null){
-            System.out.println("The user does not exist");
-            return;
+        if(rating == 0){
+            return "Rating cannot be 0";
         }
-        addExpertAdditionalInfo(expert, gender, rating);
-
-        System.out.println("Transaction successful!");
+        addExpertAdditionalInfo(user, gender, rating);
+        return "Information added successful!";
     }
 
-    public void editInfo(String name, String password, String newPassword, String newEmail)
+    public String editInfo(String name, String password, String newPassword, String newEmail)
             throws SQLException, ClassNotFoundException{
         User user = searchUser(name);
 
         if((user==null)){
-            System.out.println("The user does not exist");
-            return;
+            return "The user does not exist";
         }
         if (!user.getPassword().equals(password)){
-            System.out.println("Password incorrect");
-            return;
+            return "Password incorrect";
         }
-
+        if (newPassword.length()<8){
+            return "The password is too short, please retry";
+        }
+        if (user.getPassword().equals(newPassword)){
+            return "The old and new password cannot be same";
+        }
+        if (!newEmail.contains("@") || !newEmail.contains(".com")){
+            return "The format of email is incorrect.";
+        }
         user = new User(name, newEmail, newPassword);
         edit(user, name);
-        System.out.println("Info change successful!");
+        return "Info change successful!";
     }
 
-    public void displaying() throws SQLException, ClassNotFoundException{
-        display();
+    public String displaying() throws SQLException, ClassNotFoundException{
+        return display();
     }
 
-    public void deletingUser(String name, String password) throws SQLException, ClassNotFoundException{
+    public String deletingUser(String name, String password) throws SQLException, ClassNotFoundException{
         User user;
 
         user = searchUser(name);
+        if (name.equals("")){
+            return "The name cannot be empty";
+        }
         if((user==null)){
-            System.out.println("The name does not exist");
-            return;
+            return "The name does not exist";
         }
         if (!user.getPassword().equals(password)){
-            System.out.println("Password incorrect");
-            return;
+            return "Password incorrect";
         }
         delete(name);
-        System.out.println("Delete successful!");
+        return "Delete successful!";
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public void customerTopUp(String cusName, String adminName, String password, String transactionType, double topUpAmount)
+    public String customerTopUp(String cusName, String adminName, String password, String transactionType, double topUpAmount)
             throws SQLException, ClassNotFoundException{
-        Customer customer;
-        Admin admin;
+        User customer;
+        User admin;
         TopUp topUp = new TopUp();
         LocalDate date = LocalDate.now();
 
-        customer = (Customer) searchUser(cusName);
-        admin = (Admin) searchUser(adminName);
+        customer = searchUser(cusName);
+        if (checkAdmin(adminName) == true){
+            admin = searchUser(adminName);
+        }else{
+            return "Admin name incorrect";
+        }
 
-        if((customer==null || admin==null)){
-            System.out.println("The user does not exist");
-            return;
+        if((customer==null)){
+            return "The user does not exist";
         }
         if (!customer.getPassword().equals(password)){
-            System.out.println("Password incorrect");
-            return;
+            return "Password incorrect";
         }
-
+        if (transactionType.equals("")){
+            return "Please enter the transaction type";
+        }
+        if (topUpAmount==0){
+            return "The topUp Amount cannot be 0";
+        }
         topUp(customer, admin, topUp, date, transactionType, topUpAmount);
-        System.out.println("TopUp successful!");
+        return "TopUp successful!";
+
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public void transaction(String CusName, String expertName, String adminName, double hours, double amount)
+    public String transaction(String CusName, String expertName, String adminName, double hours, double amount)
             throws SQLException, ClassNotFoundException{
         LocalDate date = LocalDate.now();
+        if (CusName.equals("") || expertName.equals("") || adminName.equals("")){
+            return "Please enter all the names";
+        }
+        if (hours==0){
+            return "hours cannot be 0";
+        }
+        if (amount==0){
+            return  "amount cannot be 0";
+        }
         Transaction tran = new Transaction(date, hours, amount);
-
         Customer customer; Expert expert; Admin admin;
-
         customer = (Customer) searchUser(CusName);
         expert = (Expert) searchUser(expertName);
-        admin = (Admin) searchUser(adminName);
+
+        if (checkAdmin(adminName) == false){
+            return "Admin name incorrect";
+        }
+        else {
+            admin = (Admin) searchUser(adminName);
+        }
 
         if((customer==null || expert==null || admin==null)){
-            System.out.println("The user does not exist");
-            return;
+            return "The user does not exist";
         }
         transaction(customer, expert, admin, tran, date, hours, amount);
-
-        System.out.println("Transaction successful!");
+        return "Transaction successful!";
     }
 
-    public void creatingGameProfile(String expertName, String gameName, String password, String gameLevel, String description)
+    public String creatingGameProfile(String expertName, String gameName, String password, String gameLevel, String description)
             throws SQLException, ClassNotFoundException{
+        if (expertName.equals("")||gameName.equals("")||password.equals("")||gameLevel.equals("")||description.equals("")){
+            return "Please fill all the blanks";
+        }
         Expert expert; Game game;
         expert = (Expert) searchUser(expertName);
         game = searchGame(gameName);
         if((expert==null || game==null)){
-            System.out.println("The expert or game does not exist");
-            return;
+            return "The expert or game does not exist";
         }
         if (!password.equals(expert.getPassword())){
-            System.out.println("Password incorrect");
-            return;
+            return "Password incorrect";
         }
         createGameProfile(game, expert, gameLevel, description);
-        System.out.println("Game Profile uploaded successful!");
+        return "Game Profile uploaded successful!";
     }
 }
