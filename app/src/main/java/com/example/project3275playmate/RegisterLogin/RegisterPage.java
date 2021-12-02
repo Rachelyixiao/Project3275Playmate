@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.example.project3275playmate.Classes.User;
 import com.example.project3275playmate.DAO.Connection;
-import com.example.project3275playmate.DAO.DAO;
+import com.example.project3275playmate.DAO.DAO_Implementation;
 import com.example.project3275playmate.DAO.MainMethods;
 import com.example.project3275playmate.R;
 
@@ -35,12 +35,12 @@ public class RegisterPage extends AppCompatActivity {
             case R.id.customer:
                 if (checked){
                     choice = 0;
-                    Toast.makeText(this, "You have selected to be a customer",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "You have selected to be a customer",Toast.LENGTH_LONG).show();
                 }
             case R.id.expert:
                 if (checked){
                     choice = 1;
-                    Toast.makeText(this, "You have selected to be an expert",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "You have selected to be an expert",Toast.LENGTH_LONG).show();
                 }
         }
     }
@@ -50,14 +50,9 @@ public class RegisterPage extends AppCompatActivity {
         email = getEmail.getText().toString();
         password = getPassword.getText().toString();
 
-        DAO dao = new DAO(this);
-        try {
-            toast = dao.register(name, email, password);
-            Toast.makeText(this, toast, Toast.LENGTH_LONG).show();
-        }catch (Exception e){
-            Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
-        }
-
+        MainMethods mm = new MainMethods();
+        toast = mm.register(name, email, password);
+        Toast.makeText(this, toast, Toast.LENGTH_LONG).show();
 
     }
 }
