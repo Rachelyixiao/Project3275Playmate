@@ -26,9 +26,8 @@ public class MainActivity extends AppCompatActivity {
 
             Button btnMainPageLogin = findViewById(R.id.login);
             Button btnMainPageRegister = findViewById(R.id.register);
+            Button btntest = findViewById(R.id.btnTest);
 
-            //Test nav, can delete later
-            Button btnTestNav =findViewById(R.id.btnTestNav);
 
             btnMainPageLogin.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -44,10 +43,12 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
-            btnTestNav.setOnClickListener(new View.OnClickListener() {
+
+            //choose expert btn for test
+            btntest.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    startActivity(new Intent(MainActivity.this,BottomNavActivity.class));
+                    startActivity(new Intent(MainActivity.this,ChooseExpert.class));
                 }
             });
     }

@@ -27,12 +27,6 @@ public class ChooseExpert extends AppCompatActivity {
         userChooseGameGo = findViewById(R.id.userChooseGameGo);
         userChooseGenderGo = findViewById(R.id.userChooseGenderGo);
 
-        userChooseGameGo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(ChooseExpert.this,ExpertList.class));
-            }
-        });
 
 
     }
