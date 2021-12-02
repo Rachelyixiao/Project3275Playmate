@@ -4,20 +4,14 @@ import android.os.Build;
 import android.widget.Toast;
 import androidx.annotation.RequiresApi;
 import com.example.project3275playmate.Classes.*;
+import com.example.project3275playmate.DataBase;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.Scanner;
 
 public class MainMethods {
-    private DAO_Implementation obj;
-    Connection con;
-
-    public MainMethods() throws SQLException{
-        this.con = new Connection();
-        this.obj = new DAO_Implementation(con);
-    }
-
+    private DAO obj;
 
     public void searchingUser(String name) throws SQLException, ClassNotFoundException{
         User user1;
@@ -33,8 +27,8 @@ public class MainMethods {
     public String register(String name, String email, String password) throws SQLException, ClassNotFoundException{
 
         String display;
-        User user = obj.searchUser(name);
-        if(!(user==null)){
+        User user;
+        if(!(obj.searchUser(name)==null)){
             display =  "The name is already occupied, please choose another one.";
             return display;
         }
@@ -47,13 +41,11 @@ public class MainMethods {
             return display;
         }
         else{
+            user = new User(name, email, password);
             display = "Register Successful!";
         }
-        user = new User(name, email, password);
 
-        if(obj.searchUser(name)==null){
-            obj.addUser(user);
-        }
+        obj.addUser(user);
         return display;
     }
 
