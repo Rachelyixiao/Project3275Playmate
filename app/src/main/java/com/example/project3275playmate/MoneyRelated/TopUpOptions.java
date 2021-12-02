@@ -6,20 +6,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.example.project3275playmate.R;
 
-public class TopupOptions extends AppCompatActivity {
-    EditText topupAmount;
-    ImageView topupPayPal,topupAlipay,topupWechat,topupBank;
+public class TopUpOptions extends AppCompatActivity {
+    EditText topUpAmount;
+    ImageView topUpPayPal,topUpAlipay,topUpWechat,topUpBank;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_topup_options);
 
-        topupAmount = findViewById(R.id.topupAmount);
-        topupAlipay = findViewById(R.id.topupAlipay);
-        topupBank = findViewById(R.id.topupBank);
-        topupWechat = findViewById(R.id.topupWechat);
-        topupPayPal = findViewById(R.id.topupPayPal);
+        topUpAmount = findViewById(R.id.topupAmount);
+        topUpAlipay = findViewById(R.id.topupAlipay);
+        topUpBank = findViewById(R.id.topupBank);
+        topUpWechat = findViewById(R.id.topupWechat);
+        topUpPayPal = findViewById(R.id.topupPayPal);
 
     }
 }

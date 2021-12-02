@@ -60,7 +60,7 @@ public class MainMethods {
 
     }
 
-    public void expertAddingInfo(String name, String gender, double rating) throws SQLException, ClassNotFoundException{
+    public void expertAddingInfo(String name, String gender) throws SQLException, ClassNotFoundException{
         Expert expert;
         expert = (Expert) obj.searchUser(name);
 
@@ -68,7 +68,7 @@ public class MainMethods {
             System.out.println("The user does not exist");
             return;
         }
-        obj.addExpertAdditionalInfo(expert, gender, rating);
+        obj.addExpertAdditionalInfo(expert, gender);
 
         System.out.println("Transaction successful!");
     }
