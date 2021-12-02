@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.example.project3275playmate">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
@@ -9,13 +11,13 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/myTheme">
+        <activity android:name=".ContactUs">
+        </activity>
         <activity android:name=".MoneyRelated.GetWage">
         </activity>
         <activity android:name=".MoneyRelated.TopupOptions">
         </activity>
         <activity android:name=".AfterPlayPages.ReviewExpert">
-        </activity>
-        <activity android:name=".BottomNavActivity">
         </activity>
         <activity android:name=".RegisterLogin.LoginPage">
         </activity>
@@ -47,5 +49,5 @@
             </intent-filter>
         </activity>
     </application>
-    <uses-permission android:name="android.permission.INTERNET" />
+
 </manifest>
