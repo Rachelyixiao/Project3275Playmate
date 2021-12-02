@@ -15,6 +15,12 @@ public class DataBase extends SQLiteOpenHelper {
     final static String T1COL_2 = "password";
 
 
+    final static String TABLE2_NAME = "Expert";
+    final static String T2COL_0 = "UName";
+    final static String T2COL_1 = "gender";
+    final static String T2COL_2 = "rate";
+    final static String T2COL_3 = "wage";
+
 
 
 
@@ -30,6 +36,14 @@ public class DataBase extends SQLiteOpenHelper {
                 T1COL_0 + " varchar(20) PRIMARY KEY,"+
                 T1COL_1 + " varchar(20),"+
                 T1COL_2 + " varchar(20))";
+        db.execSQL(query1);
+
+        String query2 = "CREATE TABLE "+ TABLE2_NAME + "("+
+                T2COL_0 + " varchar(20) PRIMARY KEY,"+
+                T2COL_1 + " double,"+
+                T2COL_2 + " double,"+
+                T2COL_3 + " double)," +
+                "FOREIGN KEY (UName) REFERENCES User(UName)";
         db.execSQL(query1);
     }
 

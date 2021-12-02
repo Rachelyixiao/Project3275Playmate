@@ -60,7 +60,7 @@ public class RegisterPage extends AppCompatActivity {
 
         DAO dao = new DAO(this);
         try {
-            toast = dao.register(name, email, password);
+            toast = dao.register(name, email, password, choice);
             Toast.makeText(this, toast, Toast.LENGTH_LONG).show();
         }catch (Exception e){
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();

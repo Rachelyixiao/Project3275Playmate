@@ -1,41 +1,41 @@
 package com.example.project3275playmate.Classes;
 
 public class Expert extends User{
-    private char gender;
-    private double rating;
-    private int NOT;
+    private String gender;
+    private double rate;
+    private double balance;
     private double wage;
 
-    public Expert(String name, String email, String password, char gender, double rating, int NOT, double wage) {
+    public Expert(String name, String email, String password, String gender, double rate, double balance, double wage) {
         super(name, email, password);
         this.gender = gender;
-        this.rating = rating;
-        this.NOT = NOT;
+        this.rate = rate;
+        this.balance = balance;
         this.wage = wage;
     }
 
-    public char getGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(char gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
-    public double getRating() {
-        return rating;
+    public double getRate() {
+        return rate;
     }
 
-    public void setRating(double rating) {
-        this.rating = rating;
+    public void setRate(double rate) {
+        this.rate = rate;
     }
 
-    public int getNOT() {
-        return NOT;
+    public double getBalance() {
+        return balance;
     }
 
-    public void setNOT(int NOT) {
-        this.NOT = NOT;
+    public void setBalance(double balance) {
+        this.balance = balance;
     }
 
     public double getWage() {
