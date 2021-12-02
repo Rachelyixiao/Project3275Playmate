@@ -23,10 +23,7 @@ public class ExpertRegisterPage extends AppCompatActivity {
     RadioButton genderGirl,genderBoy,addProfileYes,addProfileNo;
     String gender = "", name, toast;
     int choice;
-
-    SharedPreferences sp = getSharedPreferences("user", Context.MODE_PRIVATE);
-
-
+    SharedPreferences sp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +34,7 @@ public class ExpertRegisterPage extends AppCompatActivity {
         genderGirl = findViewById(R.id.genderGirl);
         addProfileNo = findViewById(R.id.addProfileNo);
         addProfileYes = findViewById(R.id.addProfileYes);
+        sp = getSharedPreferences("user", Context.MODE_PRIVATE);
 
     }
 

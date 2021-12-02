@@ -86,7 +86,7 @@ public class DAO{
 
     public boolean checkAdmin(String name)throws SQLException, ClassNotFoundException {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        String query = "Select * from Admin where name = " + name;
+        String query = "Select * from Admin where UName = " + name;
 
         try {
             db.rawQuery(query, null);
@@ -98,7 +98,7 @@ public class DAO{
 
     public User searchUser(String name) throws SQLException, ClassNotFoundException {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        String query = "Select * from User where name = " + name;
+        String query = "Select * from User where UName = " + name;
         try {
             Cursor c = db.rawQuery(query,null);
             c.close();
@@ -110,7 +110,7 @@ public class DAO{
 
     public Expert searchExpert(String name) throws SQLException, ClassNotFoundException{
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        String query = "Select * from Expert where name = " + name;
+        String query = "Select * from Expert where UName = " + name;
         User expert = searchUser(name);
         try {
             Cursor c = db.rawQuery(query,null);
@@ -124,7 +124,7 @@ public class DAO{
 
     public Customer searchCus(String name) throws SQLException, ClassNotFoundException{
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        String query = "Select * from Expert where name = " + name;
+        String query = "Select * from Expert where UName = " + name;
         User cus = searchUser(name);
         try {
             Cursor c = db.rawQuery(query,null);
@@ -149,7 +149,7 @@ public class DAO{
 
     public void setCusBalance(Customer customer, double amount) throws SQLException, ClassNotFoundException{
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        String query = "Update customer set balance=? where name=?";
+        String query = "Update customer set balance=? where UName=?";
 
         db.execSQL(query, new Object[]{customer.getBalance() + amount, customer.getName()});
         db.close();
@@ -157,7 +157,7 @@ public class DAO{
 
     public void setExpertBalance (Expert expert, double amount) throws SQLException, ClassNotFoundException{
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        String query = "Update expert set balance=? where name=?";
+        String query = "Update expert set balance=? where UName=?";
 
         db.execSQL(query, new Object[]{expert.getBalance() + amount, expert.getName()});
         db.close();

@@ -25,7 +25,6 @@ public class RegisterPage extends AppCompatActivity {
     SharedPreferences sp;
     SharedPreferences.Editor editor;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,11 +66,10 @@ public class RegisterPage extends AppCompatActivity {
             Toast.makeText(this, "Please select to be Customer or Expert.", Toast.LENGTH_LONG).show();
             return;
         };
-
-
         try {
             toast = dao.register(name, email, password, choice);
             editor.putString("name", name);
+            editor.commit();
             Toast.makeText(this, toast, Toast.LENGTH_LONG).show();
         }catch (Exception e){
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
@@ -80,7 +78,7 @@ public class RegisterPage extends AppCompatActivity {
             startActivity(new Intent(RegisterPage.this, LoginPage.class));
         }
         else if (choice==2){
-            startActivity(new Intent(RegisterPage.this, LoginPage.class));
+            startActivity(new Intent(RegisterPage.this, ExpertRegisterPage.class));
         }
 
     }

@@ -43,7 +43,7 @@ public class ExpertMainPage extends AppCompatActivity {
             }
         });
 
-        getWagelink.setOnClickListener(new View.OnClickListener() {
+        getWageLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(ExpertMainPage.this,"Please contact playmate representative to withdraw your wage",Toast.LENGTH_LONG).show();
