@@ -128,9 +128,9 @@ public class DataBase extends SQLiteOpenHelper {
 
 
         String query9 = "INSERT INTO "+TABLE4_NAME +" VALUES "+
-                "(2001,"+"'David',"+"'david@gmail.com'"+"'12345ghjkl'"+"),"+
-                "(2001,"+"'Rachel',"+"'Rachel@gmail.com'"+"'lkjhgpoiuy12'"+"),"+
-                "(2001,"+"'scott',"+"'scott@gmail.com'"+"'23934sdfgs'"+")";
+                "(2001,"+"'David',"+"'david@gmail.com',"+"'12345ghjkl'"+"),"+
+                "(2002,"+"'Rachel',"+"'Rachel@gmail.com',"+"'lkjhgpoiuy12'"+"),"+
+                "(2003,"+"'scott',"+"'scott@gmail.com',"+"'23934sdfgs'"+")";
         db.execSQL(query9);
 
         String query10 = "INSERT INTO "+TABLE5_NAME +" VALUES "+"("+
