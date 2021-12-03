@@ -86,6 +86,13 @@ public class DAO{
         return display;
     }
 
+    public  Cursor viewExpertDataByGender(String gender) {
+        SQLiteDatabase sqLiteDatabase = dbHelper.getReadableDatabase();
+        String query = "SELECT * FROM Expert where gender = "+gender;
+        Cursor c = sqLiteDatabase.rawQuery(query, null);
+        return c;
+    }
+
     public boolean checkAdmin(String name)throws SQLException, ClassNotFoundException {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         String query = "Select * from Admin where AName = ?";
@@ -447,18 +454,7 @@ public class DAO{
         createGameProfile(game, expert, gameLevel, description);
         return "Game Profile uploaded successful!";
     }
-    public  Cursor viewExpertDataByGender(String gender) {
-        SQLiteDatabase sqLiteDatabase = dbHelper.getReadableDatabase();
-        String query = "SELECT * FROM Expert where gender = "+gender;
-        Cursor c = sqLiteDatabase.rawQuery(query, null);
-        return c;
-    }
-    public  String getPassword(String name) {
-        SQLiteDatabase sqLiteDatabase = dbHelper.getReadableDatabase();
-        String query = "SELECT * FROM User where UName = "+name;
-        Cursor c = sqLiteDatabase.rawQuery(query, null);
-        return c.getString(3);
-    }
+
     public boolean updateUserData(String name,String psw,String Email){
         SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
