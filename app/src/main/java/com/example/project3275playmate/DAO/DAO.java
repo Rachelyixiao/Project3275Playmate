@@ -14,7 +14,6 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 
 public class DAO{
-    private static final String TAG = "DAO";
     private final DataBase dbHelper;
 
     public DAO(Context context) {
@@ -152,6 +151,13 @@ public class DAO{
         return g;
     }
 
+    public void createGameProfile(Game game, Expert expert, String gameLevel, String description) throws SQLException, ClassNotFoundException {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String query = "insert into GameProfile values(?,?,?,?)";
+        db.execSQL(query, new Object[]{game.getGName(), expert.getName(), gameLevel, description});
+        db.close();
+    }
+
     public GameProfile[] searchGameProfile(String name) throws SQLException, ClassNotFoundException {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         String query = "Select * from GameProfile where GName = ?";
@@ -204,13 +210,6 @@ public class DAO{
 
         db.execSQL(query, new Object[]{transactions.getTID(), admin.getName(), expert.getName(),customer.getName(),
                 Date.valueOf(String.valueOf(date)), hours, amount});
-        db.close();
-    }
-
-    public void createGameProfile(Game game, Expert expert, String gameLevel, String description) throws SQLException, ClassNotFoundException {
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        String query = "insert into GameProfile values(?,?,?,?)";
-        db.execSQL(query, new Object[]{game.getGName(), expert.getName(), gameLevel, description});
         db.close();
     }
 
