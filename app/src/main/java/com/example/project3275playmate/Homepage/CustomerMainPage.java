@@ -20,10 +20,10 @@ import com.example.project3275playmate.Settings;
 import java.sql.SQLException;
 
 public class CustomerMainPage extends AppCompatActivity {
-    Button btnChooseExpert,btnTopUp,btnReviewExpert,btnViewBalanceUse;
-    ImageView homeiconCustomerMain,contacticonCustomerMain,settingiconCustomerMain;
+    Button btnChooseExpert, btnTopUp, btnReviewExpert, btnViewBalanceUse;
+    ImageView homeIconCustomerMain, contactIconCustomerMain, settingIconCustomerMain;
 
-    TextView username,balance;
+    TextView username, balance;
     SharedPreferences sp;
     String name;
     double Balance;
@@ -39,9 +39,9 @@ public class CustomerMainPage extends AppCompatActivity {
         btnViewBalanceUse = findViewById(R.id.btnViewBalanceUse);
         username = findViewById(R.id.Username);
         balance = findViewById(R.id.Balance);
-        homeiconCustomerMain = findViewById(R.id.homeiconCustomerMain);
-        contacticonCustomerMain = findViewById(R.id.contacticonCustomerMain);
-        settingiconCustomerMain = findViewById(R.id.settingiconCustomerMain);
+        homeIconCustomerMain = findViewById(R.id.homeiconCustomerMain);
+        contactIconCustomerMain = findViewById(R.id.contacticonCustomerMain);
+        settingIconCustomerMain = findViewById(R.id.settingiconCustomerMain);
 
         DAO dao = new DAO(this);
         name = sp.getString("name","");
@@ -77,21 +77,21 @@ public class CustomerMainPage extends AppCompatActivity {
             }
         });
 
-        homeiconCustomerMain.setOnClickListener(new View.OnClickListener() {
+        homeIconCustomerMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(CustomerMainPage.this, CustomerMainPage.class));
             }
         });
 
-        contacticonCustomerMain.setOnClickListener(new View.OnClickListener() {
+        contactIconCustomerMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(CustomerMainPage.this, ContactUs.class));
             }
         });
 
-        settingiconCustomerMain.setOnClickListener(new View.OnClickListener() {
+        settingIconCustomerMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(CustomerMainPage.this, Settings.class));
