@@ -23,8 +23,8 @@ import java.sql.SQLException;
 
 public class ExpertMainPage extends AppCompatActivity {
     TextView ExpertName, ExpertBalance, ExpertRating;
-    Button uploadProfilesLink,uploadHoursLink,getWageLink;
-    ImageView homeiconExpertMain,contacticonExpertMain,settingiconExpertMain;
+    Button uploadProfilesLink, uploadHoursLink, getWageLink;
+    ImageView homeIconExpertMain, contactIconExpertMain, settingIconExpertMain;
 
     SharedPreferences sp;
     DAO dao;
@@ -45,9 +45,9 @@ public class ExpertMainPage extends AppCompatActivity {
         uploadHoursLink = findViewById(R.id.uploadHoursLink);
         getWageLink = findViewById(R.id.getWagelink);
 
-        homeiconExpertMain = findViewById(R.id.homeiconCustomerMain);
-        contacticonExpertMain = findViewById(R.id.contacticonCustomerMain);
-        settingiconExpertMain =findViewById(R.id.settingiconCustomerMain);
+        homeIconExpertMain = findViewById(R.id.homeiconCustomerMain);
+        contactIconExpertMain = findViewById(R.id.contacticonCustomerMain);
+        settingIconExpertMain =findViewById(R.id.settingiconCustomerMain);
 
         dao = new DAO(this);
         sp = getSharedPreferences("user", Context.MODE_PRIVATE) ;
@@ -88,21 +88,21 @@ public class ExpertMainPage extends AppCompatActivity {
         });
 
 
-        homeiconExpertMain.setOnClickListener(new View.OnClickListener() {
+        homeIconExpertMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(ExpertMainPage.this,ExpertMainPage.class));
             }
         });
 
-        contacticonExpertMain.setOnClickListener(new View.OnClickListener() {
+        contactIconExpertMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(ExpertMainPage.this,ContactUs.class));
             }
         });
 
-        settingiconExpertMain.setOnClickListener(new View.OnClickListener() {
+        settingIconExpertMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(ExpertMainPage.this, Settings.class));
