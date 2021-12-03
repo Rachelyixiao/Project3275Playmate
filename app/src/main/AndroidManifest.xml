@@ -13,6 +13,8 @@
         android:theme="@style/myTheme" >
         <activity android:name=".ExpertList" >
         </activity>
+        <activity android:name=".ChooseExpert" >
+        </activity>
         <activity android:name=".ContactUs" >
         </activity>
         <activity android:name=".MoneyRelated.GetWage" >
