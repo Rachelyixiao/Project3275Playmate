@@ -11,7 +11,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.example.project3275playmate.Classes.User;
 import com.example.project3275playmate.DAO.DAO;
-import com.example.project3275playmate.Homepage.ExpertMainPage;
 import com.example.project3275playmate.RegisterLogin.LoginPage;
 
 import java.sql.SQLException;
@@ -28,6 +27,8 @@ public class Settings extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+        changeSetting = findViewById(R.id.changeSetting);
+
         dao = new DAO(this);
         newEmail = findViewById(R.id.newEmail);
         newPassword = findViewById(R.id.newPassword);
@@ -36,7 +37,6 @@ public class Settings extends AppCompatActivity {
         sp = getSharedPreferences("user", Context.MODE_PRIVATE) ;
         name = sp.getString("name","defaultName");
 
-        changeSetting = findViewById(R.id.changeSetting);
         try {
             user = dao.searchUser(name);
         } catch (SQLException e) {
