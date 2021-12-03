@@ -74,6 +74,7 @@
     <string name="please_contact_our_admin_before_top_up">Please contact our admin before top up</string>
     <string name="currentpw">Enter Current Password</string>
     <string name="enterCustomerName">Enter Customer Name</string>
+    <string name="AdminName">Enter Admin Name</string>
 
 
     <string-array name="gamelist">
