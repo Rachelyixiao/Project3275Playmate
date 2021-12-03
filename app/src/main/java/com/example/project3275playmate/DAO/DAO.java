@@ -243,6 +243,11 @@ public class DAO{
         return "Register Successful!";
 
     }
+    public String registerUser(String name, String email, String password) throws SQLException, ClassNotFoundException{
+        User user;
+        user = new User(name, email, password);
+        return "Register Successful!";
+    }
 
     public String login(String name, String password) throws SQLException, ClassNotFoundException{
         User user = searchUser(name);

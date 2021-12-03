@@ -5,32 +5,32 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.example.project3275playmate.Customer.RegisterPage" android:background="@color/backgroundcolor4">
+        tools:context=".RegisterLogin.RegisterPage" android:background="@color/backgroundcolor4">
+
     <ImageView
             android:layout_width="145dp"
             android:layout_height="22dp" app:srcCompat="@drawable/logo" android:id="@+id/imgLogo"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="133dp" android:layout_marginStart="133dp" android:layout_marginEnd="133dp"
-            android:layout_marginRight="133dp" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="133dp" android:layout_marginEnd="133dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="55dp"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="36dp"
             android:background="#00C0ECE7"/>
     <TextView
             android:text="Enter your UserName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/textView16"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.204"
-            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="140dp" android:background="#00FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.254"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="136dp" android:background="#00FFFFFF"
             android:textSize="16sp"/>
-
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="text"
             android:ems="10"
             android:id="@+id/getUserName"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="12dp"
             app:layout_constraintTop_toBottomOf="@+id/textView16"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
@@ -38,12 +38,12 @@
             android:text="@string/RegisterText1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/textView18"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="70dp"
+            app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="70dp"
             android:layout_marginEnd="282dp"
-            android:layout_marginRight="282dp" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.098"
-            app:layout_constraintTop_toBottomOf="@+id/getUserName" android:layout_marginTop="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.086"
+            app:layout_constraintTop_toBottomOf="@+id/getUserName" android:layout_marginTop="8dp"
             android:background="#00FFFFFF" android:textSize="16sp"/>
     <TextView
             android:text="Enter your password"
@@ -52,8 +52,8 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="71dp" android:layout_marginEnd="281dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.073" android:background="#00FFFFFF" android:textSize="16sp"
-            android:layout_marginTop="27dp" app:layout_constraintTop_toBottomOf="@+id/getEmail11"/>
+            app:layout_constraintHorizontal_bias="0.056" android:background="#00FFFFFF" android:textSize="16sp"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/getEmail11"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -63,6 +63,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toBottomOf="@+id/textView18"
             android:layout_marginTop="16dp"/>
+
+
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -73,14 +75,12 @@
             app:layout_constraintTop_toBottomOf="@+id/textView17" android:layout_marginTop="16dp"
             android:layout_marginBottom="35dp" app:layout_constraintBottom_toTopOf="@+id/radioGroup"
             app:layout_constraintVertical_bias="0.53"/>
-
-
     <RadioGroup
             android:layout_width="261dp"
             android:layout_height="95dp"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
             android:id="@+id/radioGroup"
-            android:layout_marginTop="44dp" app:layout_constraintTop_toBottomOf="@+id/getPassword"
+            android:layout_marginTop="116dp" app:layout_constraintTop_toBottomOf="@+id/getPassword"
             android:background="#00FFFFFF">
         <RadioButton
                 android:text="@string/RegisterRbtn1"
@@ -102,14 +102,14 @@
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="16dp" android:layout_marginTop="35dp"
             app:layout_constraintTop_toBottomOf="@+id/radioGroup" android:background="#03FFFFFF"
-            app:layout_constraintHorizontal_bias="0.497" app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.497" app:layout_constraintVertical_bias="1.0"
             android:onClick="register"/>
     <TextView
             android:text="@string/RegisterTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/textView19"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginBottom="44dp"
+            android:layout_marginBottom="68dp"
             app:layout_constraintBottom_toTopOf="@+id/getUserName" android:textSize="34sp"
             android:background="#00FFFFFF" android:textStyle="bold" android:textColor="@color/logoColor"
     />
@@ -119,6 +119,22 @@
             android:inputType="textEmailAddress"
             android:ems="10"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="99dp"
-            android:layout_marginEnd="99dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="17dp"
-            app:layout_constraintTop_toBottomOf="@+id/textView18" android:id="@+id/getEmail"/>
+            android:layout_marginEnd="99dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="4dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView18" android:id="@+id/getEmail"
+            app:layout_constraintHorizontal_bias="0.0"/>
+    <TextView
+            android:text="@string/RegisterText3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/textView31"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.271" app:layout_constraintTop_toBottomOf="@+id/getPassword"
+            android:layout_marginTop="20dp" android:background="#00FFFFFF"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/getPassword2"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView31" android:layout_marginTop="8dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
