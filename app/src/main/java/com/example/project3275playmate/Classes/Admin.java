@@ -1,11 +1,16 @@
 package com.example.project3275playmate.Classes;
 
 public class Admin extends User{
-    private int AId;
-    private static int init = 1001;
+    private int AId;;
 
     public Admin() {
-        AId = init++;
     }
 
+    public int getAId() {
+        return AId;
+    }
+
+    public void setAId(int AId) {
+        this.AId = AId;
+    }
 }

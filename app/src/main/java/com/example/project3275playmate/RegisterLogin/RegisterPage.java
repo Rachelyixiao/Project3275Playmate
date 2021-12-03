@@ -1,6 +1,6 @@
 package com.example.project3275playmate.RegisterLogin;
 
-import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.view.View;
@@ -13,87 +13,82 @@ import com.example.project3275playmate.R;
 import java.sql.SQLException;
 
 public class RegisterPage extends AppCompatActivity {
-    TextView getName, getEmail, psw1,psw2;
-    String name, email, password, toast;
+    TextView getName, getEmail, getPassword, getPassword2;
+    String name, email, password1, password2, toast;
+    Button butCus, butExpert;
     ImageView registerNow;
-    String sName,sEmail,sPsw1,sPsw2;
-    RadioButton Rdo;
     int choice = 0;
-    SharedPreferences user = getSharedPreferences("user",MODE_PRIVATE);
+    SharedPreferences sp;
+    SharedPreferences.Editor editor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_page);
         getName = findViewById(R.id.getUserName);
         getEmail = findViewById(R.id.getEmail);
-        psw1 = findViewById(R.id.getPassword);
-        psw2 = findViewById(R.id.getPassword2);
+        getPassword = findViewById(R.id.getPassword);
+        getPassword2 = findViewById(R.id.getPassword2);
         registerNow = findViewById(R.id.registerNow);
-        Rdo = findViewById(R.id.expert);
+        butCus = findViewById(R.id.customer);
+        butExpert = findViewById(R.id.expert);
 
-
-
+        sp = getSharedPreferences("user", Context.MODE_PRIVATE);
+        editor = sp.edit();
     }
 
     public void selection(View view) {
-
         boolean checked = ((RadioButton) view).isChecked();
         switch(view.getId()) {
             case R.id.customer:
                 if (checked){
-                    choice = 0;
-                    Toast.makeText(this, "You have selected to be a customer",Toast.LENGTH_LONG).show();
+                    choice = 1;
+                    Toast.makeText(this, "You have selected to be a customer",Toast.LENGTH_SHORT).show();
+                    break;
                 }
             case R.id.expert:
                 if (checked){
-                    choice = 1;
-                    Toast.makeText(this, "You have selected to be an expert",Toast.LENGTH_LONG).show();
+                    choice = 2;
+                    Toast.makeText(this, "You have selected to be an expert",Toast.LENGTH_SHORT).show();
+                    break;
                 }
         }
     }
 
     public void register(View view) throws SQLException, ClassNotFoundException {
-        sName = getName.getText().toString();
-        sEmail = getEmail.getText().toString();
-        sPsw1 = psw1.getText().toString();
-        sPsw2 = psw2.getText().toString();
-        boolean checked = ((Rdo) .isChecked());
-        boolean  isUnfill = sName.isEmpty()||sEmail.isEmpty()||sPsw1.isEmpty()||sPsw2.isEmpty();
-        if (sPsw1.equals(sPsw2)&&!isUnfill) {
-            if (checked) {
+        DAO dao = new DAO(this);
+        name = getName.getText().toString().trim();
+        email = getEmail.getText().toString().trim();
+        password1 = getPassword.getText().toString().trim();
+        password2 = getPassword2.getText().toString().trim();
 
-                SharedPreferences.Editor editor = user.edit();
-                editor.putString("Name", sName);
-                editor.putString("email", sEmail);
-                editor.putString("psw", sPsw1);
-                editor.commit();
-                startActivity(new Intent(RegisterPage.this, ExpertRegisterPage.class));
+
+        if (choice == 0){
+            Toast.makeText(this, "Please select to be Customer or Expert.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        else if (!(password1.equals(password2))){
+            Toast.makeText(this, "The passwords are different, please retry.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        try {
+            toast = dao.register(name, email, password1, choice);
+            Toast.makeText(this, toast, Toast.LENGTH_SHORT).show();
+            if (!toast.contains("Register Successful!")){
+                return;
             }
-            else {
-                name = sName.trim();
-                email = sEmail.trim();
-                password = psw1.getText().toString().trim();
-                startActivity(new Intent(RegisterPage.this, LoginPage.class));
-                DAO dao = new DAO(this);
-                try {
-                    toast = dao.registerUser(name, email, password);
-                    Toast.makeText(this, toast, Toast.LENGTH_LONG).show();
-                }catch (Exception e){
-                    Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
-                }
-            }
+        }catch (Exception e){
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+            return;
         }
-        else if (isUnfill){
-            Toast.makeText(RegisterPage.this,"The information is not completed",Toast.LENGTH_LONG).show();
-
+        if (choice==1){
+            startActivity(new Intent(RegisterPage.this, LoginPage.class));
         }
-        else{
-            Toast.makeText(RegisterPage.this,"Password confirmation is different",Toast.LENGTH_LONG).show();
+        else if (choice==2){
+            editor.putString("name", name);
+            editor.commit();
+            startActivity(new Intent(RegisterPage.this, ExpertRegisterPage.class));
         }
-
-
-
-
 
     }
 }

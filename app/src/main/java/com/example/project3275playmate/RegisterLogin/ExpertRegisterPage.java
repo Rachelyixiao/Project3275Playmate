@@ -16,6 +16,7 @@ import com.example.project3275playmate.DAO.DAO;
 import com.example.project3275playmate.Homepage.ExpertMainPage;
 import com.example.project3275playmate.R;
 import com.example.project3275playmate.UploadPages.AddProfiles;
+import com.example.project3275playmate.UploadPages.UploadFiles;
 
 import java.sql.SQLException;
 
@@ -36,7 +37,6 @@ public class ExpertRegisterPage extends AppCompatActivity {
         addProfileYes = findViewById(R.id.addProfileYes);
 
         sp = getSharedPreferences("user", Context.MODE_PRIVATE);
-
     }
 
     public void selectionGender(View view) {
@@ -91,7 +91,7 @@ public class ExpertRegisterPage extends AppCompatActivity {
             startActivity(new Intent(ExpertRegisterPage.this, AddProfiles.class));
         }
         else if (choice == 2){
-            startActivity(new Intent(ExpertRegisterPage.this, ExpertMainPage.class));
+            startActivity(new Intent(ExpertRegisterPage.this, UploadFiles.class));
         }
 
     }
