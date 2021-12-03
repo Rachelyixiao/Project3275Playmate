@@ -18,4 +18,20 @@ public class GameProfile {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public String getGName() {
+        return GName;
+    }
+
+    public void setGName(String GName) {
+        this.GName = GName;
+    }
+
+    public String getEName() {
+        return EName;
+    }
+
+    public void setEName(String EName) {
+        this.EName = EName;
+    }
 }

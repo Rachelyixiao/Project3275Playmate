@@ -6,6 +6,11 @@ public class Admin extends User{
     public Admin() {
     }
 
+    public Admin(int AId, String name, String email, String password) {
+        super(name, email, password);
+        this.AId = AId;
+    }
+
     public int getAId() {
         return AId;
     }

@@ -140,6 +140,20 @@ public class DAO{
         return cus;
     }
 
+    public Admin searchAdmin(String name) throws SQLException, ClassNotFoundException{
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String query = "Select * from Admin where AName = ?";
+        Cursor c = db.rawQuery(query, new String[] {name});
+        Admin admin = null;
+        if(c.moveToFirst()){
+            @SuppressLint("Range")int id = Integer.valueOf(c.getString(c.getColumnIndex("AID")));
+            @SuppressLint("Range")String email = c.getString(c.getColumnIndex("email"));
+            @SuppressLint("Range")String password = c.getString(c.getColumnIndex("password"));
+            admin = new Admin(id, name, email, password);
+        }
+        return admin;
+    }
+
     public Game searchGame(String name) throws SQLException, ClassNotFoundException {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         String query = "Select * from Game where GName = ?";
@@ -191,21 +205,22 @@ public class DAO{
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public void topUp(User customer, User admin, TopUp topUp, LocalDate date, String transactionType, double amount)
+    public void topUp(Customer customer, Admin admin, TopUp topUp, LocalDate date, String transactionType, double amount)
             throws SQLException, ClassNotFoundException {
 
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         String query = "insert into TopUp values(?,?,?,?,?,?)";
-        db.execSQL(query, new Object[]{topUp.getTTID(), customer.getName(), admin.getName(),
-                    Date.valueOf(String.valueOf(date)), amount, transactionType});
+        db.execSQL(query, new Object[]{topUp.getTTID(), Date.valueOf(String.valueOf(date)), amount,
+                                        transactionType, customer.getName(), admin.getName()});
         db.close();
-        setCusBalance((Customer) customer, amount);
+        setCusBalance(customer, amount);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void transactions(Customer customer, Expert expert, Admin admin, Transactions transactions, LocalDate date, double hours, double amount)
             throws SQLException, ClassNotFoundException {
         setCusBalance(customer, -amount);
+        setExpertBalance(expert, amount);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         String query = "insert into transactions values(?,?,?,?,?,?,?)";
 
@@ -358,25 +373,22 @@ public class DAO{
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public String customerTopUp(String cusName, String adminName, String password, String transactionType, double topUpAmount)
+    public String customerTopUp(String cusName, String adminName, String transactionType, double topUpAmount)
             throws SQLException, ClassNotFoundException{
-        User customer;
-        User admin;
+        Customer customer;
+        Admin admin;
         TopUp topUp = new TopUp();
         LocalDate date = LocalDate.now();
 
-        customer = searchUser(cusName);
+        customer = searchCus(cusName);
         if (checkAdmin(adminName) == true){
-            admin = searchUser(adminName);
+            admin = searchAdmin(adminName);
         }else{
             return "Admin name incorrect";
         }
 
         if((customer==null)){
-            return "The user does not exist";
-        }
-        if (!customer.getPassword().equals(password)){
-            return "Password incorrect";
+            return "The customer does not exist";
         }
         if (transactionType.equals("")){
             return "Please enter the transactions type";
@@ -409,9 +421,7 @@ public class DAO{
         if (checkAdmin(adminName) == false){
             return "Admin name incorrect";
         }
-        else {
-            admin = (Admin) searchUser(adminName);
-        }
+        admin = searchAdmin(adminName);
 
         if((customer==null || expert==null || admin==null)){
             return "The user does not exist";

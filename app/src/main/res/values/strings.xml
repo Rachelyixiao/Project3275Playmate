@@ -71,6 +71,7 @@
     <string name="uploadHoursLink">Upload Hours</string>
     <string name="getWagelink">Withdraw Wage</string>
     <string name="Contact">Contact us</string>
+    <string name="please_contact_our_admin_before_top_up">Please contact our admin before top up</string>
 
 
     <string-array name="gamelist">
