@@ -7,7 +7,7 @@ import androidx.annotation.Nullable;
 
 public class DataBase extends SQLiteOpenHelper {
     final static String DATABASE_NAME = "playmate.db"; //database name
-    private static int n = 10;
+    private static int n = 11;
     final static int DATABASE_VERSION = n++;
 
     final static String TABLE1_NAME = "User";
@@ -126,6 +126,26 @@ public class DataBase extends SQLiteOpenHelper {
                 "FOREIGN KEY (EName) REFERENCES Expert(EName))";
         db.execSQL(query8);
 
+
+        String query9 = "INSERT INTO "+TABLE4_NAME +" VALUES "+
+                "(2001,"+"'David',"+"'david@gmail.com',"+"'12345ghjkl'"+"),"+
+                "(2002,"+"'Rachel',"+"'Rachel@gmail.com',"+"'lkjhgpoiuy12'"+"),"+
+                "(2003,"+"'scott',"+"'scott@gmail.com',"+"'23934sdfgs'"+")";
+        db.execSQL(query9);
+
+        String query10 = "INSERT INTO "+TABLE5_NAME +" VALUES "+"("+
+                "'PUBG',"+"'STG'"+"),"+"("+
+                "'Dota2',"+"'MOBA'"+"),"+"("+
+                "'GTA5',"+"'RPG'"+"),"+"("+
+                "'League of Legends',"+"'MOBA'"+"),"+"("+
+                "'Call of Duty',"+"'FPS'"+"),"+"("+
+                "'Arena of Valor',"+"'MOBA'"+"),"+"("+
+                "'Minecraft',"+"'Sandbox'"+"),"+"("+
+                "'CSGO',"+"'Tactical shooter'"+")";
+        db.execSQL(query10);
+
+
+
     }
 
     @Override
@@ -134,4 +154,7 @@ public class DataBase extends SQLiteOpenHelper {
         //db.execSQL("DROP TABLE IF EXISTS "+TABLE2_NAME);
 
     }
+
+
+
 }

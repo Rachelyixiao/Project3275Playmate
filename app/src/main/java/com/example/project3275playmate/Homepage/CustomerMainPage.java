@@ -22,6 +22,7 @@ public class CustomerMainPage extends AppCompatActivity {
     SharedPreferences sp;
     String name;
     double Balance;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

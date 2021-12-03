@@ -3,9 +3,11 @@ package com.example.project3275playmate.UploadPages;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.example.project3275playmate.DAO.DAO;
@@ -19,6 +21,7 @@ public class AddProfiles extends AppCompatActivity {
     TextView getSkills;
     Button submitGameProfile;
     SharedPreferences sp;
+    String toast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,13 +34,14 @@ public class AddProfiles extends AppCompatActivity {
         sp = getSharedPreferences("user", Context.MODE_PRIVATE);
     }
 
-    public void addGameProfile(){
+    public void addGameProfile(View view){
         DAO dao = new DAO(this);
         String EName = sp.getString("name", "defaultName");
         String GName = addGameListProfile.getSelectedItem().toString();
         String description = getSkills.getText().toString();
         try {
-            dao.addingProfile(GName, EName, description);
+            toast = dao.addingProfile(GName, EName, description);
+            Toast.makeText(this, toast, Toast.LENGTH_SHORT).show();
         } catch (SQLException e) {
             e.printStackTrace();
             return;
@@ -45,7 +49,7 @@ public class AddProfiles extends AppCompatActivity {
             e.printStackTrace();
             return;
         }
-        startActivity(new Intent(AddProfiles.this, AddProfiles.class));
+        startActivity(new Intent(AddProfiles.this, UploadFiles.class));
 
 
     }

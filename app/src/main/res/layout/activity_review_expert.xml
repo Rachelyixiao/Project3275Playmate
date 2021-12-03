@@ -15,12 +15,12 @@
             app:layout_constraintHorizontal_bias="0.0" app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="47dp" android:background="#00FFFFFF"/>
     <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="241dp"
+            android:layout_height="45dp"
             android:inputType="textPersonName"
             android:ems="10"
-            android:id="@+id/expertID"
-            android:hint="@string/ENTERID" app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/EName"
+            android:hint="Enter your playmate's name" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="82dp" android:layout_marginEnd="116dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="40dp"
             app:layout_constraintTop_toBottomOf="@+id/imgLogo" app:layout_constraintHorizontal_bias="0.0"/>
@@ -33,24 +33,30 @@
             app:layout_constraintHorizontal_bias="0.0" android:layout_marginTop="19dp"
             app:layout_constraintTop_toBottomOf="@+id/reviewHint" android:id="@+id/Reviews">
         <RadioButton
+                android:text="@string/RATING5"
                 android:layout_width="match_parent"
-                android:layout_height="35dp" android:id="@+id/review5" android:text="@string/RATING5"/>
+                android:layout_height="35dp" android:id="@+id/review5"
+                android:onClick="selectionRate"/>
         <RadioButton
                 android:text="@string/RATING4"
                 android:layout_width="match_parent"
-                android:layout_height="38dp" android:id="@+id/review4"/>
+                android:layout_height="38dp" android:id="@+id/review4"
+                android:onClick="selectionRate"/>
         <RadioButton
                 android:text="@string/RATING3"
                 android:layout_width="match_parent"
-                android:layout_height="33dp" android:id="@+id/review3"/>
+                android:layout_height="33dp" android:id="@+id/review3"
+                android:onClick="selectionRate"/>
         <RadioButton
                 android:text="@string/RATING2"
                 android:layout_width="match_parent"
-                android:layout_height="35dp" android:id="@+id/review2"/>
+                android:layout_height="35dp" android:id="@+id/review2"
+                android:onClick="selectionRate"/>
         <RadioButton
                 android:text="@string/RATING1"
                 android:layout_width="match_parent"
-                android:layout_height="35dp" android:id="@+id/review1"/>
+                android:layout_height="35dp" android:id="@+id/review1"
+                android:onClick="selectionRate"/>
     </RadioGroup>
     <TextView
             android:text="@string/ratingExplain"
@@ -59,7 +65,7 @@
             android:background="@color/teal_700" android:textStyle="bold"
             android:textSize="20sp" app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="64dp"
             android:layout_marginEnd="62dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="30dp"
-            app:layout_constraintTop_toBottomOf="@+id/expertID" android:textColor="@color/white"/>
+            app:layout_constraintTop_toBottomOf="@+id/EName" android:textColor="@color/white"/>
     <EditText
             android:layout_width="194dp"
             android:layout_height="104dp"
@@ -78,7 +84,8 @@
             android:layout_marginEnd="164dp" app:layout_constraintEnd_toEndOf="parent"
             app:backgroundTint="@color/buttonColor"
             android:textSize="20sp" app:layout_constraintHorizontal_bias="0.388"
-            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="84dp"/>
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="84dp"
+            android:onClick="rateExpert"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
