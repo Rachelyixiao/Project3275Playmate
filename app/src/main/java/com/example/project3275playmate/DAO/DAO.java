@@ -152,17 +152,21 @@ public class DAO{
         return g;
     }
 
-    public Game searchGameProfile(String name) throws SQLException, ClassNotFoundException {
-        Game game = searchGame(name);
+    public GameProfile[] searchGameProfile(String name) throws SQLException, ClassNotFoundException {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         String query = "Select * from GameProfile where GName = ?";
         Cursor c = db.rawQuery(query, new String[] {name});
-        Game g = null;
-        if(c.moveToFirst()){
-            @SuppressLint("Range")String type = c.getString(c.getColumnIndex("GType"));;
-            g = new Game(name, type);
+        int length = 0;
+        GameProfile gameProfiles[] = new GameProfile[100];
+
+        while (c.moveToNext()){
+            @SuppressLint("Range")String GName = c.getString(c.getColumnIndex("GName"));;
+            @SuppressLint("Range")String EName = c.getString(c.getColumnIndex("EName"));;
+            @SuppressLint("Range")String description = c.getString(c.getColumnIndex("Description"));;
+            gameProfiles[length] = new GameProfile(description, GName, EName);
+            length++;
         }
-        return g;
+        return gameProfiles;
     }
 
     public void setCusBalance(Customer customer, double amount) throws SQLException, ClassNotFoundException{
