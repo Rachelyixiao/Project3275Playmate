@@ -7,7 +7,7 @@ import androidx.annotation.Nullable;
 
 public class DataBase extends SQLiteOpenHelper {
     final static String DATABASE_NAME = "playmate.db"; //database name
-    private static int n = 9;
+    private static int n = 10;
     final static int DATABASE_VERSION = n++;
 
     final static String TABLE1_NAME = "User";
@@ -47,13 +47,16 @@ public class DataBase extends SQLiteOpenHelper {
     final static String T7COL_1 ="date";
     final static String T7COL_2 ="amount";
     final static String T7COL_3 ="transactionType";
+    final static String T7COL_4 ="CName";
+
 
     final static String TABLE8_NAME = "Transactions";
     final static String T8COL_0 ="TID";
     final static String T8COL_1 ="date";
     final static String T8COL_2 ="hours";
     final static String T8COL_3 ="totalAmount";
-
+    final static String T8COL_4 ="CName";
+    final static String T8COL_5 ="EName";
 
     public DataBase(@Nullable Context context){
         super(context, DATABASE_NAME, null ,DATABASE_VERSION);
@@ -107,14 +110,20 @@ public class DataBase extends SQLiteOpenHelper {
                 T7COL_0 + " INTERGER PRIMARY KEY,"+
                 T7COL_1 + " TEXT," +
                 T7COL_2 + " REAL," +
-                T7COL_3 + " INTERGER)" ;
+                T7COL_3 + " INTERGER," +
+                T7COL_4 + " TEXT," +
+                "FOREIGN KEY (CName) REFERENCES Customer(CName))";
         db.execSQL(query7);
 
         String query8 =" CREATE TABLE "+ TABLE8_NAME + "("+
                 T8COL_0 + " INTERGER PRIMARY KEY,"+
                 T8COL_1 + " TEXT," +
                 T8COL_2 + " REAL," +
-                T8COL_3 + " REAL)";
+                T8COL_3 + " REAL," +
+                T8COL_4 + " TEXT," +
+                T8COL_5 + " TEXT," +
+                "FOREIGN KEY (CName) REFERENCES Customer(CName)," +
+                "FOREIGN KEY (EName) REFERENCES Expert(EName))";
         db.execSQL(query8);
 
     }
