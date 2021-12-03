@@ -2,18 +2,18 @@ package com.example.project3275playmate.Classes;
 
 import java.time.LocalDate;
 
-public class Transaction {
+public class Transactions {
     private int TID;
     private LocalDate date;
     private double hours;
     private double totalAmount;
     private static int init = 1001; //static自动赋值
 
-    public Transaction() {
+    public Transactions() {
         TID = init++;
     }
 
-    public Transaction(LocalDate date, double hours, double totalAmount) {
+    public Transactions(LocalDate date, double hours, double totalAmount) {
         this();
         this.date = date;
         this.hours = hours;
@@ -57,6 +57,6 @@ public class Transaction {
     }
 
     public static void setInit(int init) {
-        Transaction.init = init;
+        Transactions.init = init;
     }
 }

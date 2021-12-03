@@ -4,17 +4,12 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.nfc.Tag;
 import android.os.Build;
-import android.util.Log;
-import android.widget.Toast;
 import androidx.annotation.RequiresApi;
 import com.example.project3275playmate.Classes.*;
 import com.example.project3275playmate.DataBase;
 
 import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
@@ -178,13 +173,13 @@ public class DAO{
 
     @RequiresApi(api = Build.VERSION_CODES.O)
 
-    public void transaction(Customer customer, Expert expert, Admin admin, Transaction transaction, LocalDate date, double hours, double amount)
+    public void transactions(Customer customer, Expert expert, Admin admin, Transactions transactions, LocalDate date, double hours, double amount)
             throws SQLException, ClassNotFoundException {
         setCusBalance(customer, -amount);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        String query = "insert into transcation values(?,?,?,?,?,?,?)";
+        String query = "insert into transactions values(?,?,?,?,?,?,?)";
 
-        db.execSQL(query, new Object[]{transaction.getTID(), admin.getName(), expert.getName(),customer.getName(),
+        db.execSQL(query, new Object[]{transactions.getTID(), admin.getName(), expert.getName(),customer.getName(),
                 Date.valueOf(String.valueOf(date)), hours, amount});
         db.close();
     }
@@ -355,7 +350,7 @@ public class DAO{
             return "Password incorrect";
         }
         if (transactionType.equals("")){
-            return "Please enter the transaction type";
+            return "Please enter the transactions type";
         }
         if (topUpAmount==0){
             return "The topUp Amount cannot be 0";
@@ -366,7 +361,7 @@ public class DAO{
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public String transaction(String CusName, String expertName, String adminName, double hours, double amount)
+    public String transactions(String CusName, String expertName, String adminName, double hours, double amount)
             throws SQLException, ClassNotFoundException{
         LocalDate date = LocalDate.now();
         if (CusName.equals("") || expertName.equals("") || adminName.equals("")){
@@ -378,7 +373,7 @@ public class DAO{
         if (amount==0){
             return  "amount cannot be 0";
         }
-        Transaction tran = new Transaction(date, hours, amount);
+        Transactions tran = new Transactions(date, hours, amount);
         Customer customer; Expert expert; Admin admin;
         customer = (Customer) searchUser(CusName);
         expert = (Expert) searchUser(expertName);
@@ -393,7 +388,7 @@ public class DAO{
         if((customer==null || expert==null || admin==null)){
             return "The user does not exist";
         }
-        transaction(customer, expert, admin, tran, date, hours, amount);
+        transactions(customer, expert, admin, tran, date, hours, amount);
         return "Transaction successful!";
     }
 
