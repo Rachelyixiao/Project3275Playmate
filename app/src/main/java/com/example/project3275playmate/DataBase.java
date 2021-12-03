@@ -74,7 +74,7 @@ public class DataBase extends SQLiteOpenHelper {
 
         String query2 = "CREATE TABLE "+ TABLE2_NAME + "("+
                 T2COL_0 + " varchar(20) PRIMARY KEY,"+
-                T2COL_1 + " REAL,"+
+                T2COL_1 + " TEXT,"+
                 T2COL_2 + " REAL,"+
                 T2COL_3 + " REAL," +
                 T2COL_4 + " REAL," +
@@ -151,7 +151,29 @@ public class DataBase extends SQLiteOpenHelper {
         db.execSQL(query10);
 
 
+        //ini user data
+        String query11 = "INSERT INTO "+TABLE1_NAME+" VALUES "+"("+
+                "'Mary',"+"'mary@gmail.com',"+"'1234567890'"+"),"+"("+
+                "'Tom',"+"'tom@gmail.com',"+"'0987654321'"+"),"+"("+
+                "'Steve',"+"'steve@gmail.com',"+"'11111111111'"+"),"+"("+
+                "'Winnie',"+"'winnie@gmail.com',"+"'2222222222'"+"),"+"("+
+                "'Fiona',"+"'fiona@gmail.com',"+"'333333333'"+"),"+"("+
+                "'Hugo',"+"' hugo@hotmail.com',"+"'asdfghjkl'"+")";
+        db.execSQL(query11);
 
+        //ini customer data
+        String query12 = "INSERT INTO "+TABLE3_NAME+" VALUES "+"("+
+                "'Mary',"+"100.0"+"),"+"("+
+                "'Tom',"+"150.0"+"),"+"("+
+                "'Hugo',"+"250.0"+")";
+        db.execSQL(query12);
+
+        //ini expert data
+        String query13 = "INSERT INTO "+TABLE2_NAME+" VALUES "+"("+
+                "'Winnie',"+"'girl',"+"4.5,"+"16.0,"+"250.00"+"),"+"("+
+                "'Steve',"+"'boy',"+"4.6,"+"18.0,"+"150.00"+"),"+"("+
+                "'Fiona',"+"'girl',"+"4.2,"+"15.0,"+"100.0"+")";
+        db.execSQL(query13);
     }
 
     @Override
