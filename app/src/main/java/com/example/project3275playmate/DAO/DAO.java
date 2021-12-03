@@ -436,4 +436,10 @@ public class DAO{
         createGameProfile(game, expert, gameLevel, description);
         return "Game Profile uploaded successful!";
     }
+    public  Cursor viewExpertDataByGender(String gender) {
+        SQLiteDatabase sqLiteDatabase = dbHelper.getReadableDatabase();
+        String query = "SELECT * FROM Expert where gender = ?";
+        Cursor c = sqLiteDatabase.rawQuery(query, null);
+        return c;
+    }
 }
