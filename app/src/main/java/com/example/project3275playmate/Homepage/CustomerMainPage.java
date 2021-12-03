@@ -12,6 +12,7 @@ import com.example.project3275playmate.AfterPlayPages.ReviewExpert;
 import com.example.project3275playmate.ChooseExpert;
 import com.example.project3275playmate.Classes.TopUp;
 import com.example.project3275playmate.DAO.DAO;
+import com.example.project3275playmate.MoneyRelated.TopUpOptions;
 import com.example.project3275playmate.R;
 
 import java.sql.SQLException;
@@ -60,7 +61,7 @@ public class CustomerMainPage extends AppCompatActivity {
         btnTopUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(CustomerMainPage.this, TopUp.class));
+                startActivity(new Intent(CustomerMainPage.this, TopUpOptions.class));
             }
         });
 
