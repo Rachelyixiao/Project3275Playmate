@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Build;
 import androidx.annotation.RequiresApi;
 import com.example.project3275playmate.Classes.*;
@@ -13,7 +14,7 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
-public class DAO{
+public class DAO {
     private static final String TAG = "DAO";
     private final DataBase dbHelper;
 
@@ -433,4 +434,14 @@ public class DAO{
         createGameProfile(game, expert, gameLevel, description);
         return "Game Profile uploaded successful!";
     }
+    public  Cursor viewExpertDataByGender(String gender) {
+        SQLiteDatabase sqLiteDatabase = dbHelper.getReadableDatabase();
+        String query = "SELECT * FROM Expert where gender = ?";
+        Cursor c = sqLiteDatabase.rawQuery(query, null);
+        return c;
+    }
+
+
 }
+
+

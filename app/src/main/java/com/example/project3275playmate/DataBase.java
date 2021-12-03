@@ -1,6 +1,7 @@
 package com.example.project3275playmate;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
@@ -154,7 +155,6 @@ public class DataBase extends SQLiteOpenHelper {
         //db.execSQL("DROP TABLE IF EXISTS "+TABLE2_NAME);
 
     }
-
 
 
 }

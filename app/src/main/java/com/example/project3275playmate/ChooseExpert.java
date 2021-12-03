@@ -36,6 +36,7 @@ public class ChooseExpert extends AppCompatActivity {
                 String  currencyChoice = userChooseGameList.getSelectedItem().toString();
 
                 editor.putString("Game", currencyChoice);
+                editor.putString("btn", "Game");
                 editor.commit();
                 startActivity(new Intent(ChooseExpert.this, ExpertList.class));
             }
@@ -46,11 +47,13 @@ public class ChooseExpert extends AppCompatActivity {
             public void onClick(View v) {
                 if (userChooseGirl.isChecked()){
                     editor.putString("Choice", "Girl");
+                    editor.putString("btn", "Gender");
                     editor.commit();//选的是女生，把关键词Girl保存并进入下一页
                     startActivity(new Intent(ChooseExpert.this, ExpertList.class));
                 }
                 else if (userChooseBoy.isChecked()){
                     editor.putString("Choice", "Boy");
+                    editor.putString("btn", "Gender");
                     editor.commit();//选的是男生，把关键词Boy保存并进入下一页
                     startActivity(new Intent(ChooseExpert.this, ExpertList.class));
                 }
