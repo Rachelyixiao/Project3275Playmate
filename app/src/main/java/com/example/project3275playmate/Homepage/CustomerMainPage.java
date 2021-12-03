@@ -25,7 +25,6 @@ public class CustomerMainPage extends AppCompatActivity {
 
     TextView username,balance;
     SharedPreferences sp;
-    ImageView Setting;
     String name;
     double Balance;
 
