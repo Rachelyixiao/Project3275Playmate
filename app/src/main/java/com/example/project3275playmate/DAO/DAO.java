@@ -43,10 +43,17 @@ public class DAO{
         db.close();
     }
 
+    public void addGameProfile(String expertName, String gameName, String description) throws ClassNotFoundException, SQLException {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String query = "insert into GameProfile(GName, EName, description) values(?,?,?)";
+        db.execSQL(query, new Object[]{gameName, expertName, description});
+        db.close();
+    }
+
     public void edit(User user, String name) throws SQLException, ClassNotFoundException {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         String query = "Update user set email=?, password=? where UName = ?";
-        db.execSQL(query, new Object[]{user.getEmail(), user.getPassword(), user.getName()});
+        db.execSQL(query, new Object[]{user.getEmail(), user.getPassword(), name});
         db.close();
     }
 
@@ -145,6 +152,19 @@ public class DAO{
         return g;
     }
 
+    public Game searchGameProfile(String name) throws SQLException, ClassNotFoundException {
+        Game game = searchGame(name);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String query = "Select * from GameProfile where GName = ?";
+        Cursor c = db.rawQuery(query, new String[] {name});
+        Game g = null;
+        if(c.moveToFirst()){
+            @SuppressLint("Range")String type = c.getString(c.getColumnIndex("GType"));;
+            g = new Game(name, type);
+        }
+        return g;
+    }
+
     public void setCusBalance(Customer customer, double amount) throws SQLException, ClassNotFoundException{
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         String query = "Update customer set balance=? where CName=?";
@@ -172,7 +192,6 @@ public class DAO{
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-
     public void transactions(Customer customer, Expert expert, Admin admin, Transactions transactions, LocalDate date, double hours, double amount)
             throws SQLException, ClassNotFoundException {
         setCusBalance(customer, -amount);
@@ -183,7 +202,6 @@ public class DAO{
                 Date.valueOf(String.valueOf(date)), hours, amount});
         db.close();
     }
-
 
     public void createGameProfile(Game game, Expert expert, String gameLevel, String description) throws SQLException, ClassNotFoundException {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -240,12 +258,6 @@ public class DAO{
         else {
             addUser(user);
         }
-        return "Register Successful!";
-
-    }
-    public String registerUser(String name, String email, String password) throws SQLException, ClassNotFoundException{
-        User user;
-        user = new User(name, email, password);
         return "Register Successful!";
     }
 
@@ -333,6 +345,14 @@ public class DAO{
         return "Delete successful!";
     }
 
+    public String addingProfile(String UName, String EName, String description) throws SQLException, ClassNotFoundException {
+        if (description.equals("")){
+            return "Please fill the description of the selected game";
+        }
+        addGameProfile(UName, EName, description);
+        return "Adding Game Profile successful!";
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     public String customerTopUp(String cusName, String adminName, String password, String transactionType, double topUpAmount)
             throws SQLException, ClassNotFoundException{
@@ -362,7 +382,6 @@ public class DAO{
         }
         topUp(customer, admin, topUp, date, transactionType, topUpAmount);
         return "TopUp successful!";
-
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)

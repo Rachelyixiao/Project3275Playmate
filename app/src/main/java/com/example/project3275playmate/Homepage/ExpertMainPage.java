@@ -1,6 +1,8 @@
 package com.example.project3275playmate.Homepage;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -16,6 +18,7 @@ import com.example.project3275playmate.UploadPages.UploadFiles;
 public class ExpertMainPage extends AppCompatActivity {
     TextView ExpertName,ExpertBalance,ExpertRating;
     Button uploadProfilesLink,uploadHoursLink,getWageLink;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

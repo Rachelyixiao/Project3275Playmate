@@ -7,7 +7,7 @@ import androidx.annotation.Nullable;
 
 public class DataBase extends SQLiteOpenHelper {
     final static String DATABASE_NAME = "playmate.db"; //database name
-    private static int n = 7;
+    private static int n = 10;
     final static int DATABASE_VERSION = n++;
 
     final static String TABLE1_NAME = "User";
@@ -27,10 +27,36 @@ public class DataBase extends SQLiteOpenHelper {
     final static String T3COL_0 ="CName";
     final static String T3COL_1 ="balance";
 
+    final static String TABLE4_NAME = "Admin";
+    final static String T4COL_0 ="AID";
+    final static String T4COL_1 ="AName";
+    final static String T4COL_2 ="email";
+    final static String T4COL_3 ="password";
+
+    final static String TABLE5_NAME = "Game";
+    final static String T5COL_0 ="GName";
+    final static String T5COL_1 ="GType";
+
+    final static String TABLE6_NAME = "GameProfile";
+    final static String T6COL_0 ="GName";
+    final static String T6COL_1 ="EName";
+    final static String T6COL_2 ="description";
+
+    final static String TABLE7_NAME = "TopUp";
+    final static String T7COL_0 ="TTID";
+    final static String T7COL_1 ="date";
+    final static String T7COL_2 ="amount";
+    final static String T7COL_3 ="transactionType";
+    final static String T7COL_4 ="CName";
 
 
-
-
+    final static String TABLE8_NAME = "Transactions";
+    final static String T8COL_0 ="TID";
+    final static String T8COL_1 ="date";
+    final static String T8COL_2 ="hours";
+    final static String T8COL_3 ="totalAmount";
+    final static String T8COL_4 ="CName";
+    final static String T8COL_5 ="EName";
 
     public DataBase(@Nullable Context context){
         super(context, DATABASE_NAME, null ,DATABASE_VERSION);
@@ -58,6 +84,48 @@ public class DataBase extends SQLiteOpenHelper {
                 T3COL_1 + " REAL," +
                 "FOREIGN KEY (CName) REFERENCES User(UName))";
         db.execSQL(query3);
+
+        String query4 =" CREATE TABLE "+ TABLE4_NAME + "("+
+                T4COL_0 + " INTERGER PRIMARY KEY,"+
+                T4COL_1 + " TEXT," +
+                T4COL_2 + " TEXT," +
+                T4COL_3 + " TEXT)" ;
+        db.execSQL(query4);
+
+        String query5 =" CREATE TABLE "+ TABLE5_NAME + "("+
+                T5COL_0 + " TEXT PRIMARY KEY,"+
+                T5COL_1 + " TEXT)" ;
+        db.execSQL(query5);
+
+        String query6 =" CREATE TABLE "+ TABLE6_NAME + "("+
+                T6COL_0 + " TEXT,"+
+                T6COL_1 + " TEXT," +
+                T6COL_2 + " TEXT," +
+                "PRIMARY KEY ("+T6COL_0+","+T6COL_1+"),"+
+                "FOREIGN KEY (GName) REFERENCES Game(GName)," +
+                "FOREIGN KEY (EName) REFERENCES Expert(EName))";
+        db.execSQL(query6);
+
+        String query7 =" CREATE TABLE "+ TABLE7_NAME + "("+
+                T7COL_0 + " INTERGER PRIMARY KEY,"+
+                T7COL_1 + " TEXT," +
+                T7COL_2 + " REAL," +
+                T7COL_3 + " INTERGER," +
+                T7COL_4 + " TEXT," +
+                "FOREIGN KEY (CName) REFERENCES Customer(CName))";
+        db.execSQL(query7);
+
+        String query8 =" CREATE TABLE "+ TABLE8_NAME + "("+
+                T8COL_0 + " INTERGER PRIMARY KEY,"+
+                T8COL_1 + " TEXT," +
+                T8COL_2 + " REAL," +
+                T8COL_3 + " REAL," +
+                T8COL_4 + " TEXT," +
+                T8COL_5 + " TEXT," +
+                "FOREIGN KEY (CName) REFERENCES Customer(CName)," +
+                "FOREIGN KEY (EName) REFERENCES Expert(EName))";
+        db.execSQL(query8);
+
     }
 
     @Override
