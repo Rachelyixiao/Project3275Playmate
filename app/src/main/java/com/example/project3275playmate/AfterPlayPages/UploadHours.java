@@ -26,7 +26,7 @@ public class UploadHours extends AppCompatActivity {
         com.example.project3275playmate.databinding.ActivityUploadHoursBinding binding = ActivityUploadHoursBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        expertEmailVerify = findViewById(R.id.expertEmailVerify);
+        expertEmailVerify = findViewById(R.id.expertNameUoploadHours);
         playdate = findViewById(R.id.playdate);
         playHours = findViewById(R.id.playHours);
         submitHours = findViewById(R.id.submitHours);

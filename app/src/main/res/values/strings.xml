@@ -8,7 +8,7 @@
     <string name="title_settings">Settings</string>
     <string name="profileHint">Write your level or skills of this game</string>
     <string name="submit">submit</string>
-    <string name="hintEnterExpertEmail">Enter your email</string>
+    <string name="hintEnterName">Enter your name</string>
     <string name="uploadHoursDate">Choose Date</string>
     <string name="hintHours">Enter Hours</string>
     <string name="btnSubmitHours">Submit</string>
@@ -73,6 +73,7 @@
     <string name="Contact">Contact us</string>
     <string name="please_contact_our_admin_before_top_up">Please contact our admin before top up</string>
     <string name="currentpw">Enter Current Password</string>
+    <string name="enterCustomerName">Enter Customer Name</string>
 
 
     <string-array name="gamelist">

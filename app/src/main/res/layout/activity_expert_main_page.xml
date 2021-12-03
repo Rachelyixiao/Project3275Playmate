@@ -70,9 +70,9 @@
             android:text="@string/uploadProfilebtn"
             android:layout_width="171dp"
             android:layout_height="58dp" android:id="@+id/uploadProfilesLink"
-            app:backgroundTint="@color/teal_200" android:textSize="16sp"
+            app:backgroundTint="@color/teal_700" android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="127dp"
-            android:layout_marginEnd="115dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="84dp"
+            android:layout_marginEnd="127dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="84dp"
             app:layout_constraintTop_toBottomOf="@+id/textView29" app:layout_constraintHorizontal_bias="0.0"
             android:textStyle="bold"/>
     <Button
@@ -80,16 +80,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/uploadHoursLink"
             android:background="@color/buttonColor"
-            app:backgroundTint="@color/teal_200" android:textSize="16sp"
+            app:backgroundTint="@color/teal_700" android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="133dp"
-            android:layout_marginEnd="128dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="24dp"
+            android:layout_marginEnd="133dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="24dp"
             app:layout_constraintTop_toBottomOf="@+id/uploadProfilesLink" app:layout_constraintHorizontal_bias="0.0"
             android:textStyle="bold"/>
     <Button
             android:text="@string/getWagelink"
             android:layout_width="168dp"
             android:layout_height="57dp" android:id="@+id/getWagelink"
-            app:backgroundTint="@color/teal_200" android:textSize="16sp"
+            app:backgroundTint="@color/teal_700" android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="127dp"
             android:layout_marginEnd="119dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="25dp"
             app:layout_constraintTop_toBottomOf="@+id/uploadHoursLink" android:textStyle="bold"/>
