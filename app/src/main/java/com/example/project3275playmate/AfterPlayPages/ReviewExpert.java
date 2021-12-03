@@ -1,12 +1,16 @@
 package com.example.project3275playmate.AfterPlayPages;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.example.project3275playmate.Classes.Expert;
 import com.example.project3275playmate.DAO.DAO;
+import com.example.project3275playmate.Homepage.CustomerMainPage;
 import com.example.project3275playmate.R;
+import com.example.project3275playmate.RegisterLogin.ExpertRegisterPage;
+import com.example.project3275playmate.UploadPages.AddProfiles;
 
 import java.sql.SQLException;
 
@@ -67,7 +71,6 @@ public class ReviewExpert extends AppCompatActivity {
         DAO dao = new DAO(this);
         String name = EName.getText().toString().trim();
         String comment = comments.getText().toString().trim();
-        Expert e = null;
         if (name.equals("")){
             Toast.makeText(this, "Please enter your playmate's name.", Toast.LENGTH_SHORT).show();
             return;
@@ -80,9 +83,10 @@ public class ReviewExpert extends AppCompatActivity {
             Toast.makeText(this, "The name you entered does not exist", Toast.LENGTH_SHORT).show();
             return;
         }
-        e = dao.searchExpert(name);
+        Expert e = dao.searchExpert(name);
         toast = dao.expertRating(e, rate);
         Toast.makeText(this, toast, Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(ReviewExpert.this, CustomerMainPage.class));
 
     }
 }
