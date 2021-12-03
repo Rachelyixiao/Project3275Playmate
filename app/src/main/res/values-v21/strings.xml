@@ -26,4 +26,5 @@
     <string name="topupAlert">Please contact our admin after top up</string>
     <string name="wagepage1">Your balance is</string>
     <string name="uploadHoursLink">Upload Hours</string>
+    <string name="currentpw">Enter Current Password</string>
 </resources>

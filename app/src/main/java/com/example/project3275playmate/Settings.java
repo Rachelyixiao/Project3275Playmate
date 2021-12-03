@@ -14,7 +14,7 @@ public class Settings extends AppCompatActivity {
     EditText newEmail,newPassword,currentPsw;
     Button changeSetting;
     SharedPreferences sp;
-   String psw,sCurrentPsw, sNewEmail, sNewPassword, name;
+    String psw,sCurrentPsw, sNewEmail, sNewPassword, name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +36,7 @@ public class Settings extends AppCompatActivity {
                 sCurrentPsw = currentPsw.getText().toString();
                 sNewEmail = newEmail.getText().toString();
                 sNewPassword = newPassword.getText().toString();
-                if (psw == sCurrentPsw){
+                if (psw.equals(sCurrentPsw)){
                     if (dao.updateUserData(name,sNewPassword,sNewEmail)){
                         Toast.makeText(Settings.this,"Change saved",Toast.LENGTH_LONG).show();
                     }

@@ -15,9 +15,9 @@ public class ContactUs extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact_us);
 
-        homeIconContact = findViewById(R.id.homeiconContact);
-        contactIconContact = findViewById(R.id.contacticonContact);
-        settingIconContact = findViewById(R.id.settingiconContact);;
+        homeIconContact = findViewById(R.id.homeiconCustomerMain);
+        contactIconContact = findViewById(R.id.contacticonCustomerMain);
+        settingIconContact = findViewById(R.id.settingiconCustomerMain);;
 
         homeIconContact.setOnClickListener(new View.OnClickListener() {
             @Override
