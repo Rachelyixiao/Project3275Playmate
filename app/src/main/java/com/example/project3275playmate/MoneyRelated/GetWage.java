@@ -49,6 +49,10 @@ public class GetWage extends AppCompatActivity {
 
     public void withdraw(View view) throws SQLException, ClassNotFoundException {
         withdraw = Double.parseDouble(withdrawAmount.getText().toString());
+        if (withdraw > balance){
+            Toast.makeText(this, "Not enough balance", Toast.LENGTH_LONG).show();
+            return;
+        }
         try {
             toast = dao.expertWithdraw(expert, withdraw);
             Toast.makeText(this, toast, Toast.LENGTH_LONG).show();
