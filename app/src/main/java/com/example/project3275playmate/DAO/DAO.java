@@ -220,6 +220,7 @@ public class DAO{
     public void transactions(Customer customer, Expert expert, Admin admin, Transactions transactions, LocalDate date, double hours, double amount)
             throws SQLException, ClassNotFoundException {
         setCusBalance(customer, -amount);
+        setExpertBalance(expert, amount);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         String query = "insert into transactions values(?,?,?,?,?,?,?)";
 

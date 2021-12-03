@@ -49,8 +49,6 @@ public class CustomerMainPage extends AppCompatActivity {
 
         }
 
-
-
         btnChooseExpert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

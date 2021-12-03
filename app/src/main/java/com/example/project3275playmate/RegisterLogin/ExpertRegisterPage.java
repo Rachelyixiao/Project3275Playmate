@@ -91,7 +91,7 @@ public class ExpertRegisterPage extends AppCompatActivity {
             startActivity(new Intent(ExpertRegisterPage.this, AddProfiles.class));
         }
         else if (choice == 2){
-            startActivity(new Intent(ExpertRegisterPage.this, UploadFiles.class));
+            startActivity(new Intent(ExpertRegisterPage.this, ExpertMainPage.class));
         }
 
     }

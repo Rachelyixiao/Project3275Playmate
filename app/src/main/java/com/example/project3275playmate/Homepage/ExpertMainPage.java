@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.example.project3275playmate.AfterPlayPages.UploadHours;
 import com.example.project3275playmate.ContactUs;
+import com.example.project3275playmate.MoneyRelated.GetWage;
 import com.example.project3275playmate.R;
 import com.example.project3275playmate.StartActivity;
 import com.example.project3275playmate.UploadPages.UploadFiles;
@@ -49,8 +50,7 @@ public class ExpertMainPage extends AppCompatActivity {
         getWageLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(ExpertMainPage.this,"Please contact playmate representative to withdraw your wage",Toast.LENGTH_LONG).show();
-                startActivity(new Intent(ExpertMainPage.this, ContactUs.class));
+                startActivity(new Intent(ExpertMainPage.this, GetWage.class));
             }
         });
 
