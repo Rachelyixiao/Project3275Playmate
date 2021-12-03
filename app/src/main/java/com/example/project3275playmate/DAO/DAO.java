@@ -126,10 +126,10 @@ public class DAO{
         Expert e = null;
         if(c.moveToFirst()){
             @SuppressLint("Range")String gender = c.getString(c.getColumnIndex("gender"));
-            @SuppressLint("Range")Double rate = Double.valueOf(c.getString(c.getColumnIndex("rate")));
-            @SuppressLint("Range")Double wage = Double.valueOf(c.getString(c.getColumnIndex("wage")));
-            @SuppressLint("Range")Double balance = Double.valueOf(c.getString(c.getColumnIndex("balance")));
-            e = new Expert(name, expert.getEmail(), expert.getPassword(), gender, rate, wage, balance);
+            @SuppressLint("Range")double rate = Double.valueOf(c.getString(c.getColumnIndex("rate")));
+            @SuppressLint("Range")double wage = Double.valueOf(c.getString(c.getColumnIndex("wage")));
+            @SuppressLint("Range")double balance = Double.valueOf(c.getString(c.getColumnIndex("balance")));
+            e = new Expert(name, expert.getEmail(), expert.getPassword(), gender, rate, balance, wage);
         }
         return e;
     }
@@ -141,7 +141,7 @@ public class DAO{
         User customer = searchUser(name);
         Customer cus = null;
         if(c.moveToFirst()){
-            @SuppressLint("Range")Double balance = Double.valueOf(c.getString(c.getColumnIndex("balance")));;
+            @SuppressLint("Range")double balance = Double.valueOf(c.getString(c.getColumnIndex("balance")));;
             cus = new Customer(name, customer.getEmail(), customer.getPassword(), balance);
         }
         return cus;

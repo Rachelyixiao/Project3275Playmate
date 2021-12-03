@@ -20,10 +20,10 @@ import com.example.project3275playmate.Settings;
 import java.sql.SQLException;
 
 public class CustomerMainPage extends AppCompatActivity {
-    Button btnChooseExpert,btnTopUp,btnReviewExpert,btnViewBalanceUse;
-    ImageView homeiconCustomerMain,contacticonCustomerMain,settingiconCustomerMain;
+    Button btnChooseExpert, btnTopUp, btnReviewExpert, btnViewBalanceUse;
+    ImageView homeiconCustomerMain, contacticonCustomerMain, settingiconCustomerMain;
 
-    TextView username,balance;
+    TextView username, balance;
     SharedPreferences sp;
     String name;
     double Balance;
