@@ -49,7 +49,7 @@ public class DataBase extends SQLiteOpenHelper {
     final static String T7COL_2 ="amount";
     final static String T7COL_3 ="transactionType";
     final static String T7COL_4 ="CName";
-
+    final static String T7COL_5 ="AName";
 
     final static String TABLE8_NAME = "Transactions";
     final static String T8COL_0 ="TID";
@@ -58,6 +58,7 @@ public class DataBase extends SQLiteOpenHelper {
     final static String T8COL_3 ="totalAmount";
     final static String T8COL_4 ="CName";
     final static String T8COL_5 ="EName";
+    final static String T7COL_6 ="AName";
 
     public DataBase(@Nullable Context context){
         super(context, DATABASE_NAME, null ,DATABASE_VERSION);
@@ -113,6 +114,8 @@ public class DataBase extends SQLiteOpenHelper {
                 T7COL_2 + " REAL," +
                 T7COL_3 + " INTERGER," +
                 T7COL_4 + " TEXT," +
+                T7COL_5 + " TEXT," +
+                "FOREIGN KEY (AName) REFERENCES Admin(AName)," +
                 "FOREIGN KEY (CName) REFERENCES Customer(CName))";
         db.execSQL(query7);
 
@@ -123,6 +126,8 @@ public class DataBase extends SQLiteOpenHelper {
                 T8COL_3 + " REAL," +
                 T8COL_4 + " TEXT," +
                 T8COL_5 + " TEXT," +
+                T7COL_6 + " TEXT," +
+                "FOREIGN KEY (AName) REFERENCES Admin(AName)," +
                 "FOREIGN KEY (CName) REFERENCES Customer(CName)," +
                 "FOREIGN KEY (EName) REFERENCES Expert(EName))";
         db.execSQL(query8);
