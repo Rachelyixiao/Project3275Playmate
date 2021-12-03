@@ -1,6 +1,7 @@
 package com.example.project3275playmate.DAO;
 
 import android.annotation.SuppressLint;
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -438,8 +439,22 @@ public class DAO{
     }
     public  Cursor viewExpertDataByGender(String gender) {
         SQLiteDatabase sqLiteDatabase = dbHelper.getReadableDatabase();
-        String query = "SELECT * FROM Expert where gender = ?";
+        String query = "SELECT * FROM Expert where gender = "+gender;
         Cursor c = sqLiteDatabase.rawQuery(query, null);
         return c;
+    }
+    public  String getPassword(String name) {
+        SQLiteDatabase sqLiteDatabase = dbHelper.getReadableDatabase();
+        String query = "SELECT * FROM User where UName = "+name;
+        Cursor c = sqLiteDatabase.rawQuery(query, null);
+        return c.getString(3);
+    }
+    public boolean updateUserData(String name,String psw,String Email){
+        SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("email", Email);
+        values.put("password", psw);
+        int d = sqLiteDatabase.update("User", values, "UName=?", new String[]{name});
+        return d > 0;
     }
 }

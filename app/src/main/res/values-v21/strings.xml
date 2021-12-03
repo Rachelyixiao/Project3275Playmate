@@ -6,7 +6,7 @@
     <string name="hintHours">Enter Hours</string>
     <string name="changeEmail">Enter new Email</string>
     <string name="ChangePW">Enter new Password</string>
-    <string name="ChangeName">Enter New Name</string>
+    <string name="ChangeCPW">Enter New Name</string>
     <string name="btnReviewE">Review Expert</string>
     <string name="welcome">WELCOME</string>
     <string name="forgetPassword">Forget Password?</string>

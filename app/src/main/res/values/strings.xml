@@ -14,7 +14,7 @@
     <string name="btnSubmitHours">Submit</string>
     <string name="changeEmail">Enter new Email</string>
     <string name="ChangePW">Enter new Password</string>
-    <string name="ChangeName">Enter New Name</string>
+    <string name="ChangeCPW">Enter Current Password</string>
     <string name="HomepageTitle">Playmate</string>
     <string name="HomepageText1_1">Find someone to play</string>
     <string name="HomepageText1_2">A large number of players, guaranteed quality</string>
