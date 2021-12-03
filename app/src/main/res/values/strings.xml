@@ -70,6 +70,7 @@
     <string name="uploadProfilebtn">Upload Profiles</string>
     <string name="uploadHoursLink">Upload Hours</string>
     <string name="getWagelink">Withdraw Wage</string>
+    <string name="Contact">Contact us</string>
 
 
     <string-array name="gamelist">

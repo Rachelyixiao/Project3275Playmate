@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import com.example.project3275playmate.ContactUs;
 import com.example.project3275playmate.DAO.DAO;
 import com.example.project3275playmate.Homepage.CustomerMainPage;
 import com.example.project3275playmate.Homepage.ExpertMainPage;
@@ -20,7 +21,7 @@ import java.sql.SQLException;
 public class LoginPage extends AppCompatActivity {
     EditText nameLogin;
     EditText pwLogin;
-    TextView resetPw;
+    TextView resetPw, Contact;
     Button btnLoginSubmit;
     //SharedPreferences和editor用来保存login以后的user name
     SharedPreferences sp;
@@ -35,9 +36,16 @@ public class LoginPage extends AppCompatActivity {
         nameLogin = findViewById(R.id.nameLogin);
         pwLogin = findViewById(R.id.pwLogin);
         resetPw = findViewById(R.id.resetPw);
+        Contact = findViewById(R.id.ContactUs);
         btnLoginSubmit = findViewById(R.id.btnLoginSubmit);
         sp = getSharedPreferences("user", Context.MODE_PRIVATE); //Save data to the next pages
         editor = sp.edit();
+        Contact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginPage.this, ContactUs.class));
+            }
+        });
     }
 
     public void login(View view) throws SQLException, ClassNotFoundException {

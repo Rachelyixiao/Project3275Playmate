@@ -95,4 +95,9 @@
             android:layout_marginStart="137dp" android:layout_marginEnd="136dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginBottom="15dp"
             app:layout_constraintBottom_toTopOf="@+id/btnViewBalanceUse" android:textSize="16sp"/>
+    <ImageView
+            android:layout_width="65dp"
+            android:layout_height="63dp" app:srcCompat="@drawable/setting" android:id="@+id/settingBtn"
+            android:background="@color/cardview_shadow_end_color" app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toEndOf="@+id/btnViewBalanceUse"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
