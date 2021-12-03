@@ -34,7 +34,7 @@ public class ExpertMainPage extends AppCompatActivity {
 
         uploadProfilesLink.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+        public void onClick(View v) {
                 startActivity(new Intent(ExpertMainPage.this,UploadFiles.class));
             }
         });
