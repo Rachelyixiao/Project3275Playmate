@@ -87,9 +87,9 @@ public class DAO{
     }
 
     public  Cursor viewExpertDataByGender(String gender) {
-        SQLiteDatabase sqLiteDatabase = dbHelper.getReadableDatabase();
-        String query = "SELECT * FROM Expert where gender = "+gender;
-        Cursor c = sqLiteDatabase.rawQuery(query, null);
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String query = "SELECT * FROM Expert where gender = ?";
+        Cursor c = db.rawQuery(query, new String[]{gender});
         return c;
     }
 

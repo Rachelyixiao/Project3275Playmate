@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.util.Log;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 
 public class ExpertList extends AppCompatActivity {
     private static final String TAG = "ExpertList";
-    SharedPreferences sp;
+String Game,Gender;
     //vars
     private ArrayList<String> mName = new ArrayList<>();
     private ArrayList<String> mImageUrls = new ArrayList<>();
@@ -25,12 +26,15 @@ public class ExpertList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expert_list);
         Log.d(TAG,"onCreate: started.");
+        SharedPreferences sp = getSharedPreferences("Choice",MODE_PRIVATE);
+         Game = sp.getString("Game","");
+         Gender = sp.getString("Choice","");
         String btn = sp.getString("btn","");
 
-        if (btn =="Game"){
+        if (btn.equals("Game")){
             initImageBitmaps();
         }
-        else if(btn == "Gender"){
+     else if(btn.equals("Gender")){
             initImageBitmaps2();
         }
         else{
@@ -42,13 +46,15 @@ public class ExpertList extends AppCompatActivity {
 
     }
     private void initImageBitmaps(){
-        sp = getSharedPreferences("", Context.MODE_PRIVATE);
-        DAO dao = new DAO(this);
-        String Game = sp.getString("Game","");
-        Cursor c = dao.viewExpertDataByGender(Game);
-        Log.d(TAG,"initImageBitmaps: preparing bitmaps.");
+     //   DAO dao = new DAO(this);
+      //  String Game = sp.getString("Game","");
+     //   Cursor c = dao.viewExpertDataByGender(Game);
+//        Log.d(TAG,"initImageBitmaps: preparing bitmaps.");
 
-
+        mImageUrls.add("app/src/main/res/drawable/profile.png");
+       mName.add(Game);
+        mImageUrls.add("https://i.redd.it/k98uz168eh501.jpg");
+        mName.add(Gender);
 //    while (c.moveToNext()){
 //        mImageUrls.add("https://i.redd.it/k98uz168eh501.jpg");
 //        mName.add(c.getString());
@@ -58,14 +64,14 @@ public class ExpertList extends AppCompatActivity {
 
     }
     private void initImageBitmaps2(){
-        sp = getSharedPreferences("", Context.MODE_PRIVATE);
         DAO dao = new DAO(this);
-        String Gender = sp.getString("Choice","");
-        Cursor c = dao.viewExpertDataByGender(Gender);
 
+        Cursor c = dao.viewExpertDataByGender(Gender);
         while (c.moveToNext()){
+            String info = "";
+            info = " PlayMate's Name: " + c.getString(0) + "\n PlayMate's Rating: " + c.getString(2);
             mImageUrls.add("https://i.redd.it/k98uz168eh501.jpg");
-            mName.add(c.getString(1));
+            mName.add(info);
         }
         initRecyclerView();
 
