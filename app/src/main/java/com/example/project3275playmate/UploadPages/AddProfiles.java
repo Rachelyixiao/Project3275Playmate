@@ -50,7 +50,5 @@ public class AddProfiles extends AppCompatActivity {
             return;
         }
         startActivity(new Intent(AddProfiles.this, UploadFiles.class));
-
-
     }
 }

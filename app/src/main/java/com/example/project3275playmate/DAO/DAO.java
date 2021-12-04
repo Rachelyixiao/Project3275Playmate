@@ -16,10 +16,13 @@ import java.time.LocalDate;
 
 public class DAO{
     private final DataBase dbHelper;
-
     public DAO(Context context) {
         dbHelper = new DataBase(context);
     }
+
+    /**
+    SQL query
+    **/
 
     public void addUser(User user) throws ClassNotFoundException, SQLException {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -201,7 +204,7 @@ public class DAO{
             @SuppressLint("Range")String GName = c.getString(c.getColumnIndex("GName"));
             @SuppressLint("Range")String EName = c.getString(c.getColumnIndex("EName"));
             @SuppressLint("Range")String description = c.getString(c.getColumnIndex("description"));
-            gameProfiles[length] = new GameProfile(description, GName, EName);
+            gameProfiles[length] = new GameProfile(GName, EName, description);
             length++;
         }
         return gameProfiles;
@@ -247,17 +250,15 @@ public class DAO{
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         String query = "insert into transactions values(?,?,?,?,?,?,?)";
 
-        db.execSQL(query, new Object[]{transactions.getTID(), date, hours, amount,
-                                        customer.getName(), expert.getName(), admin.getName()});
+        db.execSQL(query, new Object[]{transactions.getTID(), date, hours, amount, customer.getName(), expert.getName(), admin.getName()});
         db.close();
     }
 
 
 
-
-    /**
-     * Main methods
-     **/
+    /****
+     **** Main methods
+     ****/
     static int RatingTimes = 0;
     public String searchingUser(String name) throws SQLException, ClassNotFoundException{
         User user = searchUser(name);
@@ -446,31 +447,4 @@ public class DAO{
         transactions(customer, expert, admin, tran, date, hours, amount);
         return "Transaction successful!";
     }
-
-/*    public String creatingGameProfile(String expertName, String gameName, String password, String gameLevel, String description)
-            throws SQLException, ClassNotFoundException{
-        if (expertName.equals("")||gameName.equals("")||password.equals("")||gameLevel.equals("")||description.equals("")){
-            return "Please fill all the blanks";
-        }
-        Expert expert; Game game;
-        expert = (Expert) searchUser(expertName);
-        game = searchGame(gameName);
-        if((expert==null || game==null)){
-            return "The expert or game does not exist";
-        }
-        if (!password.equals(expert.getPassword())){
-            return "Password incorrect";
-        }
-        createGameProfile(game, expert, gameLevel, description);
-        return "Game Profile uploaded successful!";
-    } */
-
-    /*public boolean updateUserData(String name,String psw,String Email){
-        SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put("email", Email);
-        values.put("password", psw);
-        int d = sqLiteDatabase.update("User", values, "UName=?", new String[]{name});
-        return d > 0;
-    }*/
 }

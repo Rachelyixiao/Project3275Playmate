@@ -33,6 +33,7 @@ public class ChooseExpert extends AppCompatActivity {
         userChooseGameGo = findViewById(R.id.userChooseGameGo);
         userChooseGenderGo = findViewById(R.id.userChooseGenderGo);
         SharedPreferences.Editor editor = Choice.edit();
+
         userChooseGameGo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,13 +51,10 @@ public class ChooseExpert extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (userChooseGirl.isChecked()){
-
                     editor.putString("Choice", "girl");
                     editor.putString("btn", "Gender");
                     editor.commit();//选的是女生，把关键词Girl保存并进入下一页
                     startActivity(new Intent(ChooseExpert.this, ExpertList.class));
-
-
                 }
                 else if (userChooseBoy.isChecked()){
                     editor.putString("Choice", "boy");
@@ -68,9 +66,7 @@ public class ChooseExpert extends AppCompatActivity {
                     //未选性别，错误提示
                     Toast.makeText(ChooseExpert.this,"Please select a Gender",Toast.LENGTH_LONG).show();
                 }
-
             }
         });
-
     }
 }

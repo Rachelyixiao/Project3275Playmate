@@ -51,7 +51,7 @@ public class RecycleViewAdapter extends  RecyclerView.Adapter<RecycleViewAdapter
         holder.parent_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG,"onClick: clicked on: "+mImageNames.get(position));
+                Log.d(TAG,"onClick: clicked on: "+ mImageNames.get(position));
                 Toast.makeText(mContext, "Please click 'Contact Us' on the bottom to get in touch with our playmate", Toast.LENGTH_SHORT).show();
             }
         });
