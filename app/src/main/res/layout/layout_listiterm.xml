@@ -8,7 +8,7 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="80dp"
-            android:layout_height="80dp" app:srcCompat="@drawable/people" android:id="@+id/image1"
+            android:layout_height="80dp" app:srcCompat="@drawable/alipay" android:id="@+id/image1"
             android:src="@mipmap/ic_launcher"
             android:background="#003700B3"/>
     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
