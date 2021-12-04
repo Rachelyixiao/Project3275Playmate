@@ -59,15 +59,14 @@ public class RecycleViewAdapter extends  RecyclerView.Adapter<RecycleViewAdapter
 
     @Override
     public int getItemCount() {
-
         return mImageNames.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
+        CircleImageView image;
+        TextView imageName;
+        RelativeLayout parent_layout;
 
-            CircleImageView image;
-            TextView imageName;
-            RelativeLayout parent_layout;
         public ViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
             image =itemView.findViewById(R.id.image1);

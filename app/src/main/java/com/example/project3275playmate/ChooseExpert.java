@@ -37,7 +37,7 @@ public class ChooseExpert extends AppCompatActivity {
         userChooseGameGo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String  currencyChoice = userChooseGameList.getSelectedItem().toString();
+                String currencyChoice = userChooseGameList.getSelectedItem().toString();
 
                 editor.putString("Game", currencyChoice);
                 editor.putString("btn", "Game");
