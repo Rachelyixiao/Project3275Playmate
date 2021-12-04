@@ -55,7 +55,7 @@ public class ExpertList extends AppCompatActivity {
         contacticon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ExpertList.this,ContactUs.class));
+                startActivity(new Intent(ExpertList.this, ContactUs.class));
             }
         });
 */
