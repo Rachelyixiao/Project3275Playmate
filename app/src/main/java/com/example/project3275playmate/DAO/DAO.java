@@ -326,10 +326,10 @@ public class DAO{
         return "Information added successful!";
     }
 
-    public String expertRating(Expert expert, int rate) throws SQLException, ClassNotFoundException{
+    public String expertRating(Expert expert, int rating) throws SQLException, ClassNotFoundException{
         RatingTimes += 1;
-        double currentRate = expert.getRate();
-        double RateAfter = (currentRate + rate)/RatingTimes;
+        double currentRating = expert.getRate();
+        double RateAfter = (currentRating + rating) / RatingTimes;
 
         updateRate(expert.getName(), RateAfter);
         return "Rating successful!";

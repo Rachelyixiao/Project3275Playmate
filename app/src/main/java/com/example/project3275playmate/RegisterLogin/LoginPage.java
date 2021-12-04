@@ -21,9 +21,8 @@ import java.sql.SQLException;
 public class LoginPage extends AppCompatActivity {
     EditText nameLogin;
     EditText pwLogin;
-    TextView resetPw, Contact;
+    TextView resetPw;
     Button btnLoginSubmit;
-    //SharedPreferences和editor用来保存login以后的user name
     SharedPreferences sp;
     SharedPreferences.Editor editor;
     String toast;
@@ -43,33 +42,30 @@ public class LoginPage extends AppCompatActivity {
     }
 
     public void login(View view) throws SQLException, ClassNotFoundException {
-        DAO dao = new DAO(this);//建DAO对象
-        String name = nameLogin.getText().toString().trim();//获取用户名
-        String password = pwLogin.getText().toString().trim();//获取密码
+        DAO dao = new DAO(this);
+        String name = nameLogin.getText().toString().trim();//get username
+        String password = pwLogin.getText().toString().trim();//get psw
         try {
-            toast = dao.login(name, password);//login方法，检测用户名密码是否正确
-            editor.putString("name", name);//保存数据进SharedPreferences
+            toast = dao.login(name, password);//login
+            editor.putString("name", name);//Save name
             editor.commit();
-            Toast.makeText(this, toast, Toast.LENGTH_LONG).show();//显示dao.login方法中对应的消息
+            Toast.makeText(this, toast, Toast.LENGTH_LONG).show();
             if (!toast.contains("Login successful!")){
-                return;//如果消息中没有login successful则退出方法
+                return;
             }
         } catch (Exception e){
-            Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();//try方法出错的话提取报错信息
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
             return;
         }
         if (!(dao.searchCus(name)==null)){
-            //检测name是否是customer。是的话跳转customer界面
             startActivity(new Intent(LoginPage.this, CustomerMainPage.class));
         }
         else if (!(dao.searchExpert(name)==null)){
-            //同理，检测expert
             startActivity(new Intent(LoginPage.this, ExpertMainPage.class));
         }
     }
 
     public void reset(View view){
-        //重置输入值
         nameLogin.setText("");
         pwLogin.setText("");
     }
