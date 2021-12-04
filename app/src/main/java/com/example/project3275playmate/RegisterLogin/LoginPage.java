@@ -36,7 +36,7 @@ public class LoginPage extends AppCompatActivity {
         nameLogin = findViewById(R.id.nameLogin);
         pwLogin = findViewById(R.id.pwLogin);
         resetPw = findViewById(R.id.resetPw);
-        Contact = findViewById(R.id.ContactUs);
+
         btnLoginSubmit = findViewById(R.id.btnLoginSubmit);
         sp = getSharedPreferences("user", Context.MODE_PRIVATE); //Save data to the next pages
         editor = sp.edit();

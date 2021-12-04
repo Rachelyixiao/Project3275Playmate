@@ -10,6 +10,7 @@ import android.os.Bundle;
 import com.example.project3275playmate.Classes.Expert;
 import com.example.project3275playmate.Classes.GameProfile;
 import com.example.project3275playmate.DAO.DAO;
+import com.example.project3275playmate.Homepage.ExpertMainPage;
 import com.example.project3275playmate.MainActivity;
 import com.example.project3275playmate.R;
 
@@ -41,7 +42,7 @@ public class UploadFiles extends AppCompatActivity {
         btnFinishEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(UploadFiles.this, MainActivity.class));
+                startActivity(new Intent(UploadFiles.this, ExpertMainPage.class));
             }
         });
         try {

@@ -171,8 +171,8 @@ public class DataBase extends SQLiteOpenHelper {
         //ini expert data
         String query13 = "INSERT INTO "+TABLE2_NAME+" VALUES "+"("+
                 "'Winnie',"+"'girl',"+"4.5,"+"16.0,"+"250.00"+"),"+"("+
-                "'Steve',"+"'boy',"+"4.6,"+"18.0,"+"150.00"+"),"+"("+
-                "'Fiona',"+"'girl',"+"4.2,"+"15.0,"+"100.0"+")";
+                "'Steve',"+"'boy',"+"4.6,"+"16.0,"+"150.00"+"),"+"("+
+                "'Fiona',"+"'girl',"+"4.2,"+"16.0,"+"100.0"+")";
         db.execSQL(query13);
 
 
