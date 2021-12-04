@@ -43,7 +43,7 @@ public class DAO{
         db.close();
     }
 
-    public void addGameProfile(String expertName, String gameName, String description) throws ClassNotFoundException, SQLException {
+    public void addGameProfile(String gameName, String expertName, String description) throws ClassNotFoundException, SQLException {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         String query = "insert into GameProfile(GName, EName, description) values(?,?,?)";
         db.execSQL(query, new Object[]{gameName, expertName, description});
@@ -173,28 +173,45 @@ public class DAO{
         return g;
     }
 
+    public GameProfile[] searchGameProfileByEName(String expertName)throws SQLException,ClassNotFoundException{
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String query = "Select * from GameProfile where EName = ?";
+        Cursor c = db.rawQuery(query, new String[] {expertName});
+        int length = 0;
+        GameProfile gameProfiles[] = new GameProfile[100];
+
+        while (c.moveToNext()){
+            @SuppressLint("Range")String GName = c.getString(c.getColumnIndex("GName"));
+            @SuppressLint("Range")String EName = c.getString(c.getColumnIndex("EName"));
+            @SuppressLint("Range")String description = c.getString(c.getColumnIndex("description"));
+            gameProfiles[length] = new GameProfile(GName, EName, description);
+            length++;
+        }
+        return gameProfiles;
+    }
+
+    public GameProfile[] searchGameProfileByGName(String gameName) throws SQLException, ClassNotFoundException {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String query = "Select * from GameProfile where GName = ?";
+        Cursor c = db.rawQuery(query, new String[] {gameName});
+        int length = 0;
+        GameProfile gameProfiles[] = new GameProfile[100];
+
+        while (c.moveToNext()){
+            @SuppressLint("Range")String GName = c.getString(c.getColumnIndex("GName"));
+            @SuppressLint("Range")String EName = c.getString(c.getColumnIndex("EName"));
+            @SuppressLint("Range")String description = c.getString(c.getColumnIndex("description"));
+            gameProfiles[length] = new GameProfile(description, GName, EName);
+            length++;
+        }
+        return gameProfiles;
+    }
+
     public void createGameProfile(Game game, Expert expert, String gameLevel, String description) throws SQLException, ClassNotFoundException {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         String query = "insert into GameProfile values(?,?,?,?)";
         db.execSQL(query, new Object[]{game.getGName(), expert.getName(), gameLevel, description});
         db.close();
-    }
-
-    public GameProfile[] searchGameProfile(String name) throws SQLException, ClassNotFoundException {
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        String query = "Select * from GameProfile where GName = ?";
-        Cursor c = db.rawQuery(query, new String[] {name});
-        int length = 0;
-        GameProfile gameProfiles[] = new GameProfile[100];
-
-        while (c.moveToNext()){
-            @SuppressLint("Range")String GName = c.getString(c.getColumnIndex("GName"));;
-            @SuppressLint("Range")String EName = c.getString(c.getColumnIndex("EName"));;
-            @SuppressLint("Range")String description = c.getString(c.getColumnIndex("Description"));;
-            gameProfiles[length] = new GameProfile(description, GName, EName);
-            length++;
-        }
-        return gameProfiles;
     }
 
     public void setCusBalance(Customer customer, double amount) throws SQLException, ClassNotFoundException{
@@ -223,16 +240,15 @@ public class DAO{
         setCusBalance(customer, amount);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    public void transactions(Customer customer, Expert expert, Admin admin, Transactions transactions, LocalDate date, double hours, double amount)
+    public void transactions(Customer customer, Expert expert, Admin admin, Transactions transactions, String date, double hours, double amount)
             throws SQLException, ClassNotFoundException {
         setCusBalance(customer, -amount);
         setExpertBalance(expert, amount);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         String query = "insert into transactions values(?,?,?,?,?,?,?)";
 
-        db.execSQL(query, new Object[]{transactions.getTID(), admin.getName(), expert.getName(),customer.getName(),
-                Date.valueOf(String.valueOf(date)), hours, amount});
+        db.execSQL(query, new Object[]{transactions.getTID(), date, hours, amount,
+                                        customer.getName(), expert.getName(), admin.getName()});
         db.close();
     }
 
@@ -371,11 +387,11 @@ public class DAO{
         return "Delete successful!";
     }
 
-    public String addingProfile(String UName, String EName, String description) throws SQLException, ClassNotFoundException {
+    public String addingProfile(String GName, String EName, String description) throws SQLException, ClassNotFoundException {
         if (description.equals("")){
             return "Please fill the description of the selected game";
         }
-        addGameProfile(UName, EName, description);
+        addGameProfile(GName, EName, description);
         return "Adding Game Profile successful!";
     }
 
@@ -407,29 +423,23 @@ public class DAO{
         return "TopUp successful!";
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    public String transactions(String CusName, String expertName, String adminName, double hours, double amount)
+    public String transactionsMain(String CusName, String expertName, String date, String adminName, double hours, double amount)
             throws SQLException, ClassNotFoundException{
-        LocalDate date = LocalDate.now();
         if (CusName.equals("") || expertName.equals("") || adminName.equals("")){
             return "Please enter all the names";
         }
         if (hours==0){
             return "hours cannot be 0";
         }
-        if (amount==0){
-            return  "amount cannot be 0";
-        }
         Transactions tran = new Transactions(date, hours, amount);
         Customer customer; Expert expert; Admin admin;
-        customer = (Customer) searchUser(CusName);
-        expert = (Expert) searchUser(expertName);
+        customer = searchCus(CusName);
+        expert = searchExpert(expertName);
 
         if (checkAdmin(adminName) == false){
             return "Admin name incorrect";
         }
         admin = searchAdmin(adminName);
-
         if((customer==null || expert==null || admin==null)){
             return "The user does not exist";
         }
@@ -437,7 +447,7 @@ public class DAO{
         return "Transaction successful!";
     }
 
-    public String creatingGameProfile(String expertName, String gameName, String password, String gameLevel, String description)
+/*    public String creatingGameProfile(String expertName, String gameName, String password, String gameLevel, String description)
             throws SQLException, ClassNotFoundException{
         if (expertName.equals("")||gameName.equals("")||password.equals("")||gameLevel.equals("")||description.equals("")){
             return "Please fill all the blanks";
@@ -453,14 +463,14 @@ public class DAO{
         }
         createGameProfile(game, expert, gameLevel, description);
         return "Game Profile uploaded successful!";
-    }
+    } */
 
-    public boolean updateUserData(String name,String psw,String Email){
+    /*public boolean updateUserData(String name,String psw,String Email){
         SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("email", Email);
         values.put("password", psw);
         int d = sqLiteDatabase.update("User", values, "UName=?", new String[]{name});
         return d > 0;
-    }
+    }*/
 }

@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 public class DataBase extends SQLiteOpenHelper {
     final static String DATABASE_NAME = "playmate.db"; //database name
     private static int n = 11;
-    final static int DATABASE_VERSION = n++;
+    static int DATABASE_VERSION = n++;
 
     final static String TABLE1_NAME = "User";
     final static String T1COL_0 = "UName";
@@ -174,6 +174,14 @@ public class DataBase extends SQLiteOpenHelper {
                 "'Steve',"+"'boy',"+"4.6,"+"18.0,"+"150.00"+"),"+"("+
                 "'Fiona',"+"'girl',"+"4.2,"+"15.0,"+"100.0"+")";
         db.execSQL(query13);
+
+
+        String query14 = "INSERT INTO "+TABLE6_NAME+" VALUES "+"("+
+                "'PUBG',"+"'Winnie',"+"'diamond4'"+"),"+"("+
+                "'Dota2',"+"'Winnie',"+"'4000dp'"+"),"+"("+
+                "'PUBG',"+"'Fiona',"+"'goldern'"+"),"+"("+
+                "'Dota2',"+"'Fiona',"+"'5000dp'"+")";
+        db.execSQL(query14);
     }
 
     @Override

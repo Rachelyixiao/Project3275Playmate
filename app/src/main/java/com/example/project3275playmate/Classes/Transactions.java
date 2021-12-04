@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class Transactions {
     private int TID;
-    private LocalDate date;
+    private String date;
     private double hours;
     private double totalAmount;
     private static int init = 1001; //static自动赋值
@@ -13,7 +13,7 @@ public class Transactions {
         TID = init++;
     }
 
-    public Transactions(LocalDate date, double hours, double totalAmount) {
+    public Transactions(String date, double hours, double totalAmount) {
         this();
         this.date = date;
         this.hours = hours;
@@ -28,11 +28,11 @@ public class Transactions {
         this.TID = TID;
     }
 
-    public LocalDate getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

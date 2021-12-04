@@ -26,9 +26,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/expertBalance"
             android:background="#00FFFFFF" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="169dp" android:layout_marginEnd="242dp"
+            android:layout_marginStart="200dp" android:layout_marginEnd="200dp"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="142dp" android:textSize="16sp"/>
+            android:layout_marginTop="156dp" android:textSize="16sp" app:layout_constraintHorizontal_bias="1.0"/>
     <EditText
             android:layout_width="357dp"
             android:layout_height="58dp"
