@@ -87,9 +87,9 @@ public class DAO{
     }
 
     public  Cursor viewExpertDataByGender(String gender) {
-        SQLiteDatabase sqLiteDatabase = dbHelper.getReadableDatabase();
-        String query = "SELECT * FROM Expert where gender = "+gender;
-        Cursor c = sqLiteDatabase.rawQuery(query, null);
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String query = "SELECT * FROM Expert where gender = ?";
+        Cursor c = db.rawQuery(query, new String[] {gender});
         return c;
     }
 
@@ -173,6 +173,25 @@ public class DAO{
         return g;
     }
 
+
+    public GameProfile[] searchGameProfileByEName(String expertName)throws SQLException,ClassNotFoundException{
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String query = "Select * from GameProfile where EName = ?";
+        Cursor c = db.rawQuery(query, new String[] {expertName});
+        int length = 0;
+        GameProfile gameProfiles[] = new GameProfile[100];
+
+        while (c.moveToNext()){
+            @SuppressLint("Range")String GName = c.getString(c.getColumnIndex("GName"));;
+            @SuppressLint("Range")String EName = c.getString(c.getColumnIndex("EName"));;
+            @SuppressLint("Range")String description = c.getString(c.getColumnIndex("Description"));;
+            gameProfiles[length] = new GameProfile(description, GName, EName);
+            length++;
+        }
+        return gameProfiles;
+
+    }
+
     public void createGameProfile(Game game, Expert expert, String gameLevel, String description) throws SQLException, ClassNotFoundException {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         String query = "insert into GameProfile values(?,?,?,?)";
@@ -180,10 +199,10 @@ public class DAO{
         db.close();
     }
 
-    public GameProfile[] searchGameProfile(String name) throws SQLException, ClassNotFoundException {
+    public GameProfile[] searchGameProfileByGName(String gameName) throws SQLException, ClassNotFoundException {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         String query = "Select * from GameProfile where GName = ?";
-        Cursor c = db.rawQuery(query, new String[] {name});
+        Cursor c = db.rawQuery(query, new String[] {gameName});
         int length = 0;
         GameProfile gameProfiles[] = new GameProfile[100];
 
@@ -196,6 +215,9 @@ public class DAO{
         }
         return gameProfiles;
     }
+
+
+
 
     public void setCusBalance(Customer customer, double amount) throws SQLException, ClassNotFoundException{
         SQLiteDatabase db = dbHelper.getWritableDatabase();

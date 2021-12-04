@@ -174,6 +174,12 @@ public class DataBase extends SQLiteOpenHelper {
                 "'Steve',"+"'boy',"+"4.6,"+"18.0,"+"150.00"+"),"+"("+
                 "'Fiona',"+"'girl',"+"4.2,"+"15.0,"+"100.0"+")";
         db.execSQL(query13);
+
+
+        String query14 = "INSERT INTO "+TABLE6_NAME+" VALUES "+"("+
+                "'PUBG',"+"'Winnie',"+"4.5,"+"16.0,"+"250.00"+"),"+"("+
+                "'Steve',"+"'boy',"+"4.6,"+"18.0,"+"150.00"+"),"+"("+
+                "'Fiona',"+"'girl',"+"4.2,"+"15.0,"+"100.0"+")";
     }
 
     @Override
