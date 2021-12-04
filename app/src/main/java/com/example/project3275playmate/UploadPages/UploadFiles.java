@@ -62,7 +62,7 @@ public class UploadFiles extends AppCompatActivity {
         int n=0;
         String profile = "";
         while (!(gameProfiles[n]==null)){
-            profile += gameProfiles[n];
+            profile += gameProfiles[n].getGName() + " description: \n" + gameProfiles[n].getDescription() + "\n\n";
             n++;
         }
         return profile;

@@ -36,8 +36,8 @@ public class AddProfiles extends AppCompatActivity {
 
     public void addGameProfile(View view){
         DAO dao = new DAO(this);
-        String EName = sp.getString("name", "defaultName");
         String GName = addGameListProfile.getSelectedItem().toString();
+        String EName = sp.getString("name", "defaultName");
         String description = getSkills.getText().toString();
         try {
             toast = dao.addingProfile(GName, EName, description);

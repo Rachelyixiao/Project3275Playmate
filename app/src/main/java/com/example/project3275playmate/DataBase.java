@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 public class DataBase extends SQLiteOpenHelper {
     final static String DATABASE_NAME = "playmate.db"; //database name
     private static int n = 11;
-    final static int DATABASE_VERSION = n++;
+    static int DATABASE_VERSION = n++;
 
     final static String TABLE1_NAME = "User";
     final static String T1COL_0 = "UName";

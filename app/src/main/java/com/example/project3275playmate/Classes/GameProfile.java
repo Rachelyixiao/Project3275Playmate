@@ -5,7 +5,7 @@ public class GameProfile {
     private String GName;
     private String EName;
 
-    public GameProfile(String description, String GName, String EName) {
+    public GameProfile(String GName, String EName, String description) {
         this.description = description;
         this.GName = GName;
         this.EName = EName;
