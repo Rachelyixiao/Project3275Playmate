@@ -223,16 +223,15 @@ public class DAO{
         setCusBalance(customer, amount);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    public void transactions(Customer customer, Expert expert, Admin admin, Transactions transactions, LocalDate date, double hours, double amount)
+    public void transactions(Customer customer, Expert expert, Admin admin, Transactions transactions, String date, double hours, double amount)
             throws SQLException, ClassNotFoundException {
         setCusBalance(customer, -amount);
         setExpertBalance(expert, amount);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         String query = "insert into transactions values(?,?,?,?,?,?,?)";
 
-        db.execSQL(query, new Object[]{transactions.getTID(), admin.getName(), expert.getName(),customer.getName(),
-                Date.valueOf(String.valueOf(date)), hours, amount});
+        db.execSQL(query, new Object[]{transactions.getTID(), date, hours, amount,
+                                        customer.getName(), expert.getName(), admin.getName()});
         db.close();
     }
 
@@ -407,29 +406,23 @@ public class DAO{
         return "TopUp successful!";
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    public String transactions(String CusName, String expertName, String adminName, double hours, double amount)
+    public String transactionsMain(String CusName, String expertName, String date, String adminName, double hours, double amount)
             throws SQLException, ClassNotFoundException{
-        LocalDate date = LocalDate.now();
         if (CusName.equals("") || expertName.equals("") || adminName.equals("")){
             return "Please enter all the names";
         }
         if (hours==0){
             return "hours cannot be 0";
         }
-        if (amount==0){
-            return  "amount cannot be 0";
-        }
         Transactions tran = new Transactions(date, hours, amount);
         Customer customer; Expert expert; Admin admin;
-        customer = (Customer) searchUser(CusName);
-        expert = (Expert) searchUser(expertName);
+        customer = searchCus(CusName);
+        expert = searchExpert(expertName);
 
         if (checkAdmin(adminName) == false){
             return "Admin name incorrect";
         }
         admin = searchAdmin(adminName);
-
         if((customer==null || expert==null || admin==null)){
             return "The user does not exist";
         }
@@ -437,7 +430,7 @@ public class DAO{
         return "Transaction successful!";
     }
 
-    public String creatingGameProfile(String expertName, String gameName, String password, String gameLevel, String description)
+/*    public String creatingGameProfile(String expertName, String gameName, String password, String gameLevel, String description)
             throws SQLException, ClassNotFoundException{
         if (expertName.equals("")||gameName.equals("")||password.equals("")||gameLevel.equals("")||description.equals("")){
             return "Please fill all the blanks";
@@ -453,14 +446,14 @@ public class DAO{
         }
         createGameProfile(game, expert, gameLevel, description);
         return "Game Profile uploaded successful!";
-    }
+    } */
 
-    public boolean updateUserData(String name,String psw,String Email){
+    /*public boolean updateUserData(String name,String psw,String Email){
         SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("email", Email);
         values.put("password", psw);
         int d = sqLiteDatabase.update("User", values, "UName=?", new String[]{name});
         return d > 0;
-    }
+    }*/
 }

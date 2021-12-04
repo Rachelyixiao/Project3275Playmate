@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:ems="10"
-            android:id="@+id/expertNameUoploadHours"
+            android:id="@+id/expertName"
             android:hint="@string/hintEnterName" android:textColor="@color/white"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="99dp" android:layout_marginEnd="99dp"
@@ -39,7 +39,7 @@
             android:layout_marginStart="99dp" android:layout_marginEnd="99dp"
             app:layout_constraintEnd_toEndOf="parent"
             android:textSize="20sp" app:layout_constraintHorizontal_bias="0.518"
-            android:layout_marginTop="32dp" app:layout_constraintTop_toBottomOf="@+id/adminNameUploadHours"/>
+            android:layout_marginTop="32dp" app:layout_constraintTop_toBottomOf="@+id/adminName"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -60,27 +60,28 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:backgroundTint="@color/buttonColor"
             app:layout_constraintHorizontal_bias="1.0" android:layout_marginTop="56dp"
-            app:layout_constraintTop_toBottomOf="@+id/playHours"/>
+            app:layout_constraintTop_toBottomOf="@+id/playHours"
+            android:onClick="submitTransactions"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:ems="10"
-            android:id="@+id/customerNameUploadHours"
+            android:id="@+id/customerName"
             android:hint="@string/enterCustomerName" android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="86dp"
             android:layout_marginEnd="85dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="20dp"
-            app:layout_constraintTop_toBottomOf="@+id/expertNameUoploadHours"
+            app:layout_constraintTop_toBottomOf="@+id/expertName"
             app:layout_constraintHorizontal_bias="0.0"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:ems="10"
-            android:id="@+id/adminNameUploadHours"
+            android:id="@+id/adminName"
             android:hint="@string/AdminName" android:textSize="20sp" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="86dp" android:layout_marginEnd="85dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="37dp"
-            app:layout_constraintTop_toBottomOf="@+id/customerNameUploadHours"/>
+            app:layout_constraintTop_toBottomOf="@+id/customerName"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
