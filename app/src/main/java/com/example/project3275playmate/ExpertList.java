@@ -23,6 +23,7 @@ public class ExpertList extends AppCompatActivity {
     private static final String TAG = "ExpertList";
     String game, gender;
     ImageView contacticon;
+
     //vars
     private ArrayList<String> mName = new ArrayList<>();
     private ArrayList<String> mImageUrls = new ArrayList<>();
@@ -36,7 +37,7 @@ public class ExpertList extends AppCompatActivity {
         game = sp.getString("Game","");
         gender = sp.getString("Choice","");
         String btn = sp.getString("btn","");
-        contacticon = findViewById(R.id.contacticon);
+      //  contacticon = findViewById(R.id.contacticon);
 
         if (btn.equals("Game")){
             try {
@@ -50,14 +51,14 @@ public class ExpertList extends AppCompatActivity {
         else if(btn.equals("Gender")){
             initImageBitmaps2();
         }
-
+/*
         contacticon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(ExpertList.this,ContactUs.class));
             }
         });
-
+*/
     }
 
     private void initImageBitmaps() throws SQLException, ClassNotFoundException {
