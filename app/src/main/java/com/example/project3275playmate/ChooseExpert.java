@@ -15,9 +15,10 @@ import com.example.project3275playmate.RegisterLogin.LoginPage;
 public class ChooseExpert extends AppCompatActivity {
     Spinner userChooseGameList;
     RadioGroup userChooseGender;
-    RadioButton userChooseGirl,userChooseBoy;
-    Button userChooseGameGo,userChooseGenderGo;
-    DAO dao ;
+    RadioButton userChooseGirl, userChooseBoy;
+    Button userChooseGameGo, userChooseGenderGo;
+    DAO dao;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +29,7 @@ public class ChooseExpert extends AppCompatActivity {
         userChooseGameList = findViewById(R.id.userChooseGameList);
         userChooseGender = findViewById(R.id.userChooseGender);
         userChooseGirl = findViewById(R.id.userChooseGirl);
-        userChooseBoy =findViewById(R.id.userChooseBoy);
+        userChooseBoy = findViewById(R.id.userChooseBoy);
         userChooseGameGo = findViewById(R.id.userChooseGameGo);
         userChooseGenderGo = findViewById(R.id.userChooseGenderGo);
         SharedPreferences.Editor editor = Choice.edit();

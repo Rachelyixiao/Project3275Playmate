@@ -39,7 +39,7 @@ public class DAO{
     public void addExpertAdditionalInfo(User user, String gender) throws ClassNotFoundException, SQLException {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         String query = "insert into Expert(EName, gender, rate, wage, balance) values(?,?,?,?,?)";
-        db.execSQL(query, new Object[]{user.getName(), gender, 0, 0, 0});
+        db.execSQL(query, new Object[]{user.getName(), gender, 0, 16, 0});
         db.close();
     }
 

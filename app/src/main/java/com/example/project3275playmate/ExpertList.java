@@ -34,25 +34,16 @@ String Game,Gender;
         if (btn.equals("Game")){
             initImageBitmaps();
         }
-     else if(btn.equals("Gender")){
+        else if(btn.equals("Gender")){
             initImageBitmaps2();
         }
-        else{
-
-        }
-
-
-
-
     }
+
     private void initImageBitmaps(){
-     //   DAO dao = new DAO(this);
-      //  String Game = sp.getString("Game","");
-     //   Cursor c = dao.viewExpertDataByGender(Game);
 //        Log.d(TAG,"initImageBitmaps: preparing bitmaps.");
 
         mImageUrls.add("app/src/main/res/drawable/profile.png");
-       mName.add(Game);
+        mName.add(Game);
         mImageUrls.add("https://i.redd.it/k98uz168eh501.jpg");
         mName.add(Gender);
 //    while (c.moveToNext()){
@@ -61,21 +52,20 @@ String Game,Gender;
 //    }
 
         initRecyclerView();
-
     }
+
     private void initImageBitmaps2(){
         DAO dao = new DAO(this);
 
         Cursor c = dao.viewExpertDataByGender(Gender);
         while (c.moveToNext()){
-            String info = "";
-            info = " PlayMate's Name: " + c.getString(0) + "\n PlayMate's Rating: " + c.getString(2);
+            String info = " PlayMate's Name: " + c.getString(0) + "\n PlayMate's Rating: " + c.getString(2);
             mImageUrls.add("https://i.redd.it/k98uz168eh501.jpg");
             mName.add(info);
         }
         initRecyclerView();
-
     }
+
     private  void initRecyclerView(){
         Log.d(TAG,"initRecyclerView: init recyclerview.");
         RecyclerView recyclerView = findViewById(R.id.rec);

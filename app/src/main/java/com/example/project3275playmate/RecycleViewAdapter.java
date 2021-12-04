@@ -1,6 +1,7 @@
 package com.example.project3275playmate;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
+import com.example.project3275playmate.RegisterLogin.LoginPage;
 import de.hdodenhof.circleimageview.CircleImageView;
 import org.jetbrains.annotations.NotNull;
 
@@ -33,8 +35,8 @@ public class RecycleViewAdapter extends  RecyclerView.Adapter<RecycleViewAdapter
     @NotNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
-       View view = LayoutInflater.from((parent.getContext())).inflate(R.layout.layout_listiterm,parent, false);
-       ViewHolder holder = new ViewHolder(view);
+        View view = LayoutInflater.from((parent.getContext())).inflate(R.layout.layout_listiterm,parent, false);
+        ViewHolder holder = new ViewHolder(view);
         return holder;
     }
 
@@ -50,8 +52,7 @@ public class RecycleViewAdapter extends  RecyclerView.Adapter<RecycleViewAdapter
             @Override
             public void onClick(View v) {
                 Log.d(TAG,"onClick: clicked on: "+mImageNames.get(position));
-
-                Toast.makeText(mContext,mImageNames.get(position),Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, "Please click 'Contact Us' on the bottom to get in touch with our playmate", Toast.LENGTH_SHORT).show();
             }
         });
     }

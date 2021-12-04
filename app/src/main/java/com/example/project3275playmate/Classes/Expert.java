@@ -4,7 +4,7 @@ public class Expert extends User{
     private String gender;
     private double rate;
     private double balance;
-    private double wage;
+    private static double wage = 16;
 
     public Expert(String name, String email, String password, String gender, double rate, double balance, double wage) {
         super(name, email, password);
