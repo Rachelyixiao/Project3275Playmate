@@ -27,8 +27,6 @@ public class MainActivity extends AppCompatActivity {
             Button btnMainPageLogin = findViewById(R.id.login);
             Button btnMainPageRegister = findViewById(R.id.register);
 
-
-
             btnMainPageLogin.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

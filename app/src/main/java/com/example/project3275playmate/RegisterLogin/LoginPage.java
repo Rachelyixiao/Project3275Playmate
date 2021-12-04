@@ -40,12 +40,6 @@ public class LoginPage extends AppCompatActivity {
         btnLoginSubmit = findViewById(R.id.btnLoginSubmit);
         sp = getSharedPreferences("user", Context.MODE_PRIVATE); //Save data to the next pages
         editor = sp.edit();
-        Contact.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(LoginPage.this, ContactUs.class));
-            }
-        });
     }
 
     public void login(View view) throws SQLException, ClassNotFoundException {
