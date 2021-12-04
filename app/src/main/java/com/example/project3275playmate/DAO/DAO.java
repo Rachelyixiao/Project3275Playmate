@@ -207,9 +207,9 @@ public class DAO{
         GameProfile gameProfiles[] = new GameProfile[100];
 
         while (c.moveToNext()){
-            @SuppressLint("Range")String GName = c.getString(c.getColumnIndex("GName"));;
-            @SuppressLint("Range")String EName = c.getString(c.getColumnIndex("EName"));;
-            @SuppressLint("Range")String description = c.getString(c.getColumnIndex("Description"));;
+            @SuppressLint("Range")String GName = c.getString(c.getColumnIndex("GName"));
+            @SuppressLint("Range")String EName = c.getString(c.getColumnIndex("EName"));
+            @SuppressLint("Range")String description = c.getString(c.getColumnIndex("description"));
             gameProfiles[length] = new GameProfile(description, GName, EName);
             length++;
         }
