@@ -12,7 +12,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
-import com.example.project3275playmate.RegisterLogin.LoginPage;
 import de.hdodenhof.circleimageview.CircleImageView;
 import org.jetbrains.annotations.NotNull;
 
@@ -52,7 +51,7 @@ public class RecycleViewAdapter extends  RecyclerView.Adapter<RecycleViewAdapter
             @Override
             public void onClick(View v) {
                 Log.d(TAG,"onClick: clicked on: "+ mImageNames.get(position));
-                Toast.makeText(mContext, "Please click 'Contact Us' on the bottom to get in touch with our playmate", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, "Please click 'Contact Us' on the Main Page to get in touch with our playmate", Toast.LENGTH_SHORT).show();
             }
         });
     }

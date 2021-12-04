@@ -9,6 +9,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.project3275playmate.Classes.Customer;
 import com.example.project3275playmate.Classes.Expert;
 import com.example.project3275playmate.DAO.DAO;
 import com.example.project3275playmate.Homepage.ExpertMainPage;
@@ -56,8 +57,7 @@ public class UploadHours extends AppCompatActivity {
             return;
         }
 
-        Expert expert;
-        expert = dao.searchExpert(EName);
+        Expert expert = dao.searchExpert(EName);
         double wage = expert.getWage();
         double amount;
         try {
@@ -68,12 +68,25 @@ public class UploadHours extends AppCompatActivity {
             Toast.makeText(this, "Please enter the correct format of hours", Toast.LENGTH_SHORT).show();
             return;
         }
-        //transactionsMain(String CusName, String expertName, String date, String adminName, double hours, double amount)
-        toast = dao.transactionsMain(CName, EName, date, AName, hours, amount);
-        Toast.makeText(this, toast, Toast.LENGTH_SHORT).show();
-        if (!toast.contains("Transaction successful!")){
+        Customer cus = dao.searchCus(CName);
+        if (cus == null){
+            Toast.makeText(this, "Please enter the correct name of the Customer", Toast.LENGTH_SHORT).show();
             return;
         }
-        startActivity(new Intent(UploadHours.this, ExpertMainPage.class));
+
+        if (amount > cus.getBalance()){
+            Toast.makeText(this, "The customer does not have enough balance, please contact admin", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        else {
+            toast = dao.transactionsMain(CName, EName, date, AName, hours, amount);
+            Toast.makeText(this, toast, Toast.LENGTH_SHORT).show();
+            if (!toast.contains("Transaction successful!")){
+                return;
+            }
+            startActivity(new Intent(UploadHours.this, ExpertMainPage.class));
+        }
+        //transactionsMain(String CusName, String expertName, String date, String adminName, double hours, double amount)
+
     }
 }

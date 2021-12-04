@@ -36,7 +36,6 @@ public class CustomerMainPage extends AppCompatActivity {
         btnChooseExpert = findViewById(R.id.btnChooseExpert);
         btnTopUp = findViewById(R.id.btnTopup);
         btnReviewExpert = findViewById(R.id.btnReviewExpert);
-        btnViewBalanceUse = findViewById(R.id.btnViewBalanceUse);
         username = findViewById(R.id.Username);
         balance = findViewById(R.id.Balance);
         homeIconCustomerMain = findViewById(R.id.homeiconCustomerMain);

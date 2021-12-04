@@ -55,10 +55,14 @@ public class GetWage extends AppCompatActivity {
         }
         try {
             toast = dao.expertWithdraw(expert, withdraw);
+            expert = dao.searchExpert(name);
+            balance = expert.getBalance();
+            expertBalance.setText(String.valueOf(balance));
             Toast.makeText(this, toast, Toast.LENGTH_LONG).show();
 
         }catch (Exception e){
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
+
     }
 }

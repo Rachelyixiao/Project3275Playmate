@@ -10,6 +10,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import com.example.project3275playmate.Classes.Game;
+import com.example.project3275playmate.Classes.GameProfile;
 import com.example.project3275playmate.DAO.DAO;
 import com.example.project3275playmate.R;
 import com.example.project3275playmate.RegisterLogin.ExpertRegisterPage;
@@ -34,20 +36,23 @@ public class AddProfiles extends AppCompatActivity {
         sp = getSharedPreferences("user", Context.MODE_PRIVATE);
     }
 
-    public void addGameProfile(View view){
+    public void addGameProfile(View view) throws SQLException, ClassNotFoundException {
         DAO dao = new DAO(this);
         String GName = addGameListProfile.getSelectedItem().toString();
         String EName = sp.getString("name", "defaultName");
         String description = getSkills.getText().toString();
+        GameProfile gp = dao.searchGameProfile(GName);
+        if (!gp.equals(null)){
+            Toast.makeText(this, "The Game Profile already exists, please select another one.", Toast.LENGTH_SHORT).show();;
+            return;
+        }
         try {
             toast = dao.addingProfile(GName, EName, description);
             Toast.makeText(this, toast, Toast.LENGTH_SHORT).show();
         } catch (SQLException e) {
-            e.printStackTrace();
-            return;
+            Toast.makeText(this, "The Game Profile already exists, please select another one.", Toast.LENGTH_SHORT).show();;
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-            return;
+            Toast.makeText(this, "The Game Profile already exists, please select another one.", Toast.LENGTH_SHORT).show();;
         }
         startActivity(new Intent(AddProfiles.this, UploadFiles.class));
     }

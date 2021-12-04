@@ -62,7 +62,6 @@ public class ExpertMainPage extends AppCompatActivity {
         ExpertName.setText(name);
         expertBalance = expert.getBalance();
         ExpertBalance.setText(String.valueOf(expertBalance));
-        Toast.makeText(this, String.valueOf(expertBalance), Toast.LENGTH_SHORT).show();
         expertRating = expert.getRate();
         ExpertRating.setText(String.valueOf(expertRating));
 
