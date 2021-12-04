@@ -6,6 +6,7 @@ import android.os.StrictMode;
 import android.view.View;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.project3275playmate.DAO.DAO;
 import com.example.project3275playmate.RegisterLogin.LoginPage;
 import com.example.project3275playmate.RegisterLogin.RegisterPage;
 

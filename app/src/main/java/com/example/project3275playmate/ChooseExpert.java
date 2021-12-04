@@ -25,7 +25,7 @@ public class ChooseExpert extends AppCompatActivity {
         setContentView(R.layout.activity_choose_expert);
         SharedPreferences Choice = getSharedPreferences("Choice",MODE_PRIVATE);
         dao = new DAO(this);
-        //两种选择方式，选择游戏，显示该游戏所有玩家信息；选择性别，选择该性别所有的玩家
+
         userChooseGameList = findViewById(R.id.userChooseGameList);
         userChooseGender = findViewById(R.id.userChooseGender);
         userChooseGirl = findViewById(R.id.userChooseGirl);
