@@ -2,22 +2,20 @@ package com.example.project3275playmate;
 
 import android.content.Context;
 import androidx.test.core.app.ApplicationProvider;
-import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner;
 import com.example.project3275playmate.Classes.User;
 import com.example.project3275playmate.DAO.DAO;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
-import androidx.test.runner.AndroidJUnit4;
-import static org.junit.Assert.*;
+import java.sql.SQLException;
+
 import static org.junit.Assert.assertEquals;
 
-import java.sql.SQLException;
 
 public class AndroidTestDatabase {
     DAO dao;
     User user;
-
 
     @Test
     public void testInsert() throws SQLException, ClassNotFoundException {
@@ -41,9 +39,7 @@ public class AndroidTestDatabase {
     public void testSelect() throws SQLException, ClassNotFoundException{
         Context context = ApplicationProvider.getApplicationContext();
         dao = new DAO(context);
-        user = new User("testSelect", "testSelect", "testSelect");
-        dao.searchUser(user.getName());
-        assertEquals(user.getName(), "testSelect");
+        assertEquals("Mary", dao.searchUser("Mary").getName());
     }
 
     @Test
