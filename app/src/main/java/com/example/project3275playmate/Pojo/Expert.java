@@ -1,4 +1,4 @@
-package com.example.project3275playmate.Classes;
+package com.example.project3275playmate.Pojo;
 
 public class Expert extends User{
     private String gender;

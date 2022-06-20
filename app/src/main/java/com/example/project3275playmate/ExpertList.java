@@ -1,20 +1,15 @@
 package com.example.project3275playmate;
 
-import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.util.Log;
-import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import com.example.project3275playmate.Classes.GameProfile;
+import com.example.project3275playmate.Pojo.GameProfile;
 import com.example.project3275playmate.DAO.DAO;
-import com.example.project3275playmate.R;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

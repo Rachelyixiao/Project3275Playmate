@@ -1,13 +1,12 @@
 package com.example.project3275playmate.DAO;
 
 import android.annotation.SuppressLint;
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import androidx.annotation.RequiresApi;
-import com.example.project3275playmate.Classes.*;
+import com.example.project3275playmate.Pojo.*;
 import com.example.project3275playmate.DataBase;
 
 import java.sql.Date;

@@ -1,6 +1,4 @@
-package com.example.project3275playmate.Classes;
-
-import java.time.LocalDate;
+package com.example.project3275playmate.Pojo;
 
 public class Transactions {
     private int TID;

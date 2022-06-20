@@ -7,11 +7,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import com.example.project3275playmate.Classes.Expert;
-import com.example.project3275playmate.Classes.GameProfile;
+import com.example.project3275playmate.Pojo.Expert;
+import com.example.project3275playmate.Pojo.GameProfile;
 import com.example.project3275playmate.DAO.DAO;
 import com.example.project3275playmate.Homepage.ExpertMainPage;
-import com.example.project3275playmate.MainActivity;
 import com.example.project3275playmate.R;
 
 import java.sql.SQLException;

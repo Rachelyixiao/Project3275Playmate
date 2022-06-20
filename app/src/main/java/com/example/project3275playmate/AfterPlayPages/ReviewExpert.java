@@ -5,12 +5,10 @@ import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import com.example.project3275playmate.Classes.Expert;
+import com.example.project3275playmate.Pojo.Expert;
 import com.example.project3275playmate.DAO.DAO;
 import com.example.project3275playmate.Homepage.CustomerMainPage;
 import com.example.project3275playmate.R;
-import com.example.project3275playmate.RegisterLogin.ExpertRegisterPage;
-import com.example.project3275playmate.UploadPages.AddProfiles;
 
 import java.sql.SQLException;
 

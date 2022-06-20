@@ -10,15 +10,10 @@ import android.widget.Spinner;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import com.example.project3275playmate.Classes.Expert;
-import com.example.project3275playmate.Classes.User;
 import com.example.project3275playmate.DAO.DAO;
 import com.example.project3275playmate.Homepage.ExpertMainPage;
 import com.example.project3275playmate.R;
 import com.example.project3275playmate.UploadPages.AddProfiles;
-import com.example.project3275playmate.UploadPages.UploadFiles;
-
-import java.sql.SQLException;
 
 public class ExpertRegisterPage extends AppCompatActivity {
     Spinner getGameListProfile;

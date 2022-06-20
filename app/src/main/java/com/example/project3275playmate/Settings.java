@@ -9,7 +9,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import com.example.project3275playmate.Classes.User;
+import com.example.project3275playmate.Pojo.User;
 import com.example.project3275playmate.DAO.DAO;
 import com.example.project3275playmate.RegisterLogin.LoginPage;
 

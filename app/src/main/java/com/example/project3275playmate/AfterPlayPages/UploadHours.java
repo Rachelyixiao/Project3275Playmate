@@ -5,21 +5,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.project3275playmate.Classes.Customer;
-import com.example.project3275playmate.Classes.Expert;
+import com.example.project3275playmate.Pojo.Customer;
+import com.example.project3275playmate.Pojo.Expert;
 import com.example.project3275playmate.DAO.DAO;
 import com.example.project3275playmate.Homepage.ExpertMainPage;
 import com.example.project3275playmate.R;
-import com.example.project3275playmate.RegisterLogin.ExpertRegisterPage;
 import com.example.project3275playmate.databinding.ActivityUploadHoursBinding;
 
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.util.Calendar;
 
 public class UploadHours extends AppCompatActivity {
     DatePickerDialog datePickerDialog;

@@ -2,12 +2,10 @@ package com.example.project3275playmate;
 
 import android.content.Context;
 import androidx.test.core.app.ApplicationProvider;
-import com.example.project3275playmate.Classes.User;
+import com.example.project3275playmate.Pojo.User;
 import com.example.project3275playmate.DAO.DAO;
-import org.junit.BeforeClass;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+
 import java.sql.SQLException;
 
 import static org.junit.Assert.assertEquals;

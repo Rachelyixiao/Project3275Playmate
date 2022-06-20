@@ -8,8 +8,7 @@ import android.widget.*;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import com.example.project3275playmate.Classes.Customer;
-import com.example.project3275playmate.Classes.User;
+import com.example.project3275playmate.Pojo.Customer;
 import com.example.project3275playmate.DAO.DAO;
 import com.example.project3275playmate.R;
 

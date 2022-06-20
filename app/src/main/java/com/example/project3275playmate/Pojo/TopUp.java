@@ -1,4 +1,4 @@
-package com.example.project3275playmate.Classes;
+package com.example.project3275playmate.Pojo;
 
 import java.util.Date;
 

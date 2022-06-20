@@ -10,11 +10,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import com.example.project3275playmate.Classes.Game;
-import com.example.project3275playmate.Classes.GameProfile;
+import com.example.project3275playmate.Pojo.GameProfile;
 import com.example.project3275playmate.DAO.DAO;
 import com.example.project3275playmate.R;
-import com.example.project3275playmate.RegisterLogin.ExpertRegisterPage;
 
 import java.sql.SQLException;
 
